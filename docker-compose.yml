@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  app:
+    image: "sindriainc/nginx-php:6.0.0-8.2"
+    depends_on:
+      - "database"
+    restart: "always"
+    environment:
+      - "HOST_USER_UID=${HOST_USER_UID}"
+      - "NGINX_PHP_PM_MAX_CHILDREN=${NGINX_PHP_PM_MAX_CHILDREN}"
+    volumes:
+      - "app_storage:/var/www/app/storage/app"
+      - "./src:/var/www/app"
+      - "./docker:/scripts"
+    hostname: "${CONTAINER_NAME}-docker.local"
+    networks:
+      default:
+        ipv4_address: "${CONTAINER_SERVICE_APP_IP_ADDRESS}"
+        aliases:
+          - "${CONTAINER_NAME}-docker.local"
+    command: "bash /scripts/startup-wrapper.sh"
+
+  database:
+    image: "mariadb:10.9.5"
+    ports:
+      - "${DATABASE_BIND_PORT}:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MARIADB_USER: ${DATABASE_USER}
+      MARIADB_PASSWORD: ${DATABASE_PASSWORD}
+      MARIADB_DATABASE: ${DATABASE_NAME}
+    volumes:
+      - "database:/var/lib/mysql"
+    networks:
+      default:
+        ipv4_address: "${CONTAINER_SERVICE_DATABASE_IP_ADDRESS}"
+        aliases:
+          - "${CONTAINER_NAME}-database.local"
+
+networks:
+  default:
+    name: "vpc_${CONTAINER_NAME}"
+    driver: "bridge"
+    ipam:
+      config:
+        - subnet: "${CONTAINER_NETWORK_SUBNET}"
+
+volumes:
+  database:
+  app_storage:

@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  app:
+    image: "sindriainc/nginx-php:6.0.0-local-8.2"
+    depends_on:
+      - "database"
+      - "mail"
+    restart: "no"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8100:80"
+    command: "bash /scripts/startup-wrapper_local.sh"
+
+  frontend:
+    image: "node:16.19"
+    depends_on:
+      - "app"
+    working_dir: "/var/www/docker"
+    volumes:
+      - "./src:/var/www/docker"
+    ports:
+      - "3100:3100" # vite hot reload
+    command: >
+      bash -c "npm install
+      && npm run dev"
+    networks:
+      default:
+        ipv4_address: "${CONTAINER_SERVICE_FRONTEND_IP_ADDRESS}"
+        aliases:
+          - "${CONTAINER_NAME}-nodejs.local"
+
+  mail:
+    image: "mailhog/mailhog"
+    logging:
+      driver: "none"
+    ports:
+      - "1025:1025" # smtp server
+      - "8025:8025" # web ui
+    networks:
+      default:
+        ipv4_address: "${CONTAINER_SERVICE_MAIL_IP_ADDRESS}"
+        aliases:
+          - "${CONTAINER_NAME}-mail.local"
