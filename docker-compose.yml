@@ -22,7 +22,7 @@ services:
     command: "bash /scripts/startup-wrapper.sh"
 
   database:
-    image: "mariadb:10.9.5"
+    image: "mariadb:11.1"
     ports:
       - "${DATABASE_BIND_PORT}:3306"
     environment:
