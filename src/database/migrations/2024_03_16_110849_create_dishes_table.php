@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('img_url')->nullable();
             $table->boolean('is_visible');
             $table->timestamps();
+            //TODO come metto PREZZO?
         });
     }
 
