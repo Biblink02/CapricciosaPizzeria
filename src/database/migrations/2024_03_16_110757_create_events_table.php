@@ -21,7 +21,7 @@ return new class extends Migration
             $table->dateTime('ends_at');
             $table->timestamps();
         });
-        DB::statement('ALTER TABLE products ADD CHECK (starts_at < ends_at)');
+        DB::statement('ALTER TABLE events ADD CHECK (starts_at < ends_at)');
     }
 
     /**
