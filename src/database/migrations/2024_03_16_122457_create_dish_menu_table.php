@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('menu_uuid');
             $table->foreign('dish_uuid')->references('uuid')->on('dishes')->onDelete('cascade');
             $table->foreign('menu_uuid')->references('uuid')->on('menu')->onDelete('cascade');
+            $table->decimal('price', 10, 2, true);
             $table->unique(['dish_uuid', 'menu_uuid']);
         });
     }
