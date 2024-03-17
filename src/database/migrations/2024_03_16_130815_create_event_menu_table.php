@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('event_uuid');
             $table->uuid('menu_uuid');
             $table->foreign('event_uuid')->references('uuid')->on('events')->onDelete('cascade');
-            $table->foreign('menu_uuid')->references('uuid')->on('menu')->onDelete('cascade');
+            $table->foreign('menu_uuid')->references('uuid')->on('menus')->onDelete('cascade');
             $table->unique(['event_uuid', 'menu_uuid']);
         });
     }

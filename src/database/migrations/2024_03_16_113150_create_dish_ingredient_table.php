@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('dish_uuid');
             $table->uuid('ingredient_uuid');
             $table->foreign('dish_uuid')->references('uuid')->on('dishes')->onDelete('cascade');
-            $table->foreign('ingredients_uuid')->references('uuid')->on('ingredients')->onDelete('cascade');
+            $table->foreign('ingredient_uuid')->references('uuid')->on('ingredients')->onDelete('cascade');
             $table->unique(['dish_uuid', 'ingredient_uuid']);
         });
     }
