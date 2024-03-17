@@ -21,10 +21,7 @@ return new class extends Migration
             $table->dateTime('ends_at');
             $table->timestamps();
         });
-        //TODO verifica questa funzione per verificare che la data di inizio eventi sia prima di quella di fine evento
-        Schema::table('events', function (Blueprint $table) {
-            $table->check('ends_at > starts_at');
-        });
+        DB::statement('ALTER TABLE products ADD CHECK (starts_at < ends_at)');
     }
 
     /**
