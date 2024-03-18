@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SupplierResource\Pages;
-use App\Filament\Resources\SupplierResource\RelationManagers;
-use App\Models\Supplier;
+use App\Filament\Resources\EventResource\Pages;
+use App\Filament\Resources\EventResource\RelationManagers;
+use App\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
@@ -14,11 +14,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SupplierResource extends Resource
+class EventResource extends Resource
 {
-    protected static ?string $model = Supplier::class;
+    protected static ?string $model = Event::class;
 
-    protected static ?string $navigationLabel = 'Aziende';
+    protected static ?string $navigationLabel = 'Eventi';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -27,10 +27,18 @@ class SupplierResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Nome'),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
-                    ->default(true),
+                    ->default(true)
+                    ->label('È visibile?'),
+                Forms\Components\DateTimePicker::make('starts_at')
+                    ->required()
+                    ->label('Comincia'),
+                Forms\Components\DateTimePicker::make('ends_at')
+                    ->required()
+                    ->label('Termina'),
                 FileUpload::make('img_url')
                     ->image()
                     ->imageEditor()
@@ -51,7 +59,15 @@ class SupplierResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
+                Tables\Columns\TextColumn::make('starts_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->label('Comincia'),
+                Tables\Columns\TextColumn::make('ends_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->label('Termina'),
+                Tables\Columns\ImageColumn::make('img_url')
                     ->searchable()
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -86,9 +102,9 @@ class SupplierResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSuppliers::route('/'),
-            'create' => Pages\CreateSupplier::route('/create'),
-            'edit' => Pages\EditSupplier::route('/{record}/edit'),
+            'index' => Pages\ListEvents::route('/'),
+            'create' => Pages\CreateEvent::route('/create'),
+            'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
     }
 }

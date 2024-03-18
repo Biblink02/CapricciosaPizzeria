@@ -21,7 +21,8 @@ class Ingredient extends Model
     protected $fillable=[
         'name',
         'img_url',
-        'is_visible'
+        'is_visible',
+        'supplier_uuid'
     ];
     public function info(): MorphTo
     {

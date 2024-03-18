@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SupplierResource\Pages;
-use App\Filament\Resources\SupplierResource\RelationManagers;
-use App\Models\Supplier;
+use App\Filament\Resources\IngredientResource\Pages;
+use App\Filament\Resources\IngredientResource\RelationManagers;
+use App\Models\Ingredient;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
@@ -14,11 +14,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SupplierResource extends Resource
+class IngredientResource extends Resource
 {
-    protected static ?string $model = Supplier::class;
+    protected static ?string $model = Ingredient::class;
 
-    protected static ?string $navigationLabel = 'Aziende';
+    protected static ?string $navigationLabel = 'Ingredienti';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -27,10 +28,12 @@ class SupplierResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->label('Nome'),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
-                    ->default(true),
+                    ->default(true)
+                    ->label('È visibile?'),
                 FileUpload::make('img_url')
                     ->image()
                     ->imageEditor()
@@ -38,6 +41,10 @@ class SupplierResource extends Resource
                     ->openable()
                     ->panelLayout('integrated')
                     ->default(null),
+                Forms\Components\Select::make('supplier_uuid')
+                    ->relationship('supplier', 'name')
+                    //->searchable()
+                    ->label('Azienda di provenienza')
             ]);
     }
 
@@ -54,6 +61,10 @@ class SupplierResource extends Resource
                 Tables\Columns\TextColumn::make('img_url')
                     ->searchable()
                     ->label('Immagine'),
+                Tables\Columns\TextColumn::make('supplier.name')
+                    ->exists('supplier')
+                    ->searchable()
+                    ->label('Azienda di provenienza'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -79,16 +90,15 @@ class SupplierResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSuppliers::route('/'),
-            'create' => Pages\CreateSupplier::route('/create'),
-            'edit' => Pages\EditSupplier::route('/{record}/edit'),
+            'index' => Pages\ListIngredients::route('/'),
+            'create' => Pages\CreateIngredient::route('/create'),
+            'edit' => Pages\EditIngredient::route('/{record}/edit'),
         ];
     }
 }
