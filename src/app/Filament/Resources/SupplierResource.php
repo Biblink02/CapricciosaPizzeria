@@ -25,19 +25,25 @@ class SupplierResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required()
-                    ->default(true),
-                FileUpload::make('img_url')
-                    ->image()
-                    ->imageEditor()
-                    ->label('Immagine')
-                    ->openable()
-                    ->panelLayout('integrated')
-                    ->default(null),
+                Forms\Components\Section::make('Azienda:')
+                ->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255)
+                        ->columns(1),
+                    Forms\Components\Toggle::make('is_visible')
+                        ->required()
+                        ->default(true)
+                        ->columns(1),
+                    FileUpload::make('img_url')
+                        ->image()
+                        ->imageEditor()
+                        ->label('Immagine')
+                        ->openable()
+                        ->panelLayout('integrated')
+                        ->default(null)
+                        ->columnSpanFull(),
+                ])->columns(2)
             ]);
     }
 
@@ -79,7 +85,7 @@ class SupplierResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\IngredientsRelationManager::class
         ];
     }
 

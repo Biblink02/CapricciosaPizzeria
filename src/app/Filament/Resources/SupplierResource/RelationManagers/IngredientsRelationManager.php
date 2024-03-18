@@ -1,27 +1,21 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\SupplierResource\RelationManagers;
 
-use App\Filament\Resources\MenuResource\Pages;
-use App\Filament\Resources\MenuResource\RelationManagers;
-use App\Models\Menu;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MenuResource extends Resource
+class IngredientsRelationManager extends RelationManager
 {
-    protected static ?string $model = Menu::class;
+    protected static string $relationship = 'ingredients';
 
-    protected static ?string $navigationLabel = 'Menu';
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
-
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -40,12 +34,17 @@ class MenuResource extends Resource
                     ->openable()
                     ->panelLayout('integrated')
                     ->default(null),
+                Forms\Components\Select::make('supplier_uuid')
+                    ->relationship('supplier', 'name')
+                    //->searchable()
+                    ->label('Azienda di provenienza')
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
@@ -56,6 +55,10 @@ class MenuResource extends Resource
                 Tables\Columns\TextColumn::make('img_url')
                     ->searchable()
                     ->label('Immagine'),
+                Tables\Columns\TextColumn::make('supplier.name')
+                    ->exists('supplier')
+                    ->searchable()
+                    ->label('Azienda di provenienza'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -68,29 +71,17 @@ class MenuResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListMenus::route('/'),
-            'create' => Pages\CreateMenu::route('/create'),
-            'edit' => Pages\EditMenu::route('/{record}/edit'),
-        ];
     }
 }
