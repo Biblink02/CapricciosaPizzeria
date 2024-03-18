@@ -20,31 +20,38 @@ class IngredientResource extends Resource
 
     protected static ?string $navigationLabel = 'Ingredienti';
 
+    protected static ?string $modelLabel = 'ingrediente';
+
+    protected static ?string $pluralModelLabel = 'ingredienti';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required()
-                    ->default(true)
-                    ->label('È visibile?'),
-                FileUpload::make('img_url')
-                    ->image()
-                    ->imageEditor()
-                    ->label('Immagine')
-                    ->openable()
-                    ->panelLayout('integrated')
-                    ->default(null),
-                Forms\Components\Select::make('supplier_uuid')
-                    ->relationship('supplier', 'name')
-                    //->searchable()
-                    ->label('Azienda di provenienza')
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?'),
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null),
+                        Forms\Components\Select::make('supplier_uuid')
+                            ->relationship('supplier', 'name')
+                            //->searchable()
+                            ->label('Azienda di provenienza')
+                    ])
             ]);
     }
 

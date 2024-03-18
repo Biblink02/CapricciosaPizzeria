@@ -34,6 +34,6 @@ class Menu extends Model
 
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class)->withPivot('price');
     }
 }

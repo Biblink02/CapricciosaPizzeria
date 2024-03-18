@@ -6,6 +6,7 @@ use App\Filament\Resources\DishResource\Pages;
 use App\Filament\Resources\DishResource\RelationManagers;
 use App\Models\Dish;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -17,7 +18,11 @@ class DishResource extends Resource
 {
     protected static ?string $model = Dish::class;
 
-    protected static ?string $navigationLabel = 'Piatti';
+    protected static ?string $navigationLabel = 'Pietanze';
+
+    protected static ?string $modelLabel = 'pietanza';
+
+    protected static ?string $pluralModelLabel = 'pietanze';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,17 +30,23 @@ class DishResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required()
-                    ->label('È visibile?'),
-                Forms\Components\TextInput::make('img_url')
-                    ->maxLength(255)
-                    ->default(null)
-                    ->label('Immagine'),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->label('È visibile?'),
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null),
+                    ])->columns(2)
             ]);
     }
 
@@ -77,7 +88,7 @@ class DishResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MenusRelationManager::class,
         ];
     }
 

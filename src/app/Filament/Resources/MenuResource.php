@@ -19,27 +19,34 @@ class MenuResource extends Resource
     protected static ?string $model = Menu::class;
 
     protected static ?string $navigationLabel = 'Menu';
+
+    protected static ?string $modelLabel = 'menu';
+
+    protected static ?string $pluralModelLabel = 'menu';
     protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required()
-                    ->default(true)
-                    ->label('È visibile?'),
-                FileUpload::make('img_url')
-                    ->image()
-                    ->imageEditor()
-                    ->label('Immagine')
-                    ->openable()
-                    ->panelLayout('integrated')
-                    ->default(null),
+                Forms\Components\Section::make('Menu:')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?'),
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null),
+                    ])->columns(2)
             ]);
     }
 
@@ -81,7 +88,7 @@ class MenuResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\DishesRelationManager::class
         ];
     }
 
