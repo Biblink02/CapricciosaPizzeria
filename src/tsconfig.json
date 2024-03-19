@@ -11,25 +11,25 @@
         "allowJs": true,
         "lib": [
             "esnext",
-            "dom",
+            "dom"
         ],
         "types": [
-            "vite/client",
+            "vite/client"
         ],
         "typeRoots": [
             "node_modules/@types",
-            "./resources/ts/types",
+            "./resources/ts/types"
         ],
         "paths": {
             "@/*": [
-                "./resources/ts/*",
+                "./resources/ts/*"
             ],
             "~/*": [
-                "./resources/*",
+                "./resources/*"
             ]
         },
         "outDir": "public/build/assets",
-        "skipLibCheck": true,
+        "skipLibCheck": true
     },
     "include": [
         "./resources/ts/**/*.ts",
@@ -41,6 +41,6 @@
     ],
     "exclude": [
         "./node_modules",
-        "./public",
+        "./public"
     ]
 }

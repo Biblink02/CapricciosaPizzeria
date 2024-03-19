@@ -1,23 +1,42 @@
-import './bootstrap';
+import './bootstrap.ts';
+
 import '../css/app.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
-import { createApp, h } from 'vue';
-import { createInertiaApp } from '@inertiajs/vue3';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import {createApp, h} from 'vue';
+import {createI18n} from 'vue-i18n';
+import {createInertiaApp} from '@inertiajs/vue3';
+import '@fontsource/nunito';
+import '@fontsource/roboto';
+import PrimeVue from 'primevue/config';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+import {languages, locale, fallbackLocale} from '../../lang/lang.js';
+import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
+
+const messages = Object.assign(languages);
+
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'CapricciosaPizzeria';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+    title: (title) => {
+        return `${title ? title + ' - ' : ''}${appName}`;
+    },
+    resolve: name => {
+        return resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')).then();
+    },
+    setup({el, App, props, plugin}) {
+        const i18n = createI18n({
+            legacy: false,
+            locale: locale,
+            fallbackLocale: fallbackLocale,
+            formatFallbackMessages: true,
+            messages: messages,
+        });
+
+        createApp({render: () => h(App, props)})
             .use(plugin)
-            .use(ZiggyVue)
+            .use(i18n)
+            .use(PrimeVue)
             .mount(el);
     },
-    progress: {
-        color: '#4B5563',
-    },
-});
+}).then();

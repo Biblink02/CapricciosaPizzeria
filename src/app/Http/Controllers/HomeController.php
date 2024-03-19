@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -11,6 +12,7 @@ class HomeController extends Controller
 {
     public function index(): Response
     {
+        Log::debug("aaaaaaaaaaaaaaa");
         return Inertia::render('Home', [
             'changelogs' => config('arena.changelogs'),
             'modes' => config('arena.modes'),
