@@ -11,25 +11,24 @@ return [
             'route' => 'home',
         ],
         [
+            'name' => 'Chi siamo',
+            'route' => 'who-are-we',
+        ],
+        [
+            'name' => 'Menu',
+            'route' => 'menu',
+        ],
+        [
+            'name' => 'Eventi',
+            'route' => 'events',
+        ],
+        [
             'name' => 'Shop',
-            'route' => 'shop.home',
-        ],
-        [
-            'name' => 'Guides',
-            'route' => 'guide.index',
-        ],
-        [
-            'name' => 'Applications',
-            'route' => 'applications.index',
-        ],
-        [
-            'name' => 'Staff',
-            'route' => 'staff.home',
+            'route' => 'shop',
         ]
     ],
 
     'link' => [
-        'guide' => 'https://guide.arenacraft.it'
     ]
 
 

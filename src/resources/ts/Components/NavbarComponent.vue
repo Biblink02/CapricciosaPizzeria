@@ -16,7 +16,7 @@ const sidebar = computed(() => getSidebar());
         as="nav"
         class="w-full bg-white shadow"
     >
-        <div class="navbar mx-auto max-w-screen-2xl px-4">
+        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 h-32">
             <div class="flex h-16 justify-between">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
