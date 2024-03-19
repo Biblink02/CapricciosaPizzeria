@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Middleware;
 
+use App\Actions\Navigation\GetSidebar;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
@@ -14,6 +14,11 @@ class HandleInertiaRequests extends Middleware
      * @var string
      */
     protected $rootView = 'app';
+    private GetSidebar $getSidebar;
+    public function __construct(GetSidebar $getSidebar)
+    {
+        $this->getSidebar = $getSidebar;
+    }
 
     /**
      * Determine the current asset version.
@@ -30,12 +35,15 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return [
-            ...parent::share($request),
-            'ziggy' => fn () => [
-                ...(new Ziggy)->toArray(),
-                'location' => $request->url(),
-            ],
+        $share = [
+            'sidebar' => $this->getSidebar->get(),
         ];
+        if ($request->user()) {
+            $share = array_merge($share, [
+                'auth.user.permissions' => $request->user()->permissions->pluck('permission'),
+            ]);
+        }
+
+        return array_merge(parent::share($request), $share);
     }
 }
