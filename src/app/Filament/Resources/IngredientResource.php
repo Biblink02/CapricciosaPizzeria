@@ -49,9 +49,10 @@ class IngredientResource extends Resource
                             ->default(null),
                         Forms\Components\Select::make('supplier_uuid')
                             ->relationship('supplier', 'name')
-                            //->searchable()
+                            ->searchable()
+                            ->preload()
                             ->label('Azienda di provenienza')
-                    ])
+                    ])->columns(2)
             ]);
     }
 
@@ -97,6 +98,7 @@ class IngredientResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\DishesRelationManager::class,
         ];
     }
 

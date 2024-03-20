@@ -38,9 +38,10 @@ class DishResource extends Resource
                             ->label('Nome'),
                         Forms\Components\Toggle::make('is_visible')
                             ->required()
-                            ->label('È visibile?'),
+                            ->label('È visibile?')
+                            ->default(true),
                         FileUpload::make('img_url')
-                            ->image()
+                            //->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
@@ -60,8 +61,7 @@ class DishResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -89,6 +89,7 @@ class DishResource extends Resource
     {
         return [
             RelationManagers\MenusRelationManager::class,
+            RelationManagers\IngredientsRelationManager::class,
         ];
     }
 

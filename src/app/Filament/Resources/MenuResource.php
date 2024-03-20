@@ -88,7 +88,8 @@ class MenuResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\DishesRelationManager::class
+            RelationManagers\DishesRelationManager::class,
+            RelationManagers\EventsRelationManager::class,
         ];
     }
 

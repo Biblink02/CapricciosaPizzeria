@@ -76,6 +76,9 @@ class MenusRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->label('Nome'),
+                Tables\Columns\TextColumn::make('price')
+                    ->searchable()
+                    ->label('Prezzo'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),

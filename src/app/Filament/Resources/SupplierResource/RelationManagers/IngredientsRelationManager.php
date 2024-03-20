@@ -34,10 +34,6 @@ class IngredientsRelationManager extends RelationManager
                     ->openable()
                     ->panelLayout('integrated')
                     ->default(null),
-                Forms\Components\Select::make('supplier_uuid')
-                    ->relationship('supplier', 'name')
-                    //->searchable()
-                    ->label('Azienda di provenienza')
             ]);
     }
 

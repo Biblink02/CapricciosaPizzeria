@@ -11,8 +11,6 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DishesRelationManager extends RelationManager
 {
@@ -78,7 +76,7 @@ class DishesRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
+                Tables\Columns\ImageColumn::make('img_url')
                     ->searchable()
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
