@@ -12,10 +12,8 @@ class HomeController extends Controller
 {
     public function index(): Response
     {
-        Log::debug("aaaaaaaaaaaaaaa");
         return Inertia::render('Home', [
-            'changelogs' => config('arena.changelogs'),
-            'modes' => config('arena.modes'),
+            'footer' => config('custom.footer')
         ]);
     }
 }

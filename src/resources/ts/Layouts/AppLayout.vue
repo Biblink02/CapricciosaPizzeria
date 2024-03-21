@@ -5,6 +5,7 @@ import FooterComponent from "@/Components/FooterComponent.vue";
 
 defineProps<{
     title: string,
+    footer: Footer
 }>();
 
 </script>
@@ -23,5 +24,5 @@ defineProps<{
     >
         <slot />
     </div>
-    <FooterComponent />
+    <FooterComponent :footer="footer" />
 </template>
