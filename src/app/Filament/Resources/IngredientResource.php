@@ -24,7 +24,9 @@ class IngredientResource extends Resource
 
     protected static ?string $pluralModelLabel = 'ingredienti';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'phosphor-grains-light';
+
+    protected static ?string $navigationGroup = 'Pizzeria';
 
     public static function form(Form $form): Form
     {
@@ -66,8 +68,7 @@ class IngredientResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('supplier.name')
                     ->exists('supplier')

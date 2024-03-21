@@ -23,7 +23,9 @@ class MenuResource extends Resource
     protected static ?string $modelLabel = 'menu';
 
     protected static ?string $pluralModelLabel = 'menu';
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationIcon = 'phosphor-scroll';
+
+    protected static ?string $navigationGroup = 'Pizzeria';
 
     public static function form(Form $form): Form
     {
@@ -61,7 +63,6 @@ class MenuResource extends Resource
                     ->boolean()
                     ->label('È visibile?'),
                 Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

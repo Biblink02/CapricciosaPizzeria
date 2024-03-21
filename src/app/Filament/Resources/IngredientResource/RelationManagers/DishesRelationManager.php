@@ -1,34 +1,21 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\IngredientResource\RelationManagers;
 
-use App\Filament\Resources\DishResource\Pages;
-use App\Filament\Resources\DishResource\RelationManagers;
-use App\Models\Dish;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DishResource extends Resource
+class DishesRelationManager extends RelationManager
 {
-    protected static ?string $model = Dish::class;
+    protected static string $relationship = 'dishes';
 
-    protected static ?string $navigationLabel = 'Pietanze';
-
-    protected static ?string $modelLabel = 'pietanza';
-
-    protected static ?string $pluralModelLabel = 'pietanze';
-
-    protected static ?string $navigationIcon = 'phosphor-pizza-fill';
-
-    protected static ?string $navigationGroup = 'Pizzeria';
-
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -53,9 +40,10 @@ class DishResource extends Resource
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
@@ -77,30 +65,21 @@ class DishResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->preloadRecordSelect(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DetachAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DetachBulkAction::make(),
+                       Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\MenusRelationManager::class,
-            RelationManagers\IngredientsRelationManager::class,
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListDishes::route('/'),
-            'create' => Pages\CreateDish::route('/create'),
-            'edit' => Pages\EditDish::route('/{record}/edit'),
-        ];
     }
 }

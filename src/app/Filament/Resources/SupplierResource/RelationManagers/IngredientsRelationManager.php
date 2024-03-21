@@ -48,8 +48,7 @@ class IngredientsRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('supplier.name')
                     ->exists('supplier')

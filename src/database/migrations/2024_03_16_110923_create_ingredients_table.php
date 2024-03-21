@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->foreignUuid('supplier_uuid')->nullable();
-            $table->foreign('supplier_uuid')->references('uuid')->on('suppliers');
+            $table->foreign('supplier_uuid')->references('uuid')->on('suppliers')->cascadeOnUpdate()->nullOnDelete();
             $table->string('name');
             $table->string('img_url')->nullable();
             $table->boolean('is_visible');

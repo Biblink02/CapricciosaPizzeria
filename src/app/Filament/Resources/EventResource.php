@@ -26,8 +26,10 @@ class EventResource extends Resource
     protected static ?string $pluralModelLabel = 'eventi';
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
+    protected static ?string $navigationGroup = 'Pizzeria';
     public static function form(Form $form): Form
     {
+
         return $form
             ->schema([
                 Forms\Components\Section::make()
@@ -45,6 +47,7 @@ class EventResource extends Resource
                             ->label('Comincia'),
                         Forms\Components\DateTimePicker::make('ends_at')
                             ->required()
+                            ->after('starts_at')
                             ->label('Termina'),
                         FileUpload::make('img_url')
                             ->image()
@@ -76,7 +79,6 @@ class EventResource extends Resource
                     ->sortable()
                     ->label('Termina'),
                 Tables\Columns\ImageColumn::make('img_url')
-                    ->searchable()
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

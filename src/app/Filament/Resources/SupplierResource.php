@@ -22,7 +22,9 @@ class SupplierResource extends Resource
 
     protected static ?string $modelLabel = 'azienda';
     protected static ?string $pluralModelLabel = 'aziende';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'iconoir-farm';
+
+    protected static ?string $navigationGroup = 'Pizzeria';
 
     public static function form(Form $form): Form
     {
@@ -37,7 +39,8 @@ class SupplierResource extends Resource
                     Forms\Components\Toggle::make('is_visible')
                         ->required()
                         ->default(true)
-                        ->columns(1),
+                        ->columns(1)
+                        ->label('È visibile?'),
                     FileUpload::make('img_url')
                         ->image()
                         ->imageEditor()
@@ -60,8 +63,7 @@ class SupplierResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

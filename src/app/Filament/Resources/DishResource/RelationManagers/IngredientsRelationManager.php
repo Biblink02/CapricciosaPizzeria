@@ -1,34 +1,21 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\DishResource\RelationManagers;
 
-use App\Filament\Resources\DishResource\Pages;
-use App\Filament\Resources\DishResource\RelationManagers;
-use App\Models\Dish;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DishResource extends Resource
+class IngredientsRelationManager extends RelationManager
 {
-    protected static ?string $model = Dish::class;
+    protected static string $relationship = 'ingredients';
 
-    protected static ?string $navigationLabel = 'Pietanze';
-
-    protected static ?string $modelLabel = 'pietanza';
-
-    protected static ?string $pluralModelLabel = 'pietanze';
-
-    protected static ?string $navigationIcon = 'phosphor-pizza-fill';
-
-    protected static ?string $navigationGroup = 'Pizzeria';
-
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -40,8 +27,8 @@ class DishResource extends Resource
                             ->label('Nome'),
                         Forms\Components\Toggle::make('is_visible')
                             ->required()
-                            ->label('È visibile?')
-                            ->default(true),
+                            ->default(true)
+                            ->label('È visibile?'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
@@ -49,13 +36,19 @@ class DishResource extends Resource
                             ->openable()
                             ->panelLayout('integrated')
                             ->default(null),
+                        Forms\Components\Select::make('supplier_uuid')
+                            ->relationship('supplier', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->label('Azienda di provenienza')
                     ])->columns(2)
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
@@ -63,8 +56,12 @@ class DishResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\ImageColumn::make('img_url')
+                Tables\Columns\TextColumn::make('img_url')
                     ->label('Immagine'),
+                Tables\Columns\TextColumn::make('supplier.name')
+                    ->exists('supplier')
+                    ->searchable()
+                    ->label('Azienda di provenienza'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -77,30 +74,21 @@ class DishResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->preloadRecordSelect(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DetachAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DetachBulkAction::make(),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\MenusRelationManager::class,
-            RelationManagers\IngredientsRelationManager::class,
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListDishes::route('/'),
-            'create' => Pages\CreateDish::route('/create'),
-            'edit' => Pages\EditDish::route('/{record}/edit'),
-        ];
     }
 }

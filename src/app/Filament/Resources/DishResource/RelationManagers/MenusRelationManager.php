@@ -83,7 +83,6 @@ class MenusRelationManager extends RelationManager
                     ->boolean()
                     ->label('È visibile?'),
                 Tables\Columns\TextColumn::make('img_url')
-                    ->searchable()
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
