@@ -16,4 +16,11 @@ export default {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
     ],
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['nunito', ...defaultTheme.fontFamily.sans],
+            },
+        },
+    },
 } satisfies Config;

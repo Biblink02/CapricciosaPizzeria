@@ -1,97 +1,84 @@
-<script setup>
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+<script setup lang="ts">
+import {ref} from 'vue';
+import {XMarkIcon} from '@heroicons/vue/24/solid';
+import {Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot} from '@headlessui/vue';
 
-const props = defineProps({
-    show: {
-        type: Boolean,
-        default: false,
-    },
-    maxWidth: {
-        type: String,
-        default: '2xl',
-    },
-    closeable: {
-        type: Boolean,
-        default: true,
-    },
-});
+const shown = ref(false);
 
-const emit = defineEmits(['close']);
-const dialog = ref();
-const showSlot = ref(props.show);
-
-watch(() => props.show, () => {
-    if (props.show) {
-        document.body.style.overflow = 'hidden';
-        showSlot.value = true;
-        dialog.value?.showModal();
-    } else {
-        document.body.style.overflow = null;
-        setTimeout(() => {
-            dialog.value?.close();
-            showSlot.value = false;
-        }, 200);
-    }
-});
+const open = () => {
+    shown.value = true;
+};
 
 const close = () => {
-    if (props.closeable) {
-        emit('close');
-    }
+    shown.value = false;
 };
 
-const closeOnEscape = (e) => {
-    if (e.key === 'Escape' && props.show) {
-        close();
-    }
-};
-
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
-
-onUnmounted(() => {
-    document.removeEventListener('keydown', closeOnEscape);
-    document.body.style.overflow = null;
-});
-
-const maxWidthClass = computed(() => {
-    return {
-        'sm': 'sm:max-w-sm',
-        'md': 'sm:max-w-md',
-        'lg': 'sm:max-w-lg',
-        'xl': 'sm:max-w-xl',
-        '2xl': 'sm:max-w-2xl',
-    }[props.maxWidth];
+defineExpose({
+    open,
+    close
 });
 </script>
 
 <template>
-    <dialog class="z-50 m-0 min-h-full min-w-full overflow-y-auto bg-transparent backdrop:bg-transparent" ref="dialog">
-        <div class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50" scroll-region>
-            <transition
-                enter-active-class="ease-out duration-300"
-                enter-from-class="opacity-0"
-                enter-to-class="opacity-100"
-                leave-active-class="ease-in duration-200"
-                leave-from-class="opacity-100"
-                leave-to-class="opacity-0"
+    <TransitionRoot
+        as="template"
+        :show="shown"
+    >
+        <Dialog
+            as="div"
+            class="relative z-10"
+            @close="close"
+        >
+            <TransitionChild
+                as="template"
+                enter="ease-out duration-300"
+                enter-from="opacity-0"
+                enter-to="opacity-100"
+                leave="ease-in duration-200"
+                leave-from="opacity-100"
+                leave-to="opacity-0"
             >
-                <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
-                    <div class="absolute inset-0 bg-gray-500 opacity-75" />
-                </div>
-            </transition>
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            </TransitionChild>
 
-            <transition
-                enter-active-class="ease-out duration-300"
-                enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enter-to-class="opacity-100 translate-y-0 sm:scale-100"
-                leave-active-class="ease-in duration-200"
-                leave-from-class="opacity-100 translate-y-0 sm:scale-100"
-                leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            >
-                <div v-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto" :class="maxWidthClass">
-                    <slot v-if="showSlot"/>
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <TransitionChild
+                        as="template"
+                        enter="ease-out duration-300"
+                        enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enter-to="opacity-100 translate-y-0 sm:scale-100"
+                        leave="ease-in duration-200"
+                        leave-from="opacity-100 translate-y-0 sm:scale-100"
+                        leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    >
+                        <DialogPanel
+                            class="max-sm:w-full relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl sm:p-6"
+                        >
+                            <header class="w-full h-fit flex flex-row justify-between h-5 mb-5">
+                                <DialogTitle
+                                    as="h3"
+                                    class="w-fit text-2xl font-bold leading-6 text-gray-900"
+                                >
+                                    <slot name="title" />
+                                </DialogTitle>
+                                <div class="h-fit w-fit p-1 flex rounded-full cursor-pointer hover:bg-gray-100">
+                                    <XMarkIcon
+                                        class="text-gray-500 my-auto h-5 hover:text-gray-600"
+                                        @click="close()"
+                                    />
+                                </div>
+                            </header>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500">
+                                    <slot name="main" />
+                                </p>
+                            </div>
+                            <slot name="buttons" />
+                        </DialogPanel>
+                    </TransitionChild>
                 </div>
-            </transition>
-        </div>
-    </dialog>
+            </div>
+        </Dialog>
+    </TransitionRoot>
 </template>
