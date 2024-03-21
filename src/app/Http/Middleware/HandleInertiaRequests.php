@@ -38,11 +38,6 @@ class HandleInertiaRequests extends Middleware
         $share = [
             'sidebar' => $this->getSidebar->get(),
         ];
-        if ($request->user()) {
-            $share = array_merge($share, [
-                'auth.user.permissions' => $request->user()->permissions->pluck('permission'),
-            ]);
-        }
 
         return array_merge(parent::share($request), $share);
     }
