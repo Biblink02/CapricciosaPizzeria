@@ -12,8 +12,6 @@ class HomeController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Home', [
-            'footer' => config('custom.footer')
-        ]);
+        return Inertia::render('Home');
     }
 }
