@@ -27,13 +27,13 @@ class Menu extends Model
         return $this->morphTo('info');
     }
 
-    public function event(): BelongsToMany
+    public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
     }
 
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class)->withPivot('price');
     }
 }

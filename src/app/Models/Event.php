@@ -27,7 +27,7 @@ class Event extends Model
     {
         return $this->morphTo('info');
     }
-    public function menu(): BelongsToMany
+    public function menus(): BelongsToMany
     {
         return $this->belongsToMany(Menu::class);
     }

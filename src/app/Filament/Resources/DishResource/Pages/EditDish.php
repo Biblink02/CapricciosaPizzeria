@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\SupplierResource\Pages;
+namespace App\Filament\Resources\DishResource\Pages;
 
-use App\Filament\Resources\SupplierResource;
+use App\Filament\Resources\DishResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditSupplier extends EditRecord
+class EditDish extends EditRecord
 {
-    protected static string $resource = SupplierResource::class;
+    protected static string $resource = DishResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SupplierResource\Pages;
-use App\Filament\Resources\SupplierResource\RelationManagers;
-use App\Models\Supplier;
+use App\Filament\Resources\MenuResource\Pages;
+use App\Filament\Resources\MenuResource\RelationManagers;
+use App\Models\Menu;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
@@ -14,15 +14,16 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SupplierResource extends Resource
+class MenuResource extends Resource
 {
-    protected static ?string $model = Supplier::class;
+    protected static ?string $model = Menu::class;
 
-    protected static ?string $navigationLabel = 'Aziende';
+    protected static ?string $navigationLabel = 'Menu';
 
-    protected static ?string $modelLabel = 'azienda';
-    protected static ?string $pluralModelLabel = 'aziende';
-    protected static ?string $navigationIcon = 'iconoir-farm';
+    protected static ?string $modelLabel = 'menu';
+
+    protected static ?string $pluralModelLabel = 'menu';
+    protected static ?string $navigationIcon = 'phosphor-scroll';
 
     protected static ?string $navigationGroup = 'Pizzeria';
 
@@ -30,26 +31,24 @@ class SupplierResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Azienda:')
-                ->schema([
-                    Forms\Components\TextInput::make('name')
-                        ->required()
-                        ->maxLength(255)
-                        ->columns(1),
-                    Forms\Components\Toggle::make('is_visible')
-                        ->required()
-                        ->default(true)
-                        ->columns(1)
-                        ->label('È visibile?'),
-                    FileUpload::make('img_url')
-                        ->image()
-                        ->imageEditor()
-                        ->label('Immagine')
-                        ->openable()
-                        ->panelLayout('integrated')
-                        ->default(null)
-                        ->columnSpanFull(),
-                ])->columns(2)
+                Forms\Components\Section::make('Menu:')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?'),
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null),
+                    ])->columns(2)
             ]);
     }
 
@@ -63,7 +62,7 @@ class SupplierResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\ImageColumn::make('img_url')
+                Tables\Columns\TextColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -90,16 +89,17 @@ class SupplierResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\IngredientsRelationManager::class
+            RelationManagers\DishesRelationManager::class,
+            RelationManagers\EventsRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSuppliers::route('/'),
-            'create' => Pages\CreateSupplier::route('/create'),
-            'edit' => Pages\EditSupplier::route('/{record}/edit'),
+            'index' => Pages\ListMenus::route('/'),
+            'create' => Pages\CreateMenu::route('/create'),
+            'edit' => Pages\EditMenu::route('/{record}/edit'),
         ];
     }
 }
