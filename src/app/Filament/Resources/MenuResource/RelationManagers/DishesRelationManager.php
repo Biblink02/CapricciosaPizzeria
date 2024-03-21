@@ -51,6 +51,7 @@ class DishesRelationManager extends RelationManager
                     ->required(),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
+                    ->default(true)
                     ->label('È visibile?'),
                 FileUpload::make('img_url')
                     ->image()
