@@ -24,5 +24,5 @@ defineProps<{
     >
         <slot />
     </div>
-    <FooterComponent :footer="footer" />
+    <!-- <FooterComponent :footer="footer" /> -->
 </template>

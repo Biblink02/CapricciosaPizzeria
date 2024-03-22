@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('img_url')->nullable();
             $table->boolean('is_visible');
+            $table->boolean('is_visible_in_menus');
             $table->timestamps();
         });
     }

@@ -11,6 +11,8 @@ class Dish extends Model
 {
     use HasUuids;
     protected $primaryKey = 'uuid';
+
+    protected $with = ['ingredients'];
     protected $guarded = [
         'uuid',
         'created_at',

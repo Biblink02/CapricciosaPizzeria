@@ -11,8 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MenuResource extends Resource
 {
@@ -41,6 +39,10 @@ class MenuResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
+                        Forms\Components\Toggle::make('is_visible_in_menus')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile nella pagina dei menù?'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
@@ -62,6 +64,9 @@ class MenuResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
+                Tables\Columns\IconColumn::make('is_visible_in_menus')
+                    ->boolean()
+                    ->label('È visibile nella pagina dei menù?'),
                 Tables\Columns\TextColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')

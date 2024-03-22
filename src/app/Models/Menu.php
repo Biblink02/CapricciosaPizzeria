@@ -11,6 +11,8 @@ class Menu extends Model
 {
     use HasUuids;
     protected $primaryKey = 'uuid';
+
+    protected $with = ['dishes'];
     protected $guarded = [
         'uuid',
         'created_at',
@@ -18,9 +20,9 @@ class Menu extends Model
     ];
     protected $fillable=[
         'name',
-        'event_uuid',
         'img_url',
-        'is_visible'
+        'is_visible',
+        'is_visible_in_menus',
     ];
     public function info(): MorphTo
     {
