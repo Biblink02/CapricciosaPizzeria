@@ -16,7 +16,7 @@ return [
         ],
         [
             'name' => 'Menu',
-            'route' => 'menu',
+            'route' => 'menus',
         ],
         [
             'name' => 'Eventi',
