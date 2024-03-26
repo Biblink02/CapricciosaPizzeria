@@ -25,7 +25,7 @@ const numMenu = ref(0);
 <template>
 
     <AppLayout :footer="page.footer" title="Menu">
-        <PageHeader class="bg-gray"> {{ $t('Menù') }} {{menus[numMenu]?.name}}</PageHeader>
+        <PageHeader class="bg-gray"> {{ $t('Menù') }} {{ $t(menus[numMenu]?.name) }}</PageHeader>
         <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto"/>
         <img
             alt="menu"

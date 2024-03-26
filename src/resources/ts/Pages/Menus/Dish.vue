@@ -7,13 +7,13 @@ const props = defineProps<{
 </script>
 
 <template>
-    <strong class="grid place-content-center text-lg"> {{dish.name}} </strong>
+    <strong class="grid place-content-center text-lg"> {{ $t(dish.name) }} </strong>
     <div>
         <div v-for="ingredient in dish.ingredients" class="inline-flex ">
-            {{ ingredient.name }},&nbsp
+            {{ $t(ingredient.name) }},&nbsp
         </div>
     </div>
-    <div class="grid place-content-center"> €&nbsp{{dish.pivot.price}} </div>
+    <div class="grid place-content-center"> €&nbsp{{ $t(dish.pivot.price) }} </div>
 </template>
 
 <style scoped>
