@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Tables\Actions\AttachAction;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -24,6 +26,11 @@ class Menu extends Model
         'is_visible',
         'is_visible_in_menus',
     ];
+
+    protected $appends = [
+        'label'
+    ];
+
     public function info(): MorphTo
     {
         return $this->morphTo('info');
@@ -37,5 +44,12 @@ class Menu extends Model
     public function dishes(): BelongsToMany
     {
         return $this->belongsToMany(Dish::class)->withPivot('price');
+    }
+
+    public function label(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->name
+        );
     }
 }

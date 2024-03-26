@@ -1,0 +1,3 @@
+interface Pivot {
+    price: string,
+}

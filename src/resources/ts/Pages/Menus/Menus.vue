@@ -4,18 +4,12 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {usePage} from "@inertiajs/vue3";
 import Dish from "@/Pages/Menus/Dish.vue";
 import PageHeader from "@/Components/PageHeader.vue";
-import Menu from "@/Pages/Menus/Menu.vue";
-import {ref} from "vue";
 import TabMenu from 'primevue/tabmenu';
-
+import {ref} from "vue";
 
 const props = defineProps<{
     menus: Menu[]
 }>()
-
-
-const page = usePage();
-
 
 const items = ref([
     { label: 'Dashboard', icon: 'pi pi-home' },
@@ -24,27 +18,32 @@ const items = ref([
     { label: 'Messages', icon: 'pi pi-inbox' }
 ]);
 
+const page = usePage();
+const numMenu = ref(0);
 </script>
 
 <template>
 
     <AppLayout :footer="page.footer" title="Menu">
+        <PageHeader class="bg-gray"> {{ $t('Menù') }} {{menus[numMenu]?.name}}</PageHeader>
+        <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto"/>
         <img
             alt="menu"
-            :src="cciao"
+            :src="menus[numMenu]?.image"
             class="w-44 h-44 max-sm:mx-auto object-scale-down rounded-md"
         >
-
-        <PageHeader class="bg-gray"> {{ $t('Menù') }} </PageHeader>
-        <Dish v-for="dish in menus.dishes" :dish="dish.name" class="flex justify-center"/>
+        <!-- Qua ci sono le pietanze associate al menù scelto -->
+        <div class="grid place-content-center">
+            <p v-for="dish in menus[numMenu]?.dishes">
+                <Dish :dish="dish"/>
+                <hr>
+            </p>
+        </div>
     </AppLayout>
-    <div class="card">
-        <TabMenu :model="items"/>
-    </div>
-    <PageHeader>ciao</PageHeader>
 
 </template>
 
 <style scoped>
 
 </style>
+

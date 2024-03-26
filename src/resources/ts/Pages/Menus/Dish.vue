@@ -1,24 +1,19 @@
 <script setup lang="ts">
 
 
-
-const dishes = [
-    { name: '1' },
-    { name: '2' },
-    { name: '5' },
-    { name: '4' },
-    { name: '6' },
-    // More items...
-]
-
+const props = defineProps<{
+    dish: Dish
+}>()
 </script>
 
 <template>
-    <ul role="list" class="divide-y divide-gray-200">
-        <li v-for="dish in dishes" :key="dish.name" class="py-4">
-            {{dish.name}}
-        </li>
-    </ul>
+    <strong class="grid place-content-center text-lg"> {{dish.name}} </strong>
+    <div>
+        <div v-for="ingredient in dish.ingredients" class="inline-flex ">
+            {{ ingredient.name }},&nbsp
+        </div>
+    </div>
+    <div class="grid place-content-center"> €&nbsp{{dish.pivot.price}} </div>
 </template>
 
 <style scoped>

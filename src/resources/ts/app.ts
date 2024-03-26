@@ -2,7 +2,7 @@ import './bootstrap.ts';
 
 import '../css/app.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
-
+import Wind from './presets/Wind'
 import {createApp, h} from 'vue';
 import {createI18n} from 'vue-i18n';
 import {createInertiaApp} from '@inertiajs/vue3';
@@ -36,7 +36,10 @@ createInertiaApp({
         createApp({render: () => h(App, props)})
             .use(plugin)
             .use(i18n)
-            .use(PrimeVue)
+            .use(PrimeVue, {
+                unstyled: false,
+                pt: Wind                            //apply preset
+            })
             .mount(el);
     },
 }).then();

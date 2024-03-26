@@ -2,5 +2,6 @@
 interface Menu {
     name: string,
     image: string,
-    dishes: Dish[]
+    dishes: Dish[],
+    label: string
 }
