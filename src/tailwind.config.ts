@@ -20,6 +20,10 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['roboto', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                capricciosa_green: '#C5EBAA',
+                capricciosa_orange: '#F2C18D'
             }
         }
     }

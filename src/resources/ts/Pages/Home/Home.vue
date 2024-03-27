@@ -38,44 +38,41 @@ const responsiveOptions = ref([
 </script>
 
 <template>
-  <AppLayout :footer="footer" title="home">
-      <div class="grid gap-5">
-          <div class="flex flex-row">
-              <div class="text-center font-extrabold text-5xl w-2/5 text [writing-mode:vertical-lr] rotate-180 mr-5">
-                  <p>{{$t('Location')}}</p>
-              </div>
-              <div class="w-3/5 max-w-[120rem] mx-auto w-full">
-                  <Carousel
-                      :value="slidingImages"
-                      :num-visible="1"
-                      :num-scroll="1"
-                      :responsive-options="responsiveOptions"
-                      circular
-                      :autoplay-interval="6000"
-                  >
-                      <template #item="slotProps">
-                          <div >
-                              <a :href="slotProps.data.href">
-                                  <img
-                                      class="w-full h-fit object-scale-down"
-                                      :src="images[slotProps.data.image]"
-                                      alt="Location"
-                                  >
-                              </a>
-                          </div>
-                      </template>
-                  </Carousel>
-              </div>
-          </div>
-          <ActivityTimings></ActivityTimings>
-      </div>
-  </AppLayout>
+    <AppLayout :footer="footer" title="home">
+        <div class="bg-gray-50 flex flex-row">
+            <div class="text-center font-extrabold text-5xl w-2/5 text [writing-mode:vertical-lr] rotate-180 mr-5">
+                <p>{{ $t('Location') }}</p>
+            </div>
+            <div class="w-3/5 max-w-[120rem] mx-auto w-full">
+                <Carousel
+                    :value="slidingImages"
+                    :num-visible="1"
+                    :num-scroll="1"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="6000"
+                >
+                    <template #item="slotProps">
+                        <div>
+                            <a :href="slotProps.data.href">
+                                <img
+                                    class="w-full h-fit object-scale-down"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                >
+                            </a>
+                        </div>
+                    </template>
+                </Carousel>
+            </div>
+        </div>
+        <div class="bg-gray-50">
+            <ActivityTimings/>
+        </div>
+    </AppLayout>
 </template>
 
 <style>
-.vertical {
-
-}
 
 .p-carousel-indicators {
     display: none;
