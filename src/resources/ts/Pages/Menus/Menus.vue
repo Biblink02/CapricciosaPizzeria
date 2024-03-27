@@ -34,6 +34,7 @@ const numMenu = ref(0);
         >
         <!-- Qua ci sono le pietanze associate al menù scelto -->
         <div class="grid place-content-center">
+            <hr>
             <p v-for="dish in menus[numMenu]?.dishes">
                 <Dish :dish="dish"/>
                 <hr>

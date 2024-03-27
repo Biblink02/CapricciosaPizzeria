@@ -7,6 +7,7 @@ import {createI18n} from 'vue-i18n';
 import {createInertiaApp} from '@inertiajs/vue3';
 import '@fontsource/roboto';
 import PrimeVue from 'primevue/config';
+import Wind from './Presets/Wind'
 
 import {languages, locale, fallbackLocale} from '../../lang/lang.js';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
@@ -34,7 +35,9 @@ createInertiaApp({
         createApp({render: () => h(App, props)})
             .use(plugin)
             .use(i18n)
-            .use(PrimeVue)
+            .use(PrimeVue,{
+                pt: Wind
+            })
             .mount(el);
     },
 }).then();
