@@ -47,7 +47,7 @@ class SupplierResource extends Resource
                         ->label('Immagine')
                         ->openable()
                         ->panelLayout('integrated')
-                        ->default(null)
+                        ->required()
                         ->columnSpanFull(),
                 ])->columns(2)
             ]);

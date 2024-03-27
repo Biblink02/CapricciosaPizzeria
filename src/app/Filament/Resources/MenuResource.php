@@ -67,7 +67,7 @@ class MenuResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible_in_menus')
                     ->boolean()
                     ->label('È visibile nella pagina dei menù?'),
-                Tables\Columns\TextColumn::make('img_url')
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

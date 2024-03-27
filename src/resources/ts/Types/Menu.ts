@@ -1,7 +1,7 @@
 
 interface Menu {
     name: string,
-    image: string,
+    img_url: string,
     dishes: Dish[],
     label: string
 }

@@ -29,7 +29,7 @@ const numMenu = ref(0);
         <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto"/>
         <img
             alt="menu"
-            :src="menus[numMenu]?.image"
+            :src="'images/'+ menus[numMenu].img_url"
             class="w-44 h-44 max-sm:mx-auto object-scale-down rounded-md"
         >
         <!-- Qua ci sono le pietanze associate al menù scelto -->
