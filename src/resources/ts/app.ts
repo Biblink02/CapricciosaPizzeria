@@ -2,11 +2,9 @@ import './bootstrap.ts';
 
 import '../css/app.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
-import Wind from './presets/Wind'
 import {createApp, h} from 'vue';
 import {createI18n} from 'vue-i18n';
 import {createInertiaApp} from '@inertiajs/vue3';
-import '@fontsource/nunito';
 import '@fontsource/roboto';
 import PrimeVue from 'primevue/config';
 
@@ -36,10 +34,7 @@ createInertiaApp({
         createApp({render: () => h(App, props)})
             .use(plugin)
             .use(i18n)
-            .use(PrimeVue, {
-                unstyled: false,
-                pt: Wind                            //apply preset
-            })
+            .use(PrimeVue)
             .mount(el);
     },
 }).then();

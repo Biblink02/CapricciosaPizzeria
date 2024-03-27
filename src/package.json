@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "@fontsource/nunito": "^5.0.16",
-        "@fontsource/roboto": "^5.0.8",
+        "@fontsource/roboto": "^5.0.12",
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
         "@stripe/stripe-js": "^2.2.1",
