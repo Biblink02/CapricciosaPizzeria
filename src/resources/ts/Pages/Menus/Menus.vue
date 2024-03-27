@@ -40,10 +40,11 @@ const numMenu = ref(0);
             </p>
         </div>
     </AppLayout>
-
 </template>
 
-<style scoped>
-
+<style>
+.p-tabmenu-ink-bar{
+    display: none;
+}
 </style>
 
