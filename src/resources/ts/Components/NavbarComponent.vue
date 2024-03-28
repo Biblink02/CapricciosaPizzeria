@@ -5,6 +5,7 @@ import {getSidebar} from '@/actions/GetSidebar';
 import {computed} from 'vue';
 import route from 'ziggy-js';
 import {router} from '@inertiajs/vue3';
+import {images} from "@/Types/ImageHelper";
 
 const sidebar = computed(() => getSidebar());
 
@@ -17,7 +18,8 @@ const sidebar = computed(() => getSidebar());
         class="w-full bg-white shadow"
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 h-32">
-            <div class="flex h-16 justify-between">
+            <div class="flex flex-row h-16">
+                <img :src="images.logo" alt="logo" class="object-scale-down w-24 mx-5">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
                         <a

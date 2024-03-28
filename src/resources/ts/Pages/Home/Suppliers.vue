@@ -30,20 +30,8 @@ const props = defineProps<{
                     >
                 </template>
             </div>
-            <p>ciao</p>
-            <p>ciao</p>
-            <p>ciao</p>
-            <p>ciao</p>
-            <p>ciao</p>
-            <p>ciao</p>
-            <p>ciao</p>
         </div>
-
-
-
     </div>
-
-
 </template>
 
 <style scoped>
