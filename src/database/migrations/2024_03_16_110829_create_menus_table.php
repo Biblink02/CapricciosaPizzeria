@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('img_url')->nullable();
             $table->boolean('is_visible');
             $table->boolean('is_visible_in_menus');
+            $table->unsignedInteger('sort_key_in_menus'); //0 is before 1 -> asc
             $table->timestamps();
         });
     }

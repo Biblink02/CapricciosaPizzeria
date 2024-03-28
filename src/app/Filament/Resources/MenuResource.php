@@ -43,6 +43,10 @@ class MenuResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile nella pagina dei menù?'),
+                        Tables\Columns\TextColumn::make('sort_key_in_menus')
+                            ->searchable()
+                            ->sortable()
+                            ->label('Ordine di comparsa (pagina menu)'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
@@ -61,6 +65,10 @@ class MenuResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->label('Nome'),
+                Tables\Columns\TextColumn::make('sort_key_in_menus')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),

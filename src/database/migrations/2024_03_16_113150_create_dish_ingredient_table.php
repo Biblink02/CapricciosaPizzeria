@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('ingredient_uuid');
             $table->foreign('dish_uuid')->references('uuid')->on('dishes')->onDelete('cascade');
             $table->foreign('ingredient_uuid')->references('uuid')->on('ingredients')->onDelete('cascade');
+            $table->unsignedInteger('sort_key'); //0 is before 1 -> asc
             $table->unique(['dish_uuid', 'ingredient_uuid']);
         });
     }

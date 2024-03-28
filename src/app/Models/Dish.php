@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,11 +31,20 @@ class Dish extends Model
 
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Menu::class)->withPivot('price');
+        return $this->belongsToMany(Menu::class)->withPivot(['price','sort_key']);
     }
 
     public function ingredients(): BelongsToMany
     {
-        return $this->belongsToMany(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class)->withPivot('sort_key');
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(function (Builder $builder) {
+            $builder->with(['ingredients' => function ($query) {
+                $query->where('is_visible', true)->orderBy('sort_key','asc');
+            }]);
+        });
     }
 }

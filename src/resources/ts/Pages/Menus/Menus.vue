@@ -25,8 +25,8 @@ const numMenu = ref(0);
 <template>
 
     <AppLayout :footer="page.footer" title="Menu">
+        <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto overflow-clip"/>
         <PageHeader class="bg-gray"> {{ $t('Menù') }} {{ $t(menus[numMenu]?.name) }}</PageHeader>
-        <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto"/>
         <img
             alt="menu"
             :src="'images/'+ menus[numMenu].img_url"

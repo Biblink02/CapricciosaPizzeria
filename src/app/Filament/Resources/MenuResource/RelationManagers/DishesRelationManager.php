@@ -49,6 +49,11 @@ class DishesRelationManager extends RelationManager
                     ])
                     ->label('Prezzo')
                     ->required(),
+                //TODO rendi menu_uuid e sort_key unique
+                TextInput::make('sort_key')
+                    ->numeric()
+                    ->required()
+                    ->label('Ordine di comparsa (0 viene prima di 1)'),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
                     ->default(true)
@@ -74,6 +79,10 @@ class DishesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('price')
                     ->searchable()
                     ->label('Prezzo'),
+                Tables\Columns\TextColumn::make('sort_key')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),

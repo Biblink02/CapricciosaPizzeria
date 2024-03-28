@@ -53,6 +53,10 @@ class MenusRelationManager extends RelationManager
                             ])
                             ->label('Prezzo')
                             ->required(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->required()
+                            ->label('Ordine di comparsa (0 viene prima di 1)'),
                         Forms\Components\Toggle::make('is_visible')
                             ->required()
                             ->default(true)
@@ -61,6 +65,10 @@ class MenusRelationManager extends RelationManager
                             ->required()
                             ->default(true)
                             ->label('È visibile nella pagina dei menù?'),
+                        Tables\Columns\TextColumn::make('sort_key_in_menus')
+                            ->searchable()
+                            ->sortable()
+                            ->label('Ordine di comparsa (pagina menu)'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
@@ -83,6 +91,10 @@ class MenusRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('price')
                     ->searchable()
                     ->label('Prezzo'),
+                Tables\Columns\TextColumn::make('sort_key')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),

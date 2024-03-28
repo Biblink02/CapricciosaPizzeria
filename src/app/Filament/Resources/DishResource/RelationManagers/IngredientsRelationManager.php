@@ -4,6 +4,7 @@ namespace App\Filament\Resources\DishResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -40,7 +41,12 @@ class IngredientsRelationManager extends RelationManager
                             ->relationship('supplier', 'name')
                             ->searchable()
                             ->preload()
-                            ->label('Azienda di provenienza')
+                            ->label('Azienda di provenienza'),
+                        //TODO rendi menu_uuid e sort_key unique
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->required()
+                            ->label('Ordine di comparsa (0 viene prima di 1)'),
                     ])->columns(2)
             ]);
     }
@@ -53,6 +59,10 @@ class IngredientsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->label('Nome'),
+                Tables\Columns\TextColumn::make('sort_key')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),

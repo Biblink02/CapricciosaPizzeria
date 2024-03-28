@@ -22,7 +22,7 @@ class Ingredient extends Model
         'name',
         'img_url',
         'is_visible',
-        'supplier_uuid'
+        'supplier_uuid',
     ];
     public function info(): MorphTo
     {
@@ -35,6 +35,6 @@ class Ingredient extends Model
     }
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class)->withPivot('sort_key');
     }
 }

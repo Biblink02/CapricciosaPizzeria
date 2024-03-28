@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Filament\Tables\Actions\AttachAction;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -43,7 +44,7 @@ class Menu extends Model
 
     public function dishes(): BelongsToMany
     {
-        return $this->belongsToMany(Dish::class)->withPivot('price');
+        return $this->belongsToMany(Dish::class)->withPivot(['price','sort_key']);
     }
 
     public function label(): Attribute
@@ -51,5 +52,14 @@ class Menu extends Model
         return Attribute::make(
             get: fn () => $this->name
         );
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(function (Builder $builder) {
+            $builder->with(['dishes' => function ($query) {
+                $query->where('is_visible', true)->orderBy('sort_key','asc');
+            }]);
+        });
     }
 }
