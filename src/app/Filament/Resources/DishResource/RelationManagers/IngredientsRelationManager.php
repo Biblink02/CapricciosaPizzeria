@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\DishResource\RelationManagers;
 
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -42,10 +44,10 @@ class IngredientsRelationManager extends RelationManager
                             ->searchable()
                             ->preload()
                             ->label('Azienda di provenienza'),
-                        //TODO rendi menu_uuid e sort_key unique
                         TextInput::make('sort_key')
                             ->numeric()
                             ->required()
+                            ->default(0)
                             ->label('Ordine di comparsa (0 viene prima di 1)'),
                     ])->columns(2)
             ]);
@@ -87,7 +89,15 @@ class IngredientsRelationManager extends RelationManager
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
                 Tables\Actions\AttachAction::make()
-                    ->preloadRecordSelect(),
+                    ->preloadRecordSelect()
+                    ->form(fn(AttachAction $action): array => [
+                        $action->getRecordSelect(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->default(0)
+                            ->label('Ordine di comparsa (0 viene prima di 1)')
+                            ->required(),
+                        ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

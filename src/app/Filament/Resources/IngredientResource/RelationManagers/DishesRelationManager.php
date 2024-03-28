@@ -4,9 +4,11 @@ namespace App\Filament\Resources\IngredientResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -51,6 +53,10 @@ class DishesRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
+                Tables\Columns\TextColumn::make('sort_key')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -68,7 +74,15 @@ class DishesRelationManager extends RelationManager
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
                 Tables\Actions\AttachAction::make()
-                    ->preloadRecordSelect(),
+                    ->preloadRecordSelect()
+                    ->form(fn(AttachAction $action): array => [
+                        $action->getRecordSelect(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->default(0)
+                            ->label('Ordine di comparsa (0 viene prima di 1)')
+                            ->required(),
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

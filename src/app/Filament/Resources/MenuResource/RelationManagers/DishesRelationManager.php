@@ -49,10 +49,10 @@ class DishesRelationManager extends RelationManager
                     ])
                     ->label('Prezzo')
                     ->required(),
-                //TODO rendi menu_uuid e sort_key unique
                 TextInput::make('sort_key')
                     ->numeric()
                     ->required()
+                    ->default(0)
                     ->label('Ordine di comparsa (0 viene prima di 1)'),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
@@ -134,6 +134,11 @@ class DishesRelationManager extends RelationManager
                             ])
                             ->label('Prezzo')
                             ->required(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->required()
+                            ->default(0)
+                            ->label('Ordine di comparsa (0 viene prima di 1)'),
                     ])
             ])
             ->bulkActions([

@@ -26,6 +26,7 @@ class Menu extends Model
         'img_url',
         'is_visible',
         'is_visible_in_menus',
+        'sort_key_in_menus'
     ];
 
     protected $appends = [

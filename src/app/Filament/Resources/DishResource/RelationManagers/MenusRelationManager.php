@@ -65,9 +65,11 @@ class MenusRelationManager extends RelationManager
                             ->required()
                             ->default(true)
                             ->label('È visibile nella pagina dei menù?'),
-                        Tables\Columns\TextColumn::make('sort_key_in_menus')
-                            ->searchable()
-                            ->sortable()
+                        TextInput::make('sort_key_in_menus')
+                            ->required()
+                            ->numeric()
+                            ->minValue(0)
+                            ->default(0)
                             ->label('Ordine di comparsa (pagina menu)'),
                         FileUpload::make('img_url')
                             ->image()
@@ -101,7 +103,7 @@ class MenusRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible_in_menus')
                     ->boolean()
                     ->label('È visibile nella pagina dei menù?'),
-                Tables\Columns\TextColumn::make('img_url')
+                Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -141,6 +143,11 @@ class MenusRelationManager extends RelationManager
                                 },
                             ])
                             ->label('Prezzo')
+                            ->required(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->default(0)
+                            ->label('Ordine di comparsa (0 viene prima di 1)')
                             ->required(),
                     ]),
             ])

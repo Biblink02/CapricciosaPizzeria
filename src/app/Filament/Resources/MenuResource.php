@@ -39,14 +39,19 @@ class MenuResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        Forms\Components\Toggle::make('is_visible_in_menus')
-                            ->required()
-                            ->default(true)
-                            ->label('È visibile nella pagina dei menù?'),
-                        Tables\Columns\TextColumn::make('sort_key_in_menus')
-                            ->searchable()
-                            ->sortable()
-                            ->label('Ordine di comparsa (pagina menu)'),
+                        Forms\Components\Section::make('Pagina menu')
+                            ->schema([
+                                Forms\Components\Toggle::make('is_visible_in_menus')
+                                    ->required()
+                                    ->default(true)
+                                    ->label('È visibile nella pagina dei menù?'),
+                                Forms\Components\TextInput::make('sort_key_in_menus')
+                                    ->required()
+                                    ->numeric()
+                                    ->minValue(0)
+                                    ->default(0)
+                                    ->label('Ordine di comparsa (pagina menu)'),
+                            ])->columns(2),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
