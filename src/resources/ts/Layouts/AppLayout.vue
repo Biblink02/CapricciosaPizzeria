@@ -14,14 +14,12 @@ defineProps<{
     <InertiaHead :title="title"></InertiaHead>
 
     <div
-            class="sticky top-0 z-40"
-    >
+        class="sticky top-0 z-40">
         <NavbarComponent />
-    </div>
 
+    </div>
     <div
-            class="w-full h-content flex flex-col"
-    >
+            class="w-full h-content flex flex-col">
         <slot />
     </div>
     <FooterComponent :footer="footer" />

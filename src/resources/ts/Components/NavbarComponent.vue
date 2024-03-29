@@ -14,7 +14,7 @@ const sidebar = computed(() => getSidebar());
     <Disclosure
         v-slot="{ open }"
         as="nav"
-        class="w-full bg-white shadow"
+        class="w-full bg-white shadow border-b-4 border-red-500"
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 h-32">
             <div class="flex h-16 justify-between">
@@ -24,7 +24,7 @@ const sidebar = computed(() => getSidebar());
                             v-for="item in sidebar"
                             :key="item.name"
                             :href="item.href"
-                            :class="[item.current ? 'border-orange-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
+                            :class="[item.current ? 'text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
                             class="inline-flex uppercase items-center border-b-2 px-1 pt-1 text-xs font-bold"
                         >
                             {{ $t(item.name) }}
@@ -53,7 +53,7 @@ const sidebar = computed(() => getSidebar());
         </div>
 
         <DisclosurePanel class="sm:hidden">
-            <div class="space-y-1 pt-2 pb-3">
+            <div class="space-y-1 pt-2 pb-3 border-b-4 border-red-500">
                 <DisclosureButton
                     v-for="item in sidebar"
                     :key="item.name"
@@ -65,6 +65,8 @@ const sidebar = computed(() => getSidebar());
                     {{ $t(item.name) }}
                 </DisclosureButton>
             </div>
+
         </DisclosurePanel>
+
     </Disclosure>
 </template>
