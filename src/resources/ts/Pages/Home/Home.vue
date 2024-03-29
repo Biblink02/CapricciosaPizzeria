@@ -70,7 +70,7 @@ const responsiveOptions = ref([
                 </div>
             </div>
 
-            <Suppliers :suppliers="suppliers"/>
+            <Suppliers :suppliers="suppliers" class="pb-10"/>
 
 
         </div>

@@ -30,21 +30,23 @@ const numMenu = ref(0);
         <div :style="'background-image: url(images/'+menus[numMenu]?.img_url" class="h-80 grid place-content-center bg-cover bg-center text-white font-bold text-6xl">
             {{ $t('Menù') }} {{ $t(menus[numMenu]?.name ?? '') }}
         </div>
-        <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto pb-3"/>
 
-        <div class="grid place-content-center text-bold text-3xl pb-8 pt-6">
-            {{ $t('Menu') }}  {{ $t(menus[numMenu]?.name ?? '') }}
-        </div>
-
-        <div class="grid place-content-center space-y-6 pb-10">
-            <hr>
-            <div v-for="dish in menus[numMenu]?.dishes">
-                <div class="pb-6">
-                    <Dish :dish="dish"/>
-                </div>
-                <hr>
+        <TabMenu :model="menus" v-model:active-index="numMenu" class="mx-auto pb-3 bg-gray-50"/>
+        <div class="bg-gray-50">
+            <div class="grid place-content-center text-bold text-3xl pb-8 pt-6 bg-gray-50">
+                {{ $t('Menu') }}  {{ $t(menus[numMenu]?.name ?? '') }}
             </div>
 
+            <div class="grid place-content-center space-y-6">
+                <hr>
+                <div v-for="dish in menus[numMenu]?.dishes">
+                    <div class="pb-6">
+                        <Dish :dish="dish"/>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
         </div>
     </AppLayout>
 </template>
