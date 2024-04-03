@@ -3,7 +3,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {usePage} from "@inertiajs/vue3";
 import Dish from "@/Pages/Menus/Dish.vue";
-import PageHeader from "@/Components/PageHeader.vue";
+import Button from 'primevue/button';
 import TabMenu from 'primevue/tabmenu';
 import {ref} from "vue";
 
@@ -46,6 +46,9 @@ const numMenu = ref(0);
                     <hr>
                 </div>
 
+            </div>
+            <div class="flex justify-center">
+                <a :href="ciao"><Button :label="'Lista Allergeni'"/></a>
             </div>
         </div>
     </AppLayout>
