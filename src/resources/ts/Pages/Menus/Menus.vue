@@ -24,10 +24,10 @@ const numMenu = ref(0);
 
 <template>
 
-    <AppLayout :footer="page.footer" title="Menu">
+    <AppLayout :footer="page.footer" :title="$t('Menus')">
 
 
-        <div :style="'background-image: url(images/'+menus[numMenu]?.img_url" class="h-80 grid place-content-center bg-cover bg-center text-white font-bold text-6xl">
+        <div :style="'background-image: url(images/'+menus[numMenu]?.img_url+')'" class="h-80 grid place-content-center bg-cover bg-center text-white font-bold text-6xl">
             {{ $t('Menù') }} {{ $t(menus[numMenu]?.name ?? '') }}
         </div>
 
