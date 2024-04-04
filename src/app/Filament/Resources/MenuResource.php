@@ -21,9 +21,12 @@ class MenuResource extends Resource
     protected static ?string $modelLabel = 'menu';
 
     protected static ?string $pluralModelLabel = 'menu';
+
     protected static ?string $navigationIcon = 'phosphor-scroll';
 
     protected static ?string $navigationGroup = 'Pizzeria';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {

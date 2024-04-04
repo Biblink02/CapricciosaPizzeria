@@ -1,37 +1,22 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\AllergenResource\RelationManagers;
 
-use App\Filament\Resources\DishResource\RelationManagers\MenusRelationManager;
-use App\Filament\Resources\EventResource\Pages;
-use App\Filament\Resources\EventResource\RelationManagers;
-use App\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class EventResource extends Resource
+class DishesRelationManager extends RelationManager
 {
-    protected static ?string $model = Event::class;
+    protected static string $relationship = 'dishes';
 
-    protected static ?string $navigationLabel = 'Eventi';
-
-    protected static ?string $modelLabel = 'evento';
-
-    protected static ?string $pluralModelLabel = 'eventi';
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
-
-    protected static ?string $navigationGroup = 'Pizzeria';
-
-    protected static ?int $navigationSort = 4;
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
-
         return $form
             ->schema([
                 Forms\Components\Section::make()
@@ -42,15 +27,8 @@ class EventResource extends Resource
                             ->label('Nome'),
                         Forms\Components\Toggle::make('is_visible')
                             ->required()
-                            ->default(true)
-                            ->label('È visibile?'),
-                        Forms\Components\DateTimePicker::make('starts_at')
-                            ->required()
-                            ->label('Comincia'),
-                        Forms\Components\DateTimePicker::make('ends_at')
-                            ->required()
-                            ->after('starts_at')
-                            ->label('Termina'),
+                            ->label('È visibile?')
+                            ->default(true),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
@@ -58,13 +36,14 @@ class EventResource extends Resource
                             ->openable()
                             ->panelLayout('integrated')
                             ->default(null),
-                        ])->columns(2)
+                    ])->columns(2)
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
@@ -72,14 +51,6 @@ class EventResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('starts_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->label('Comincia'),
-                Tables\Columns\TextColumn::make('ends_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->label('Termina'),
                 Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -94,29 +65,18 @@ class EventResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\MenusRelationManager::class
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListEvents::route('/'),
-            'create' => Pages\CreateEvent::route('/create'),
-            'edit' => Pages\EditEvent::route('/{record}/edit'),
-        ];
     }
 }

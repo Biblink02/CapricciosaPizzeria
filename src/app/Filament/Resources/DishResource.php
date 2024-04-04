@@ -28,6 +28,7 @@ class DishResource extends Resource
 
     protected static ?string $navigationGroup = 'Pizzeria';
 
+    protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
         return $form
@@ -92,6 +93,7 @@ class DishResource extends Resource
         return [
             RelationManagers\MenusRelationManager::class,
             RelationManagers\IngredientsRelationManager::class,
+            RelationManagers\AllergensRelationManager::class,
         ];
     }
 
