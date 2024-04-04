@@ -53,5 +53,10 @@ class Dish extends Model
                 $query->where('is_visible', true)->orderBy('sort_key', 'asc');
             }]);
         });
+        static::addGlobalScope(function (Builder $builder) {
+            $builder->with(['allergens' => function ($query) {
+                $query->orderBy('number', 'asc');
+            }]);
+        });
     }
 }

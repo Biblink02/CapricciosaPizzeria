@@ -48,7 +48,7 @@ const numMenu = ref(0);
 
             </div>
             <div class="flex justify-center">
-                <a :href="ciao"><Button :label="'Lista Allergeni'"/></a>
+                <a href=""><Button :label="'Lista Allergeni'"/></a>
             </div>
         </div>
     </AppLayout>

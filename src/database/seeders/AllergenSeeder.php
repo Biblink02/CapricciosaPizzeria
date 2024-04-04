@@ -38,7 +38,7 @@ class AllergenSeeder extends Seeder
             'uuid' => uuid_create(),
             'created_at' => today(),
             'updated_at' => today(),
-            'name' => 'Crostacei e derivati',
+            'name' => 'PESCE E DERIVATI',
             'number' => 4,
         ]);
         DB::table('allergens')->insert([
