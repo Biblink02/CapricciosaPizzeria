@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllergensController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
@@ -11,6 +12,7 @@ use Inertia\Inertia;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/menus',[MenusController::class, 'index'])->name('menus');
+Route::get('/allergens',[AllergensController::class, 'index'])->name('allergens-table');
 Route::get('/images/{path}', [ImageController::class, 'index'])->name('image');
 
 Route::middleware([

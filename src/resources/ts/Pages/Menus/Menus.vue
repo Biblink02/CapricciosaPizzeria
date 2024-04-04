@@ -1,11 +1,12 @@
 <script setup lang="ts">
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {usePage} from "@inertiajs/vue3";
+import {router, usePage} from "@inertiajs/vue3";
 import Dish from "@/Pages/Menus/Dish.vue";
 import Button from 'primevue/button';
 import TabMenu from 'primevue/tabmenu';
 import {ref} from "vue";
+import route from "ziggy-js";
 
 const props = defineProps<{
     menus: Menu[]
@@ -17,6 +18,11 @@ const items = ref([
     { label: 'Products', icon: 'pi pi-list' },
     { label: 'Messages', icon: 'pi pi-inbox' }
 ]);
+
+const visitAllergens = ()=>{
+    //router.visit(route('allergens-table'))
+    window.open(route('allergens-table'), '_blank');
+}
 
 const page = usePage();
 const numMenu = ref(0);
@@ -48,7 +54,7 @@ const numMenu = ref(0);
 
             </div>
             <div class="flex justify-center">
-                <a href=""><Button :label="'Lista Allergeni'"/></a>
+                <Button :label="'Lista Allergeni'" @click="visitAllergens"/>
             </div>
         </div>
     </AppLayout>
