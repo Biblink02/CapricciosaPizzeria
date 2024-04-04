@@ -18,6 +18,7 @@ class IngredientsRelationManager extends RelationManager
 {
     protected static string $relationship = 'ingredients';
 
+    protected static ?string $title='Ingredienti';
     public function form(Form $form): Form
     {
         return $form

@@ -17,6 +17,8 @@ class DishesRelationManager extends RelationManager
 {
     protected static string $relationship = 'dishes';
 
+    protected static ?string $title='Pietanze';
+
     public function form(Form $form): Form
     {
         return $form

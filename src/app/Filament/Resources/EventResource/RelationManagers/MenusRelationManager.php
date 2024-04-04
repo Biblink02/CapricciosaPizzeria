@@ -15,6 +15,8 @@ class MenusRelationManager extends RelationManager
 {
     protected static string $relationship = 'menus';
 
+    protected static ?string $title='Menù';
+
     public function form(Form $form): Form
     {
         return $form

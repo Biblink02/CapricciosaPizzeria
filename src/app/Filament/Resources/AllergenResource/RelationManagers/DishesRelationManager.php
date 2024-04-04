@@ -15,6 +15,8 @@ class DishesRelationManager extends RelationManager
 {
     protected static string $relationship = 'dishes';
 
+    protected static ?string $title='Pietanze';
+
     public function form(Form $form): Form
     {
         return $form
@@ -67,7 +69,8 @@ class DishesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->preloadRecordSelect(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

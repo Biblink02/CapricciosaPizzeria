@@ -15,6 +15,8 @@ class EventsRelationManager extends RelationManager
 {
     protected static string $relationship = 'events';
 
+    protected static ?string $title='Eventi';
+
     public function form(Form $form): Form
     {
         return $form

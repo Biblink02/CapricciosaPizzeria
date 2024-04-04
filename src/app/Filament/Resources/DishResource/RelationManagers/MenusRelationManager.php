@@ -18,9 +18,7 @@ class MenusRelationManager extends RelationManager
 {
     protected static string $relationship = 'menus';
 
-    protected static ?string $modelLabel = 'menu';
-
-    protected static ?string $pluralModelLabel = 'menu';
+    protected static ?string $title='Menù';
 
     public function form(Form $form): Form
     {

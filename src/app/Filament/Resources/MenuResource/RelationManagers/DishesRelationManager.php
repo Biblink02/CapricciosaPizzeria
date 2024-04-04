@@ -14,9 +14,8 @@ use Filament\Tables\Table;
 
 class DishesRelationManager extends RelationManager
 {
-    protected static ?string $modelLabel = 'pietanza';
 
-    protected static ?string $pluralModelLabel = 'pietanze';
+    protected static ?string $title = 'Pietanze';
 
     protected static string $relationship = 'dishes';
 

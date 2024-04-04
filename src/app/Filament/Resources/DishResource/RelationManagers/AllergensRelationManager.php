@@ -14,6 +14,9 @@ class AllergensRelationManager extends RelationManager
 {
     protected static string $relationship = 'allergens';
 
+    protected static ?string $title='Allergeni';
+
+
     public function form(Form $form): Form
     {
         return $form
@@ -58,7 +61,8 @@ class AllergensRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->preloadRecordSelect(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
