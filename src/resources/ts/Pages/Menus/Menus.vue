@@ -53,7 +53,7 @@ const numMenu = ref(0);
                 </div>
 
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center pt-6">
                 <Button :label="'Lista Allergeni'" @click="visitAllergens"/>
             </div>
         </div>
