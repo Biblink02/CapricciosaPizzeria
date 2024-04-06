@@ -4,10 +4,13 @@ import carousel_2 from '~/media/pages/home/carousel_2.jpg';
 import carousel_3 from '~/media/pages/home/carousel_3.jpg';
 import logo from '~/media/pages/home/logo.jpeg';
 
+import home_1 from '~/media/pages/home/home_1.jpg';
+import location from '~/media/pages/home/location.png';
 export const images = {
     evento_1,
     carousel_1,
     carousel_2,
     carousel_3,
-    logo
+    logo,
+    home_1, location
 };

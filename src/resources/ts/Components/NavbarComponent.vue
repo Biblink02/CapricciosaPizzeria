@@ -5,7 +5,6 @@ import {getSidebar} from '@/actions/GetSidebar';
 import {computed} from 'vue';
 import route from 'ziggy-js';
 import {router} from '@inertiajs/vue3';
-import {images} from "@/Types/ImageHelper";
 
 const sidebar = computed(() => getSidebar());
 
@@ -15,7 +14,7 @@ const sidebar = computed(() => getSidebar());
     <Disclosure
         v-slot="{ open }"
         as="nav"
-        class="w-full bg-white shadow"
+        class="w-full bg-white shadow border-b-4 border-red-500"
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 h-32">
             <div class="flex flex-row h-16">
@@ -55,7 +54,7 @@ const sidebar = computed(() => getSidebar());
         </div>
 
         <DisclosurePanel class="sm:hidden">
-            <div class="space-y-1 pt-2 pb-3">
+            <div class="space-y-1 pt-2 pb-3 border-b-4 border-red-500">
                 <DisclosureButton
                     v-for="item in sidebar"
                     :key="item.name"
