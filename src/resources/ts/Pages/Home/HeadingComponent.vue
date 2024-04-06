@@ -5,7 +5,7 @@ import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
 import {images} from "@/Types/ImageHelper.js";
 import Carousel from "primevue/carousel";
 import Button from "primevue/button";
-import {usePage} from "@inertiajs/vue3";
+import {router, usePage} from "@inertiajs/vue3";
 import route from "ziggy-js";
 
 defineProps<{
@@ -37,6 +37,10 @@ const responsiveOptions = ref([
         numScroll: 1
     }
 ]);
+
+const visitEvents = () => {
+    router.visit(route('events'))
+}
 
 const mobileMenuOpen = ref(false)
 </script>
@@ -95,6 +99,7 @@ const mobileMenuOpen = ref(false)
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
                             <div
+                                @click="visitEvents"
                                 class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                 {{ $t('Eventi organizzati da noi ') }} <a href="#"
                                                                           class="whitespace-nowrap font-semibold text-capricciosa_green"><span

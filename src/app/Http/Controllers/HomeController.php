@@ -16,7 +16,7 @@ class HomeController extends Controller
         return Inertia::render('Home/Home', [
             'slidingImages' => config('custom.home'),
             'suppliers' => $getSuppliers->get()->toArray(),
-            'event' =>$getLastEvent->get()->toArray()
+            'event' =>$getLastEvent->get()?->toArray() ?? null
         ]);
     }
 }
