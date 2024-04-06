@@ -51,6 +51,9 @@ class EventResource extends Resource
                             ->required()
                             ->after('starts_at')
                             ->label('Termina'),
+                        Forms\Components\Textarea::make('description')
+                            ->required()
+                            ->label('Descrizione'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()

@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import {Event} from "@/Types/Event";
+import {formatDate} from "../../Types/DateFormatterHelper";
 
-defineProps<{
+
+const props = defineProps<{
     event: Event
 }>()
+console.log(props.event)
 </script>
 
 <template>
 
-    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+    <div class="text-left flex flex-col overflow-hidden rounded-lg shadow-lg">
         <div class="flex-shrink-0">
-            <img class="h-48 w-full object-cover" :src="'images/'+event?.img_url" alt="" />
+            <img class="h-48 w-full object-cover" :src="'images/'+event?.img_url" alt=""/>
         </div>
         <div class="flex flex-1 flex-col justify-between bg-white p-6">
             <div class="flex-1">
@@ -23,13 +26,13 @@ defineProps<{
                 <div class="flex-shrink-0">
                     <span class="sr-only">{{ $t('Giorno evento') }}</span>
                 </div>
-                <div class="ml-3">
+                <div>
                     <p class="text-sm font-medium text-gray-900">
                         {{ $t('Giorno evento') }}
                     </p>
                     <div class="flex space-x-1 text-sm text-gray-500">
-                        <time :datetime="event.starts_at">{{ event.starts_at }}</time>
-                        <time :datetime="event.ends_at">{{ event.ends_at }}</time>
+                        <time :datetime="event.starts_at">{{$t('Dal ')}}{{ formatDate(event.starts_at) }}</time>
+                        <time :datetime="event.ends_at">{{$t('al ')}}{{ formatDate(event.ends_at) }}</time>
                     </div>
                 </div>
             </div>

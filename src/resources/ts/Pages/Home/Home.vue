@@ -17,6 +17,7 @@ const props = defineProps<{
     footer: Footer
     slidingImages: SlidingImage[]
     suppliers: Supplier[],
+    event: Event
 }>()
 
 const responsiveOptions = ref([
@@ -50,16 +51,19 @@ const responsiveOptions = ref([
 
             <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
 
-            <ActivityTimings></ActivityTimings>
+            <ActivityTimings :event="event"></ActivityTimings>
 
             <div class="mx-auto max-w-7xl px-5 flex flex-col gap-10">
                 <div class="flex flex-col">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{$t('Alcuni dei nostri piatti')}}</h2>
-                    <p class="mt-3 max-w-3xl text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue.</p>
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        {{ $t('Alcuni dei nostri piatti') }}</h2>
+                    <p class="mt-3 max-w-3xl text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et
+                        fermentum, augue.</p>
                 </div>
 
                 <Carousel
-                    class="object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                    class=" overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
                     :value="slidingImages"
                     :num-visible="1"
                     :num-scroll="1"
@@ -71,7 +75,7 @@ const responsiveOptions = ref([
                         <div>
                             <a :href="slotProps.data.href">
                                 <img
-                                    class="w-screen h-96 object-cover rounded-xl"
+                                    class=" w-screen h-96 object-cover rounded-xl"
                                     :src="images[slotProps.data.image]"
                                     alt="Location"
                                 >

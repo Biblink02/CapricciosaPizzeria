@@ -7,7 +7,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MenusController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/menus',[MenusController::class, 'index'])->name('menus');
 Route::get('/allergens',[AllergensController::class, 'index'])->name('allergens-table');
