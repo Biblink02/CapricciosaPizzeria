@@ -63,7 +63,7 @@ const responsiveOptions = ref([
                 </div>
 
                 <Carousel
-                    class=" overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                    class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
                     :value="slidingImages"
                     :num-visible="1"
                     :num-scroll="1"

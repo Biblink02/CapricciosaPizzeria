@@ -10,6 +10,8 @@ const props = defineProps<{
     events: Event[]
 }>()
 
+const showEmptyState = props.events.length === 0
+
 const page = usePage();
 
 </script>
@@ -28,7 +30,7 @@ const page = usePage();
             <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
                 <Event v-for="event in events" :event="event"/>
             </div>
-            <EmptyStateComponent class="max-w-2xl mx-auto">
+            <EmptyStateComponent v-if="showEmptyState" class="max-w-2xl mx-auto">
                 <template #title>
                     {{ $t('Events') }}
                 </template>
