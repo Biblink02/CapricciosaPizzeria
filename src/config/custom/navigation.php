@@ -21,10 +21,6 @@ return [
         [
             'name' => 'Eventi',
             'route' => 'events',
-        ],
-        [
-            'name' => 'Shop',
-            'route' => 'shop',
         ]
     ],
 

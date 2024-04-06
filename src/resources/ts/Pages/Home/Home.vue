@@ -6,11 +6,17 @@ import Carousel from "primevue/carousel";
 import {images} from "@/Types/ImageHelper";
 import ActivityTimings from "@/Pages/Home/ActivityTimings.vue";
 import Suppliers from "@/Pages/Home/Suppliers.vue";
+import {Dialog, DialogPanel} from '@headlessui/vue'
+import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
+import Button from "primevue/button";
+import ButtonComponent from "@/Components/ButtonComponent.vue";
+import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
+import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
 
 const props = defineProps<{
     footer: Footer
     slidingImages: SlidingImage[]
-    suppliers: Supplier[]
+    suppliers: Supplier[],
 }>()
 
 const responsiveOptions = ref([
@@ -36,41 +42,48 @@ const responsiveOptions = ref([
     }
 ]);
 
-
 </script>
 
 <template>
-    <AppLayout :footer="footer" title="home">
-        <div class="grid gap-5">
-            <div class="flex flex-row">
-                <div class="text-center font-extrabold text-5xl w-2/5 text [writing-mode:vertical-lr] rotate-180 mr-5">
-                    <p>{{ $t('Location') }}</p>
+    <AppLayout :navbar-hidden="true" :footer="footer" title="home">
+        <div class="flex flex-col w-full gap-24">
+
+            <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
+
+            <ActivityTimings></ActivityTimings>
+
+            <div class="mx-auto max-w-7xl px-5 flex flex-col gap-10">
+                <div class="flex flex-col">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{$t('Alcuni dei nostri piatti')}}</h2>
+                    <p class="mt-3 max-w-3xl text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue.</p>
                 </div>
-                <div class="w-3/5 max-w-[120rem] mx-auto w-full">
-                    <Carousel
-                        :value="slidingImages"
-                        :num-visible="1"
-                        :num-scroll="1"
-                        :responsive-options="responsiveOptions"
-                        circular
-                        :autoplay-interval="6000"
-                    >
-                        <template #item="slotProps">
-                            <div>
-                                <a :href="slotProps.data.href">
-                                    <img
-                                        class="w-full h-fit object-scale-down"
-                                        :src="images[slotProps.data.image]"
-                                        alt="Location"
-                                    >
-                                </a>
-                            </div>
-                        </template>
-                    </Carousel>
-                </div>
+
+                <Carousel
+                    class="object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                    :value="slidingImages"
+                    :num-visible="1"
+                    :num-scroll="1"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="6000"
+                >
+                    <template #item="slotProps">
+                        <div>
+                            <a :href="slotProps.data.href">
+                                <img
+                                    class="w-screen h-96 object-cover rounded-xl"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                >
+                            </a>
+                        </div>
+                    </template>
+                </Carousel>
             </div>
 
-            <Suppliers :suppliers="suppliers" class="pb-10"/>
+            <Suppliers :suppliers="suppliers"/>
+
+            <IncentivesComponent></IncentivesComponent>
 
 
         </div>
@@ -91,3 +104,4 @@ const responsiveOptions = ref([
     display: none;
 }
 </style>
+

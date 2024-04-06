@@ -2,11 +2,14 @@
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue';
 import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline';
 import {getSidebar} from '@/actions/GetSidebar';
+import {images} from "@/Types/ImageHelper";
 import {computed} from 'vue';
 import route from 'ziggy-js';
 import {router} from '@inertiajs/vue3';
 
 const sidebar = computed(() => getSidebar());
+
+
 
 </script>
 
@@ -14,9 +17,9 @@ const sidebar = computed(() => getSidebar());
     <Disclosure
         v-slot="{ open }"
         as="nav"
-        class="w-full bg-white shadow border-b-4 border-red-500"
+        class="w-full bg-white shadow"
     >
-        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 h-32">
+        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 py-12">
             <div class="flex flex-row h-16">
                 <img :src="images.logo" alt="logo" class="object-scale-down w-24 mx-5">
                 <div class="flex">
@@ -25,8 +28,8 @@ const sidebar = computed(() => getSidebar());
                             v-for="item in sidebar"
                             :key="item.name"
                             :href="item.href"
-                            :class="[item.current ? 'border-[#a5b977] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
-                            class="inline-flex uppercase items-center border-b-2 px-1 pt-1 text-xs font-bold "
+                            :class="[item.current ? 'border-capricciosa_green text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
+                            class="inline-flex items-center border-b-2 px-1 pt-1 text-sm font-semibold leading-6 "
                         >
                             {{ $t(item.name) }}
                         </a>

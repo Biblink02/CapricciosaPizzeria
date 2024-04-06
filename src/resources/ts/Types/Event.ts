@@ -1,6 +1,7 @@
-interface Event {
-    title: string,
+export interface Event {
+    name: string,
     starts_at: string
     ends_at: string,
-    image: string
+    image: string,
+    description: string
 }

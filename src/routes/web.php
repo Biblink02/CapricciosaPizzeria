@@ -12,6 +12,7 @@ Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/menus',[MenusController::class, 'index'])->name('menus');
 Route::get('/allergens',[AllergensController::class, 'index'])->name('allergens-table');
 Route::get('/images/{path}', [ImageController::class, 'index'])->name('image');
+Route::get('/who-are-we', [ImageController::class, 'index'])->name('who-are-we');
 
 Route::middleware([
     'auth:sanctum',

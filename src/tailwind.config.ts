@@ -19,11 +19,13 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['roboto', ...defaultTheme.fontFamily.sans],
+                sans: [
+                    'Montserrat',
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             colors: {
-                capricciosa_green: '#C5EBAA',
-                capricciosa_orange: '#F2C18D'
+                capricciosa_green: '#a5b977',
             }
         }
     }
