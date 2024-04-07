@@ -15,27 +15,33 @@ class IngredientsRelationManager extends RelationManager
 {
     protected static string $relationship = 'ingredients';
 
-    protected static ?string $title='Ingredienti';
+    protected static ?string $title = 'Ingredienti';
 
+    protected static ?string $label = 'ingrediente';
+    protected static ?string $pluralLabel = 'ingredienti';
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\Toggle::make('is_visible')
-                    ->required()
-                    ->default(true)
-                    ->label('È visibile?'),
-                FileUpload::make('img_url')
-                    ->image()
-                    ->imageEditor()
-                    ->label('Immagine')
-                    ->openable()
-                    ->panelLayout('integrated')
-                    ->default(null),
+                Forms\Components\Section::make('Ingrediente:')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nome'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?'),
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null)
+                            ->columnSpanFull(),
+                    ])->columns(2)
             ]);
     }
 
@@ -73,7 +79,6 @@ class IngredientsRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -17,6 +17,8 @@ class MenusRelationManager extends RelationManager
 
     protected static ?string $title='Menù';
 
+    protected static ?string $label = 'menù';
+    protected static ?string $pluralLabel = 'menù';
     public function form(Form $form): Form
     {
         return $form
@@ -31,21 +33,28 @@ class MenusRelationManager extends RelationManager
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        Forms\Components\Toggle::make('is_visible_in_menus')
-                            ->required()
-                            ->default(true)
-                            ->label('È visibile nella pagina dei menù?'),
-                        Tables\Columns\TextColumn::make('sort_key_in_menus')
-                            ->searchable()
-                            ->sortable()
-                            ->label('Ordine di comparsa (pagina menu)'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
+                            ->default(null)
+                            ->columnSpanFull()
+                            ->required(),
+                        Forms\Components\Section::make('Nella pagina dei menù')
+                            ->schema([
+                                Forms\Components\Toggle::make('is_visible_in_menus')
+                                    ->required()
+                                    ->default(true)
+                                    ->label('È visibile nella pagina dei menù?'),
+                                Forms\Components\TextInput::make('sort_key_in_menus')
+                                    ->required()
+                                    ->numeric()
+                                    ->minValue(0)
+                                    ->default(0)
+                                    ->label('Ordine di comparsa (pagina menu)'),
+                            ])->columns(2),
                     ])->columns(2)
             ]);
     }
@@ -86,7 +95,6 @@ class MenusRelationManager extends RelationManager
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DetachAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

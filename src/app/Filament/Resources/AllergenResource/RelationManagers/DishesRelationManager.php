@@ -15,13 +15,16 @@ class DishesRelationManager extends RelationManager
 {
     protected static string $relationship = 'dishes';
 
-    protected static ?string $title='Pietanze';
+    protected static ?string $title = 'Pietanze';
+
+    protected static ?string $label = 'pietanza';
+    protected static ?string $pluralLabel = 'pietanze';
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Pietanza:')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -31,14 +34,15 @@ class DishesRelationManager extends RelationManager
                             ->required()
                             ->label('È visibile?')
                             ->default(true),
-                        FileUpload::make('img_url')
+                        /*FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
+                            ->default(null),*/
                     ])->columns(2)
+
             ]);
     }
 
@@ -53,8 +57,8 @@ class DishesRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\ImageColumn::make('img_url')
-                    ->label('Immagine'),
+                /*Tables\Columns\ImageColumn::make('img_url')
+                    ->label('Immagine'),*/
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -74,7 +78,6 @@ class DishesRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -114,8 +114,9 @@ const mobileMenuOpen = ref(false)
                             aliqua.</p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <a href="#"
-                               class="rounded-md bg-capricciosa_green px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Dove
-                                siamo</a>
+                               class="rounded-md bg-capricciosa_green px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                {{ $t('Chi siamo') }}
+                            </a>
                             <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Raggiungici') }}
                                 <span aria-hidden="true">→</span></a>
                         </div>
