@@ -12,6 +12,7 @@ import Button from "primevue/button";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
 import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
 import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
+import NavbarComponent from "@/Components/NavbarComponent.vue";
 
 const props = defineProps<{
     footer: Footer
@@ -47,6 +48,19 @@ const responsiveOptions = ref([
 
 <template>
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
+        <div class="h-[30rem] relative">
+            <div class="absolute opacity-50 inset-0 w-full h-full bg-repeat"
+                 :style="{'background-size': 'auto 100%', 'background-image': 'url(' + images.wall_paper + ')'}">
+            </div>
+            <div class="absolute left-0 right-0 w-full py-32 mx-auto flex flex-col justify-center">
+                <h1 class="w-full text-center mb-24  text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Capricciosa
+                    pizzeria</h1>
+                <NavbarComponent>
+
+                </NavbarComponent>
+            </div>
+
+        </div>
         <div class="flex flex-col w-full gap-24">
 
             <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
