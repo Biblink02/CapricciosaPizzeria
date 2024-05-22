@@ -12,6 +12,7 @@ import Button from "primevue/button";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
 import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
 import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
+import NavbarComponent from "@/Components/NavbarComponent.vue";
 
 const props = defineProps<{
     footer: Footer
@@ -47,9 +48,80 @@ const responsiveOptions = ref([
 
 <template>
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
-        <div class="flex flex-col w-full gap-24">
+        <div class="h-[30rem] relative">
+            <div class="absolute opacity-50 inset-0 w-full h-full bg-repeat"
+                 :style="{'background-size': 'auto 100%', 'background-image': 'url(' + images.wall_paper + ')'}">
+            </div>
+            <div class="absolute left-0 right-0 w-full py-32 mx-auto flex flex-col justify-center">
+                <h1 class="font-custom w-full text-center mb-24 text-4xl tracking-tight sm:text-6xl">Capricciosa
+                    pizzeria</h1>
+                <NavbarComponent>
 
-            <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
+                </NavbarComponent>
+            </div>
+
+        </div>
+        <div class="mt-12 flex flex-col w-full gap-24">
+            <div class="flex flex-row">
+                <div class="text-gray-800 -scale-100 m-auto mr-5 mb-0 text-5xl font-bold" style="writing-mode: vertical-lr">
+                    Location
+                </div>
+                <Carousel
+                    class="w-3/4 overflow-hidden max-lg:mx-5 object-cover lg:aspect-auto"
+                    :value="slidingImages"
+                    :num-visible="1"
+                    :num-scroll="1"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="6000"
+                >
+                    <template #item="slotProps">
+                        <div>
+                            <a :href="slotProps.data.href">
+                                <img
+                                    class="overflow-hidden w-screen h-[1089px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                >
+                            </a>
+                        </div>
+                    </template>
+                </Carousel>
+            </div>
+            <div class="max-w-2xl mx-10 flex flex-row">
+                <div class="w-1/4 flex flex-col justify-between space-y-5">
+                    <button class="bg-red-200 m-5">
+                        MENU
+                    </button>
+                    <button class="bg-red-200 m-5">
+                        MENU
+                    </button>
+                    <button class="bg-red-200 m-5">
+                        MENU
+                    </button>
+                </div>
+                <Carousel
+                    class="w-3/4 overflow-hidden max-lg:mx-5 object-cover lg:aspect-auto"
+                    :value="slidingImages"
+                    :num-visible="1"
+                    :num-scroll="1"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="6000"
+                >
+                    <template #item="slotProps">
+                        <div>
+                            <a :href="slotProps.data.href">
+                                <img
+                                    class="overflow-hidden w-screen h-[800px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                >
+                            </a>
+                        </div>
+                    </template>
+                </Carousel>
+            </div>
 
             <ActivityTimings :event="event"></ActivityTimings>
 

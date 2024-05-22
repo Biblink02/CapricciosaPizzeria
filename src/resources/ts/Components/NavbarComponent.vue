@@ -10,30 +10,26 @@ import {router} from '@inertiajs/vue3';
 const sidebar = computed(() => getSidebar());
 
 
-
 </script>
 
 <template>
     <Disclosure
         v-slot="{ open }"
         as="nav"
-        class="w-full bg-white shadow"
+        class="w-full bg-red-200 shadow"
     >
-        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 py-12">
-            <div class="flex flex-row h-16">
-                <img :src="images.logo" alt="logo" class="object-scale-down w-24 mx-5">
-                <div class="flex">
-                    <div class="hidden sm:flex sm:space-x-5">
-                        <a
-                            v-for="item in sidebar"
-                            :key="item.name"
-                            :href="item.href"
-                            :class="[item.current ? 'border-capricciosa_green text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
-                            class="inline-flex items-center border-b-2 px-1 pt-1 text-sm font-semibold leading-6 "
-                        >
-                            {{ $t(item.name) }}
-                        </a>
-                    </div>
+        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4">
+            <div class="w-full flex">
+                <div class="text-white w-full mx-auto max-w-3xl flex flex-row justify-between hidden sm:flex sm:space-x-5">
+                    <a
+                        v-for="item in sidebar"
+                        :key="item.name"
+                        :href="item.href"
+                        :class="[item.current ? 'border-capricciosa_green text-white' : 'border-transparent hover:border-gray-300']"
+                        class="uppercase inline-flex items-center border-b-2 px-1 pt-1 text-sm font-semibold leading-6 "
+                    >
+                        {{ $t(item.name) }}
+                    </a>
                 </div>
 
                 <div class="-mr-2 flex items-center sm:hidden">
