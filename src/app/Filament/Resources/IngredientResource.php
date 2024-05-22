@@ -34,7 +34,7 @@ class IngredientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Ingrediente:')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -44,18 +44,22 @@ class IngredientResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        FileUpload::make('img_url')
+                        /*FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
-                        Forms\Components\Select::make('supplier_uuid')
-                            ->relationship('supplier', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->label('Azienda di provenienza')
+                            ->default(null)
+                            ->columnSpanFull(),*/
+                        Forms\Components\Section::make('Azienda:')
+                            ->schema([
+                                Forms\Components\Select::make('supplier_uuid')
+                                    ->relationship('supplier', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->label('Azienda di provenienza')
+                            ])
                     ])->columns(2)
             ]);
     }

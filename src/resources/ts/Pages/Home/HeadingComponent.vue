@@ -49,8 +49,27 @@ const mobileMenuOpen = ref(false)
     <div class="overflow-hidden relative bg-white">
         <div class="mx-auto max-w-7xl">
             <div class="relative z-10 lg:w-full lg:max-w-2xl">
+                <svg class="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
+                     viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="0,0 90,0 50,100 0,100"/>
+                </svg>
 
                 <div class="relative px-6 pt-6 lg:pl-8 lg:pr-0">
+                    <nav class="flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img alt="Your Company" class="h-24 w-auto" :src="images.logo"/>
+                        </a>
+                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
+                                @click="mobileMenuOpen = true">
+                            <span class="sr-only">Open main menu</span>
+                            <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
+                        </button>
+                        <div class="hidden lg:ml-12 lg:block lg:space-x-14">
+                            <a v-for="item in navigation" :key="item.name" :href="route(item.route)"
+                               class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
+                        </div>
+                    </nav>
                     <Dialog as="div" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
                         <DialogPanel class="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
                             <div class="flex flex-row-reverse items-center justify-between">
@@ -78,7 +97,28 @@ const mobileMenuOpen = ref(false)
 
                 <div class="relative py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Location</h1>
+                        <div class="hidden sm:mb-10 sm:flex">
+                            <div
+                                @click="visitEvents"
+                                class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                                {{ $t('Eventi organizzati da noi ') }} <a href="#"
+                                                                          class="whitespace-nowrap font-semibold text-capricciosa_green"><span
+                                class="absolute inset-0" aria-hidden="true"/>{{ $t('Read more') }} <span
+                                aria-hidden="true">&rarr;</span></a>
+                            </div>
+                        </div>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Capricciosa
+                            pizzeria</h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non deserunt
+                            sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
+                            aliqua.</p>
+                        <div class="mt-10 flex items-center gap-x-6">
+                            <a href="#"
+                               class="rounded-md bg-capricciosa_green px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Dove
+                                siamo</a>
+                            <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Raggiungici') }}
+                                <span aria-hidden="true">→</span></a>
+                        </div>
                     </div>
                 </div>
             </div>

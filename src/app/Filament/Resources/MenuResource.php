@@ -42,7 +42,16 @@ class MenuResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        Forms\Components\Section::make('Pagina menu')
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null)
+                            ->columnSpanFull()
+                                ->required(),
+                        Forms\Components\Section::make('Nella pagina dei menù')
                             ->schema([
                                 Forms\Components\Toggle::make('is_visible_in_menus')
                                     ->required()
@@ -55,13 +64,6 @@ class MenuResource extends Resource
                                     ->default(0)
                                     ->label('Ordine di comparsa (pagina menu)'),
                             ])->columns(2),
-                        FileUpload::make('img_url')
-                            ->image()
-                            ->imageEditor()
-                            ->label('Immagine')
-                            ->openable()
-                            ->panelLayout('integrated')
-                            ->default(null),
                     ])->columns(2)
             ]);
     }

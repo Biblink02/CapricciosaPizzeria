@@ -33,16 +33,19 @@ class AllergenResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Nome'),
-                Forms\Components\TextInput::make('number')
-                    ->required()
-                    ->numeric()
-                    ->minValue(1)
-                    ->maxValue(255)
-                    ->label('Numero in tabella'),
+                Forms\Components\Section::make('Allergene:')
+                ->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255)
+                        ->label('Nome'),
+                    Forms\Components\TextInput::make('number')
+                        ->required()
+                        ->numeric()
+                        ->minValue(1)
+                        ->maxValue(255)
+                        ->label('Numero in tabella'),
+                ])->columns(2)
             ]);
     }
 

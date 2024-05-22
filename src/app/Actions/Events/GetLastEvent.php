@@ -8,6 +8,6 @@ use Illuminate\Support\Carbon;
 class GetLastEvent
 {
     public function get() {
-        return Event::where('is_visible',true)->whereStartsAt('>=', Carbon::now())->orderBy('starts_at', 'DESC')->limit(1)->get()->first();
+        return Event::where('is_visible',true)->whereDate('ends_at', '>=', Carbon::now())->orderBy('starts_at', 'asc')->first();
     }
 }

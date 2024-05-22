@@ -16,6 +16,8 @@ class AllergensRelationManager extends RelationManager
 
     protected static ?string $title='Allergeni';
 
+    protected static ?string $label = 'allergene';
+    protected static ?string $pluralLabel = 'allergeni';
 
     public function form(Form $form): Form
     {
@@ -60,13 +62,12 @@ class AllergensRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
                 Tables\Actions\AttachAction::make()
                     ->preloadRecordSelect(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
