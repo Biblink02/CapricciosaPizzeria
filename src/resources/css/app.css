@@ -9,6 +9,13 @@
     @tailwind utilities;
 }
 
+@font-face {
+    font-family: 'CalloveScript';
+    src: url('../fonts/callove-script.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .aspect-square {
     aspect-ratio: 1 / 1;
 }

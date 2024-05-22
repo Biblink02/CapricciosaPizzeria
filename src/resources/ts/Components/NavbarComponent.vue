@@ -20,12 +20,12 @@ const sidebar = computed(() => getSidebar());
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4">
             <div class="w-full flex">
-                <div class="w-full mx-auto max-w-3xl flex flex-row justify-between hidden sm:flex sm:space-x-5">
+                <div class="text-white w-full mx-auto max-w-3xl flex flex-row justify-between hidden sm:flex sm:space-x-5">
                     <a
                         v-for="item in sidebar"
                         :key="item.name"
                         :href="item.href"
-                        :class="[item.current ? 'border-capricciosa_green text-gray-900' : 'border-transparent hover:border-gray-300']"
+                        :class="[item.current ? 'border-capricciosa_green text-white' : 'border-transparent hover:border-gray-300']"
                         class="uppercase inline-flex items-center border-b-2 px-1 pt-1 text-sm font-semibold leading-6 "
                     >
                         {{ $t(item.name) }}

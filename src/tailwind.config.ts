@@ -19,6 +19,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                custom: ['CalloveScript', 'sans-serif'],
                 sans: [
                     'Montserrat',
                     ...defaultTheme.fontFamily.sans,
