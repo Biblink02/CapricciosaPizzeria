@@ -49,13 +49,13 @@ const responsiveOptions = ref([
 
 <template>
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
-        <div class="flex flex-col w-full gap-24">
+        <div class="fle x flex-col w-full gap-24">
 
             <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
 
             <ActivityTimings :event="event"></ActivityTimings>
 
-            <div class="mx-auto max-w-7xl px-5 flex flex-col gap-10">
+            <div class="mx-auto mt-12 max-w-7xl px-5 flex flex-col gap-10">
                 <div class="flex flex-col">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         {{ $t('Alcuni dei nostri piatti') }}</h2>
@@ -87,9 +87,9 @@ const responsiveOptions = ref([
                 </Carousel>
             </div>
 
-            <Suppliers :suppliers="suppliers"/>
+            <Suppliers class="mt-12" :suppliers="suppliers"/>
 
-            <Social></Social>
+            <Social/>
         </div>
     </AppLayout>
 </template>
