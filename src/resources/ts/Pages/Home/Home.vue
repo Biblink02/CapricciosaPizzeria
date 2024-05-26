@@ -51,17 +51,15 @@ const responsiveOptions = ref([
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
         <div class="fle x flex-col w-full gap-24">
 
-            <HeadingComponent class="shadow-sm" :sliding-images="slidingImages"></HeadingComponent>
+            <HeadingComponent :sliding-images="slidingImages"></HeadingComponent>
 
             <ActivityTimings :event="event"></ActivityTimings>
 
             <div class="mx-auto mt-12 max-w-7xl px-5 flex flex-col gap-10">
                 <div class="flex flex-col">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        {{ $t('Alcuni dei nostri piatti') }}</h2>
-                    <p class="mt-3 max-w-3xl text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et
-                        fermentum, augue.</p>
+                        {{ $t('Some of our Dishes') }}</h2>
+                    <p class="mt-3 max-w-3xl text-lg text-gray-500">{{$t('Indulge in a culinary journey with our diverse menu, crafted from the finest ingredients and bursting with flavor.')}}</p>
                 </div>
 
                 <Carousel

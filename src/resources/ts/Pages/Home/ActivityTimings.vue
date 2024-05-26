@@ -14,6 +14,7 @@ import {SparklesIcon} from "@heroicons/vue/16/solid";
 import EmptyStateComponent from "@/Components/EmptyStateComponent.vue";
 import route from "ziggy-js";
 import {router} from "@inertiajs/vue3";
+import ButtonComponent from "@/Components/ButtonComponent.vue";
 
 defineProps<{
     event: Event
@@ -32,29 +33,16 @@ const visitMenus = () => {
 <template>
     <div class="max-w-7xl w-full px-6 mx-auto flex flex-row">
         <!-- 3 bottoni rosa -->
-        <div class="w-1/3 flex flex-col">
-            <div class="h-10"></div>
-            <div class="w-full h-1/6 flex">
-                <button @click="" type="button"
-                        class="w-2/5 mx-auto mt-5 mb-5 rounded-md border border-transparent bg-capricciosa_green py-2 px-4 text-sm font-medium text-white shadow hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">
-                    {{ $t('Menu') }}
-                </button>
-            </div>
-            <div class="h-1/6"></div>
-            <div class="w-full h-1/6 flex">
-                <button @click="" type="button"
-                        class="w-2/5 mx-auto mt-5 mb-5 rounded-md border border-transparent bg-capricciosa_green py-2 px-4 text-sm font-medium text-white shadow hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">
-                    {{ $t('Book') }}
-                </button>
-            </div>
-            <div class="h-1/6"></div>
-            <div class="w-full h-1/6 flex">
-                <button @click="" type="button"
-                        class="w-2/5 mx-auto mt-5 mb-5 rounded-md border border-transparent bg-capricciosa_green py-2 px-4 text-sm font-medium text-white shadow hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">
-                    {{ $t('Timetables') }}
-                </button>
-            </div>
-            <div class="h-1/6"></div>
+        <div class="w-1/3 flex flex-col justify-between my-10">
+            <ButtonComponent class="w-2/5 mx-auto">
+                {{ $t('Menu') }}
+            </ButtonComponent>
+            <ButtonComponent class="w-2/5 mx-auto">
+                {{ $t('Book') }}
+            </ButtonComponent>
+            <ButtonComponent class="w-2/5 mx-auto">
+                {{ $t('Opening hours') }}
+            </ButtonComponent>
         </div>
 
         <!-- Eventi -->
@@ -76,10 +64,9 @@ const visitMenus = () => {
             </EmptyStateComponent>
             <Event v-if="event" :event="event"></Event>
             <div class="flex justify-end mt-8">
-                <button @click="visitEvents" type="button"
-                        class="rounded-md border border-transparent bg-capricciosa_green py-2 px-4 text-sm font-medium text-white shadow hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">
-                    {{ $t('Vai agli eventi') }}
-                </button>
+                <ButtonComponent>
+                    {{ $t('Go to events') }}
+                </ButtonComponent>
             </div>
         </div>
     </div>

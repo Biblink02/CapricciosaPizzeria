@@ -7,6 +7,7 @@ import Carousel from "primevue/carousel";
 import Button from "primevue/button";
 import {router, usePage} from "@inertiajs/vue3";
 import route from "ziggy-js";
+import ButtonComponent from "@/Components/ButtonComponent.vue";
 
 defineProps<{
     slidingImages: SlidingImage[]
@@ -101,32 +102,29 @@ const mobileMenuOpen = ref(false)
                             <div
                                 @click="visitEvents"
                                 class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                {{ $t('Eventi organizzati da noi ') }} <a href="#"
+                                {{ $t('Events organized by us') }} <a href="#"
                                                                           class="whitespace-nowrap font-semibold text-capricciosa_green"><span
                                 class="absolute inset-0" aria-hidden="true"/>{{ $t('Read more') }} <span
                                 aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
                         <div class="w-fit">
-                            <p class="text-4xl w-fit font-[CalloveScript] text-gray-800 sm:text-5xl">
-                                Capricciosa</p>
-                            <p class="mx-auto tracking-widest w-fit uppercase text-[#c2434c] text-gray-900 sm:text-3xl">pizzeria</p>
+                            <p class="text-4xl w-fit font-[CalloveScript] text-gray-800 sm:text-5xl">Capricciosa</p>
+                            <p class="mx-auto tracking-widest w-fit uppercase text-capricciosa_red sm:text-3xl">pizzeria</p>
                         </div>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non deserunt
-                            sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-                            aliqua.</p>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">{{$t('Welcome to our pizzeria, where tradition meets quality. Enjoy a delightful dining experience with our diverse menu, crafted from the finest ingredients to ensure every bite is a burst of flavor.')}}</p>
                         <div class="mt-10 flex items-center gap-x-6">
-                            <a href="#"
-                               class="rounded-md bg-capricciosa_green px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-offset-2">Dove
-                                siamo</a>
-                            <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Raggiungici') }}
+                            <ButtonComponent>
+                                {{$t('Our story')}}
+                            </ButtonComponent>
+                            <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
                                 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="overflow-hidden bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <Carousel
                 class="overflow-hidden max-lg:mx-5 object-cover lg:aspect-auto lg:h-full lg:w-full"
                 :value="slidingImages"

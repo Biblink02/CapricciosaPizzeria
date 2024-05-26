@@ -41,10 +41,6 @@ html {
     height: var(--navbar-height);
 }
 
-.footer {
-    height: var(--footer-height);
-}
-
 /**
     PrimeVue Theme
     Based on: https://github.com/primefaces/primevue/blob/4223a8f89537ea62e0e78962643e5f079f23ef6c/public/themes/lara-light-amber/theme.css

@@ -16,7 +16,7 @@ const props = defineProps<{
 
             <div>
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{$t('Le nostre eccellenze')}}</h2>
-                    <p class="mt-3 max-w-3xl text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue.</p>
+                    <p class="mt-3 max-w-3xl text-lg text-gray-500">{{$t('We proudly partner with top-quality suppliers to bring you the best ingredients for every dish.')}}</p>
                 <div class="mt-8 sm:flex">
                 </div>
             </div>

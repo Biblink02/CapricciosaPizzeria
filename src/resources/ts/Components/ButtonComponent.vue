@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <button href="#" class="rounded-md bg-capricciosa_green px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-capricciosa-green-400">
+    <button href="#" class="mt-5 mb-5 rounded-md border border-transparent bg-capricciosa_green py-2 px-4 text-sm font-medium text-white shadow hover:bg-capricciosa_dark_green focus:outline-none focus:ring-2 focus:ring-capricciosa-green focus:ring-offset-2">
         <slot></slot>
     </button>
 </template>

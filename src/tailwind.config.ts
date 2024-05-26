@@ -10,11 +10,14 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/ts/**/*.vue',
     ],
-
+    daisyui: {
+        themes: ["light"],
+    },
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
+        require('daisyui')
     ],
     theme: {
         extend: {
@@ -27,6 +30,8 @@ export default {
             },
             colors: {
                 capricciosa_green: '#a5b977',
+                capricciosa_dark_green: '#91a46a',
+                capricciosa_red: '#c2434c'
             }
         }
     }
