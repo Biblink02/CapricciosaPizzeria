@@ -55,7 +55,7 @@ const mobileMenuOpen = ref(false)
                     <polygon points="0,0 90,0 50,100 0,100"/>
                 </svg>
 
-                <div class="relative px-6 pt-6 lg:pl-8 lg:pr-0">
+                <div class="relative pt-6 lg:pl-8 lg:pr-0">
                     <nav class="flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                         <a href="#" class="-m-1.5 p-1.5">
                             <span class="sr-only">Your Company</span>
@@ -72,7 +72,7 @@ const mobileMenuOpen = ref(false)
                         </div>
                     </nav>
                     <Dialog as="div" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-                        <DialogPanel class="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
+                        <DialogPanel class="fixed inset-0 z-10 overflow-y-auto bg-white py-6 lg:hidden">
                             <div class="flex flex-row-reverse items-center justify-between">
                                 <button type="button"
                                         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -96,7 +96,7 @@ const mobileMenuOpen = ref(false)
                     </Dialog>
                 </div>
 
-                <div class="relative py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
+                <div class="relative py-32 sm:py-40 lg:py-56 lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
                             <div
@@ -126,7 +126,7 @@ const mobileMenuOpen = ref(false)
         </div>
         <div class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <Carousel
-                class="overflow-hidden max-lg:mx-5 object-cover lg:aspect-auto lg:h-full lg:w-full"
+                class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full"
                 :value="slidingImages"
                 :num-visible="1"
                 :num-scroll="1"

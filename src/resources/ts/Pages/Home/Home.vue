@@ -4,7 +4,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
 import Carousel from "primevue/carousel";
 import {images} from "@/Types/ImageHelper";
-import ActivityTimings from "@/Pages/Home/ActivityTimings.vue";
+import Events from "@/Pages/Home/Events.vue";
 import Suppliers from "@/Pages/Home/Suppliers.vue";
 import {Dialog, DialogPanel} from '@headlessui/vue'
 import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
@@ -49,13 +49,13 @@ const responsiveOptions = ref([
 
 <template>
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
-        <div class="fle x flex-col w-full gap-24">
+        <div class="flex px-5 flex-col w-full gap-24">
 
             <HeadingComponent :sliding-images="slidingImages"></HeadingComponent>
 
-            <ActivityTimings :event="event"></ActivityTimings>
+            <Events :event="event"></Events>
 
-            <div class="mx-auto mt-12 max-w-7xl px-5 flex flex-col gap-10">
+            <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         {{ $t('Some of our Dishes') }}</h2>

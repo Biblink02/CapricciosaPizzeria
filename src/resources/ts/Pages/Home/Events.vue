@@ -31,22 +31,22 @@ const visitMenus = () => {
 
 
 <template>
-    <div class="max-w-7xl w-full px-6 mx-auto flex flex-row">
+    <div class="max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
         <!-- 3 bottoni rosa -->
-        <div class="w-1/3 flex flex-col justify-between mb-24 mt-10">
-            <ButtonComponent class="w-2/5 mx-auto">
+        <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 mt-10">
+            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Menu') }}
             </ButtonComponent>
-            <ButtonComponent class="w-2/5 mx-auto">
+            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Book') }}
             </ButtonComponent>
-            <ButtonComponent class="w-2/5 mx-auto">
+            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Opening hours') }}
             </ButtonComponent>
         </div>
 
         <!-- Eventi -->
-        <div class="w-2/3 mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
+        <div class="sm:w-2/3 w-full mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
             <EmptyStateComponent v-if="!event" class="max-w-2xl mx-auto">
                 <template #title>
                     {{ $t('There are no events') }}
