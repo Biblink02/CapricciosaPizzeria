@@ -33,7 +33,7 @@ const visitMenus = () => {
 <template>
     <div class="max-w-7xl w-full px-6 mx-auto flex flex-row">
         <!-- 3 bottoni rosa -->
-        <div class="w-1/3 flex flex-col justify-between my-10">
+        <div class="w-1/3 flex flex-col justify-between mb-24 mt-10">
             <ButtonComponent class="w-2/5 mx-auto">
                 {{ $t('Menu') }}
             </ButtonComponent>
