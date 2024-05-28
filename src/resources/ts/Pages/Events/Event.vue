@@ -11,7 +11,7 @@ console.log(props.event)
 
 <template>
 
-    <div class="text-left flex flex-col overflow-hidden rounded-lg shadow-lg">
+    <div class="max-w-sm w-full text-left flex flex-col overflow-hidden rounded-lg shadow-lg">
         <div class="flex-shrink-0">
             <img class="h-48 w-full object-cover" :src="'images/'+event?.img_url" alt=""/>
         </div>

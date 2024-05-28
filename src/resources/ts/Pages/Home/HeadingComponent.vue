@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {Dialog, DialogPanel} from '@headlessui/vue'
+import {Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
 import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
 import {images} from "@/Types/ImageHelper.js";
 import Carousel from "primevue/carousel";
@@ -8,6 +8,7 @@ import Button from "primevue/button";
 import {router, usePage} from "@inertiajs/vue3";
 import route from "ziggy-js";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
+import NavbarComponent from "@/Components/NavbarComponent.vue";
 
 defineProps<{
     slidingImages: SlidingImage[]
@@ -47,75 +48,39 @@ const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-    <div class="overflow-hidden relative bg-white">
+    <div class="overflow-hidden lg:-mr-5 relative bg-white">
         <div class="mx-auto max-w-7xl">
             <div class="relative z-10 lg:w-full lg:max-w-2xl">
-                <svg class="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
-                     viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <svg
+                    class="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
+                    viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="0,0 90,0 50,100 0,100"/>
                 </svg>
-
-                <div class="relative pt-6 lg:pl-8 lg:pr-0">
-                    <nav class="flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
-                            <img alt="Your Company" class="h-24 w-auto" :src="images.logo"/>
-                        </a>
-                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 lg:hidden"
-                                @click="mobileMenuOpen = true">
-                            <span class="sr-only">Open main menu</span>
-                            <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
-                        </button>
-                        <div class="hidden lg:ml-12 lg:block lg:space-x-14">
-                            <a v-for="item in navigation" :key="item.name" :href="route(item.route)"
-                               class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
-                        </div>
-                    </nav>
-                    <Dialog as="div" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-                        <DialogPanel class="fixed inset-0 z-10 overflow-y-auto bg-white py-6 lg:hidden">
-                            <div class="flex flex-row-reverse items-center justify-between">
-                                <button type="button"
-                                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                                        @click="mobileMenuOpen = false">
-                                    <span class="sr-only">Close menu</span>
-                                    <XMarkIcon class="h-6 w-6" aria-hidden="true"/>
-                                </button>
-                                <a href="#" class="-m-1.5 p-1.5">
-                                    <span class="sr-only">Your Company</span>
-                                    <img class="h-8"
-                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""/>
-                                </a>
-                            </div>
-                            <div class="mt-6 space-y-2">
-                                <a v-for="item in navigation" :key="item.name" :href="route(item.route)"
-                                   class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10">{{
-                                        item.name
-                                    }}</a>
-                            </div>
-                        </DialogPanel>
-                    </Dialog>
+                <div class="relative pt-6 lg:pl-8 lg:pr-0 max-sm:pb-8">
+                    <NavbarComponent class="shadow-none"></NavbarComponent>
                 </div>
-
-                <div class="relative py-32 sm:py-40 lg:py-56 lg:pr-0">
+                <div class="relative sm:py-40 lg:py-40 lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
                             <div
                                 @click="visitEvents"
                                 class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                 {{ $t('Events organized by us') }} <a href="#"
-                                                                          class="whitespace-nowrap font-semibold text-capricciosa_green"><span
+                                                                      class="whitespace-nowrap font-semibold text-capricciosa_green"><span
                                 class="absolute inset-0" aria-hidden="true"/>{{ $t('Read more') }} <span
                                 aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
                         <div class="w-fit">
                             <p class="text-4xl w-fit font-[CalloveScript] text-gray-800 sm:text-5xl">Capricciosa</p>
-                            <p class="mx-auto tracking-widest w-fit uppercase text-capricciosa_red sm:text-3xl">pizzeria</p>
+                            <p class="mx-auto tracking-widest w-fit uppercase text-capricciosa_red sm:text-3xl">
+                                pizzeria</p>
                         </div>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">{{$t('Welcome to our pizzeria, where tradition meets quality. Enjoy a delightful dining experience with our diverse menu, crafted from the finest ingredients to ensure every bite is a burst of flavor.')}}</p>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            {{ $t('Welcome to our pizzeria, where tradition meets quality. Enjoy a delightful dining experience with our diverse menu, crafted from the finest ingredients to ensure every bite is a burst of flavor.') }}</p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent>
-                                {{$t('Our story')}}
+                                {{ $t('Our story') }}
                             </ButtonComponent>
                             <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
                                 <span aria-hidden="true">→</span></a>

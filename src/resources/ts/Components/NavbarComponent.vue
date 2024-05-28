@@ -19,9 +19,9 @@ const sidebar = computed(() => getSidebar());
         as="nav"
         class="w-full bg-white shadow"
     >
-        <div class="flex flex-col justify-center navbar mx-auto max-w-screen-2xl px-4 py-12">
-            <div class="flex flex-row h-16">
-                <img :src="images.logo" alt="logo" class="object-scale-down w-24 mx-5">
+        <div class="flex flex-col justify-center navbar mx-auto max-w-2xl py-12">
+            <div class="flex flex-row h-16 justify-between w-full ">
+                <img :src="images.logo" alt="logo" class="object-scale-down w-24">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
                         <a
@@ -57,14 +57,14 @@ const sidebar = computed(() => getSidebar());
         </div>
 
         <DisclosurePanel class="sm:hidden">
-            <div class="space-y-1 pt-2 pb-3 border-b-4 border-red-500">
+            <div class="space-y-1 pt-2 pb-3">
                 <DisclosureButton
                     v-for="item in sidebar"
                     :key="item.name"
                     as="a"
                     :href="item.href"
-                    :class="[item.current ? 'bg-orange-50 border-orange-500 text-orange-700' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
-                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    :class="[item.current ? 'bg-green-50 border-orange-500 text-capricciosa_dark_green' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700']"
+                    class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium hover:border-gray-300 hover:text-gray-700"
                 >
                     {{ $t(item.name) }}
                 </DisclosureButton>

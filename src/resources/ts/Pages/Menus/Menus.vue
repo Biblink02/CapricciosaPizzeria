@@ -12,7 +12,7 @@ const props = defineProps<{
     menus: Menu[]
 }>()
 
-const visitAllergens = ()=>{
+const visitAllergens = () => {
     window.open(route('allergens-table'), '_blank');
 }
 
@@ -25,7 +25,8 @@ const numMenu = ref(0);
     <AppLayout :footer="page.footer" :title="$t('Menus')">
 
         <!-- IMMAGINE DI SFONDO MENU -->
-        <div :style="'background-image: url(images/'+menus[numMenu]?.img_url+')'" class="h-80 grid place-content-center bg-cover bg-center text-white font-bold text-6xl">
+        <div :style="'background-image: url(images/'+menus[numMenu]?.img_url+')'"
+             class="h-80 grid place-content-center bg-cover bg-center text-white font-bold text-6xl">
             {{ $t('Menù') }} {{ $t(menus[numMenu]?.name ?? '') }}
         </div>
         <!-- SELEZIONE DEI MENU -->
@@ -34,30 +35,25 @@ const numMenu = ref(0);
         <div class="bg-gray-50">
             <!-- HEADER CON NOME MENU -->
             <div class="grid place-content-center text-bold text-3xl pb-8 pt-6 bg-gray-50">
-                {{ $t('Menu') }}  {{ $t(menus[numMenu]?.name ?? '') }}
+                {{ $t('Menu') }} {{ $t(menus[numMenu]?.name ?? '') }}
             </div>
 
             <!-- PIATTI DEL MENU -->
-            <div class="grid place-content-center space-y-6">
-                <hr>
-                <div v-for="dish in menus[numMenu]?.dishes">
-                    <div class="pb-6">
-                        <Dish :dish="dish"/>
-                    </div>
-                    <hr>
-                </div>
+            <div class="flex w-fit mx-auto flex-col place-content-center space-y-6">
+                <Dish v-for="dish in menus[numMenu]?.dishes" :dish="dish"/>
+                <hr class="w-full">
+            </div>
 
-            </div>
-            <!-- BOTTONE ALLERGENI -->
-            <div class="flex justify-center pt-6 pb-6">
-                <Button :label="'Lista Allergeni'" @click="visitAllergens"/>
-            </div>
+        </div>
+        <!-- BOTTONE ALLERGENI -->
+        <div class="flex justify-center pt-6 pb-6">
+            <Button :label="'Lista Allergeni'" @click="visitAllergens"/>
         </div>
     </AppLayout>
 </template>
 
 <style>
-.p-tabmenu-ink-bar{
+.p-tabmenu-ink-bar {
     display: none;
 }
 </style>
