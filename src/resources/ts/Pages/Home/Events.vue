@@ -31,9 +31,9 @@ const visitMenus = () => {
 
 
 <template>
-    <div class="max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
+    <div class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
         <!-- 3 bottoni rosa -->
-        <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 mt-10">
+        <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 my-auto">
             <ButtonComponent class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Menu') }}
             </ButtonComponent>
@@ -46,7 +46,7 @@ const visitMenus = () => {
         </div>
 
         <!-- Eventi -->
-        <div class="sm:w-2/3 w-full mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
+        <div class="h-full sm:w-2/3 w-full">
             <EmptyStateComponent v-if="!event" class="max-w-2xl mx-auto">
                 <template #title>
                     {{ $t('There are no events') }}
@@ -62,12 +62,7 @@ const visitMenus = () => {
                 <template #button>
                 </template>
             </EmptyStateComponent>
-            <Event v-if="event" :event="event"></Event>
-            <div class="flex justify-end mt-8">
-                <ButtonComponent>
-                    {{ $t('Go to events') }}
-                </ButtonComponent>
-            </div>
+            <Event class="h-full" type="big" v-if="event" :event="event"></Event>
         </div>
     </div>
 </template>
