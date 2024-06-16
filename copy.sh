@@ -1,0 +1,1 @@
+cp -r ./ /var/web/sites/capricciosa_pizzerie/
