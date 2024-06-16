@@ -44,7 +44,6 @@ const visitEvents = () => {
     router.visit(route('events'))
 }
 
-const mobileMenuOpen = ref(false)
 </script>
 
 <template>
@@ -82,7 +81,7 @@ const mobileMenuOpen = ref(false)
                             <ButtonComponent>
                                 {{ $t('Our story') }}
                             </ButtonComponent>
-                            <a href="#" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
+                            <a href="https://maps.app.goo.gl/gvkqb3a28VrAaKmz6" target="_blank" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
                                 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>

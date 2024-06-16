@@ -9,7 +9,6 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-    hostname: "${CONTAINER_NAME}-docker.local"
     networks:
       default:
         ipv4_address: "${CONTAINER_SERVICE_PROXY_IP_ADDRESS}"
@@ -27,7 +26,6 @@ services:
     volumes:
       - "./src:/var/www/app"
       - "./docker:/scripts"
-    hostname: "${CONTAINER_NAME}-docker.local"
     networks:
       default:
         ipv4_address: "${CONTAINER_SERVICE_APP_IP_ADDRESS}"

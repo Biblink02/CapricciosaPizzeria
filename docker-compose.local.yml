@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   app:
     image: "sindriainc/nginx-php:6.0.0-local-8.2"

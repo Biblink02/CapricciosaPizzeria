@@ -31,8 +31,6 @@ const showOpeningHoursDialog = () => {
 
 
 <template>
-    <!-- TODO sistemare i dialog -->
-    <!-- Dialog for booking -->
     <dialog ref="bookDialog" class="modal">
         <div class="modal-box">
             <form method="dialog">
@@ -40,14 +38,15 @@ const showOpeningHoursDialog = () => {
                 </button>
             </form>
             <h3 class="font-bold text-lg">{{ $t("Book") }}:</h3>
-            <p class="py-4">{{ $t("Bookings are accepted at the following numbers") }}</p>
+            <p class="py-4">{{ $t("Bookings are accepted at the following numbers:") }}</p>
+            <p class="font-bold">{{ 'Tel: +390444022349' }}</p>
+            <p class="font-bold">{{ 'Mobile: +393292983245' }}</p>
         </div>
 
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
         </form>
     </dialog>
-    <!-- Dialog for Opening Hours -->
     <dialog ref="openingHoursDialog" class="modal">
         <div class="modal-box">
             <form method="dialog">
@@ -55,7 +54,7 @@ const showOpeningHoursDialog = () => {
                 </button>
             </form>
             <h3 class="font-bold text-lg">{{ $t("Opening hours") }}:</h3>
-            <p class="py-4">{{ $t("From 18:00 to 23:30") }}, {{ $t("Closed on Thursday")}}</p>
+            <p class="py-4">{{ $t("From 18:00 to 23:30") }}, {{ $t("Closed on Thursday") }}</p>
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
