@@ -10,10 +10,10 @@ return [
             'name' => 'Home',
             'route' => 'home',
         ],
-        [
+/*        [
             'name' => 'Chi siamo',
             'route' => 'who-are-we',
-        ],
+        ],*/
         [
             'name' => 'Menu',
             'route' => 'menus',
