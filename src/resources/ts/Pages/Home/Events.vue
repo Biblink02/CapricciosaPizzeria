@@ -19,41 +19,47 @@ const visitMenus = () => {
 
 const bookDialog = ref()
 const showBookDialog = () => {
-    console.log(bookDialog)
-    bookDialog.showModal()
+    bookDialog.value.showModal()
 }
-const hideBookDialog = () => {
-    isBookDialogOpen.value = true
-}
-const isOpeningHoursDialogOpen = ref(false)
+
+const openingHoursDialog = ref()
 const showOpeningHoursDialog = () => {
-    isOpeningHoursDialogOpen.value = true
+    openingHoursDialog.value.showModal()
 }
-const hideOpeningHoursDialog = () => {
-    isOpeningHoursDialogOpen.value = false
-}
+
 </script>
 
 
 <template>
-
-    <dialog ref="bookDialog" id="my_modal_3" class="modal z-100">
-        <div class="modal-box z-100">
-            <form method="dialog">
-                <button @click="hideBookDialog" class="z-100 btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <h3 class="z-100 font-bold text-lg">Hello!</h3>
-            <p class="z-100 py-4">Press ESC key or click on ✕ button to close</p>
-        </div>
-    </dialog>
-    <dialog v-if="isOpeningHoursDialogOpen" id="aaaa" class="modal">
+    <!-- TODO sistemare i dialog -->
+    <!-- Dialog for booking -->
+    <dialog ref="bookDialog" class="modal">
         <div class="modal-box">
             <form method="dialog">
-                <button @click="hideOpeningHoursDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕
+                </button>
             </form>
-            <h3 class="font-bold text-lg">Hello!</h3>
-            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+            <h3 class="font-bold text-lg">{{ $t("Book") }}:</h3>
+            <p class="py-4">{{ $t("Bookings are accepted at the following numbers") }}</p>
         </div>
+
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+    <!-- Dialog for Opening Hours -->
+    <dialog ref="openingHoursDialog" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">{{ $t("Opening hours") }}:</h3>
+            <p class="py-4">{{ $t("From 18:00 to 23:30") }}, {{ $t("Closed on Thursday")}}</p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
     </dialog>
 
     <div class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
@@ -82,7 +88,7 @@ const hideOpeningHoursDialog = () => {
                 </template>
                 <template #description>
                     {{
-                        $t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere ornare velit, non efficitur nisl imperdiet vitae. Donec mi turpis, accumsan eu sagittis in, iaculis nec tellus. Maecenas maximus consequat ante, eget aliquam ligula vehicula eu. In non augue quis purus scelerisque placerat sed in justo. Vivamus justo dolor, c')
+                        $t('There are currently no events scheduled, we will organize one as soon as possible!')
                     }}
                 </template>
                 <template #button>
@@ -92,3 +98,9 @@ const hideOpeningHoursDialog = () => {
         </div>
     </div>
 </template>
+
+<style scoped>
+.cursor-default {
+    cursor: default;
+}
+</style>

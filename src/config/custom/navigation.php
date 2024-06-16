@@ -19,7 +19,7 @@ return [
             'route' => 'menus',
         ],
         [
-            'name' => 'Eventi',
+            'name' => 'Events',
             'route' => 'events',
         ]
     ],

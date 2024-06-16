@@ -39,7 +39,7 @@ const page = usePage();
                 </template>
                 <template #description>
                     {{
-                        $t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere ornare velit, non efficitur nisl imperdiet vitae. Donec mi turpis, accumsan eu sagittis in, iaculis nec tellus. Maecenas maximus consequat ante, eget aliquam ligula vehicula eu. In non augue quis purus scelerisque placerat sed in justo. Vivamus justo dolor, c')
+                        $t('There are currently no events scheduled, we will organize one as soon as possible!')
                     }}
                 </template>
                 <template #button>
