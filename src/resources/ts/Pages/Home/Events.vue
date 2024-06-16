@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import {
-    CalendarIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    EllipsisHorizontalIcon,
-    MapPinIcon,
-    SunIcon,
-    MoonIcon
-} from '@heroicons/vue/20/solid'
-import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
+
 import Event from "@/Pages/Events/Event.vue";
 import {SparklesIcon} from "@heroicons/vue/16/solid";
 import EmptyStateComponent from "@/Components/EmptyStateComponent.vue";
@@ -26,9 +17,10 @@ const visitMenus = () => {
     router.visit(route('menus'))
 }
 
-const isBookDialogOpen = ref(false)
+const bookDialog = ref()
 const showBookDialog = () => {
-    isBookDialogOpen.value = true
+    console.log(bookDialog)
+    bookDialog.showModal()
 }
 const hideBookDialog = () => {
     isBookDialogOpen.value = true
@@ -45,16 +37,16 @@ const hideOpeningHoursDialog = () => {
 
 <template>
 
-    <dialog v-if="isBookDialogOpen" id="my_modal_3" class="modal">
-        <div class="modal-box">
+    <dialog ref="bookDialog" id="my_modal_3" class="modal z-100">
+        <div class="modal-box z-100">
             <form method="dialog">
-                <button @click="hideBookDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button @click="hideBookDialog" class="z-100 btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
-            <h3 class="font-bold text-lg">Hello!</h3>
-            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+            <h3 class="z-100 font-bold text-lg">Hello!</h3>
+            <p class="z-100 py-4">Press ESC key or click on ✕ button to close</p>
         </div>
     </dialog>
-    <dialog v-if="isOpeningHoursDialogOpen" id="my_modal_3" class="modal">
+    <dialog v-if="isOpeningHoursDialogOpen" id="aaaa" class="modal">
         <div class="modal-box">
             <form method="dialog">
                 <button @click="hideOpeningHoursDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
