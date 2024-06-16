@@ -15,32 +15,66 @@ import EmptyStateComponent from "@/Components/EmptyStateComponent.vue";
 import route from "ziggy-js";
 import {router} from "@inertiajs/vue3";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
+import {ref} from "vue";
 
 defineProps<{
     event: Event
 }>()
 
-const visitEvents = () => {
-    router.visit(route('events'))
-}
 
 const visitMenus = () => {
     router.visit(route('menus'))
+}
+
+const isBookDialogOpen = ref(false)
+const showBookDialog = () => {
+    isBookDialogOpen.value = true
+}
+const hideBookDialog = () => {
+    isBookDialogOpen.value = true
+}
+const isOpeningHoursDialogOpen = ref(false)
+const showOpeningHoursDialog = () => {
+    isOpeningHoursDialogOpen.value = true
+}
+const hideOpeningHoursDialog = () => {
+    isOpeningHoursDialogOpen.value = false
 }
 </script>
 
 
 <template>
+
+    <dialog v-if="isBookDialogOpen" id="my_modal_3" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button @click="hideBookDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg">Hello!</h3>
+            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+        </div>
+    </dialog>
+    <dialog v-if="isOpeningHoursDialogOpen" id="my_modal_3" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button @click="hideOpeningHoursDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg">Hello!</h3>
+            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+        </div>
+    </dialog>
+
     <div class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
-        <!-- 3 bottoni rosa -->
+
+        <!-- 3 bottoni -->
         <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 my-auto">
-            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
+            <ButtonComponent @click="visitMenus" class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Menu') }}
             </ButtonComponent>
-            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
+            <ButtonComponent @click="showBookDialog" class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Book') }}
             </ButtonComponent>
-            <ButtonComponent class="sm:w-2/5 w-full mx-auto">
+            <ButtonComponent @click="showOpeningHoursDialog" class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Opening hours') }}
             </ButtonComponent>
         </div>

@@ -2,12 +2,18 @@
 import {Event} from "@/Types/Event";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
 import {formatDate} from "@/Types/DateFormatterHelper";
+import {router} from "@inertiajs/vue3";
+import route from "ziggy-js";
 
 const props = defineProps<{
     event: Event,
     type?: 'big' | 'normal'
 }>()
 console.log(props.event)
+
+const visitEvents = () => {
+    router.visit(route('events'))
+}
 </script>
 
 <template>
@@ -22,7 +28,7 @@ console.log(props.event)
                 <time :datetime="event.ends_at">{{$t('al ')}}{{ formatDate(event.ends_at) }}</time>
             </div>
             <div class="card-actions justify-end">
-                <ButtonComponent>
+                <ButtonComponent @click="visitEvents">
                     {{ $t('Go to events') }}
                 </ButtonComponent>
             </div>
