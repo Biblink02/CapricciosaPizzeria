@@ -38,7 +38,7 @@ const showOpeningHoursDialog = () => {
                 </button>
             </form>
             <h3 class="font-bold text-lg">{{ $t("Book") }}:</h3>
-            <p class="py-4">{{ $t("Bookings are accepted at the following numbers:") }}</p>
+            <p class="py-4">{{ $t("Bookings are accepted at the following numbers") }}:</p>
             <p class="font-bold">{{ 'Tel: +390444022349' }}</p>
             <p class="font-bold">{{ 'Mobile: +393292983245' }}</p>
         </div>
@@ -54,7 +54,7 @@ const showOpeningHoursDialog = () => {
                 </button>
             </form>
             <h3 class="font-bold text-lg">{{ $t("Opening hours") }}:</h3>
-            <p class="py-4">{{ $t("From 18:00 to 23:30") }}, {{ $t("Closed on Thursday") }}</p>
+            <p class="py-4">{{ $t("Every day, except Tuesday, from 6:00 PM to 11:00 PM") }}</p>
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
@@ -99,7 +99,5 @@ const showOpeningHoursDialog = () => {
 </template>
 
 <style scoped>
-.cursor-default {
-    cursor: default;
-}
+
 </style>

@@ -9,7 +9,7 @@ const props = defineProps<{
     event: Event,
     type?: 'big' | 'normal'
 }>()
-console.log(props.event)
+
 
 const visitEvents = () => {
     router.visit(route('events'))
