@@ -11,4 +11,10 @@ return [
     [
         'image'=> 'carousel_3'
     ],
+    [
+        'image'=> 'carousel_4'
+    ],
+    [
+        'image'=> 'carousel_5'
+    ],
 ];

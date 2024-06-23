@@ -1,7 +1,5 @@
 <script setup lang="ts">
 
-import route from "ziggy-js";
-
 
 const props = defineProps<{
     suppliers: Supplier[]
@@ -15,14 +13,15 @@ const props = defineProps<{
         <div class="grid place-content-center">
 
             <div>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $t('Our excellences')}}</h2>
-                    <p class="mt-3 max-w-3xl text-lg text-gray-500">{{$t('We proudly partner with top-quality suppliers to bring you the best ingredients for every dish.')}}</p>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $t('Our excellences') }}</h2>
+                <p class="mt-3 max-w-3xl text-lg text-gray-500">
+                    {{ $t('We proudly partner with top-quality suppliers to bring you the best ingredients for every dish.') }}</p>
                 <div class="mt-8 sm:flex">
                 </div>
             </div>
 
 
-            <div class="mx-auto space-x-8 space-y-10 max-w-5xl flex flex-row flex-wrap justify-around place-content-center" >
+            <div class="mx-auto gap-8 max-w-5xl flex flex-row flex-wrap justify-between place-content-center">
                 <template v-for="supplier in suppliers">
                     <img
                         class="w-1/5 h-auto object-scale-down"

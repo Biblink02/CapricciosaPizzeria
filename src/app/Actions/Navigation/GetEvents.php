@@ -10,6 +10,6 @@ class GetEvents
 {
     public function get(): Collection
     {
-        return Event::where('is_visible',true)->get();
+        return Event::where('is_visible',true)->orderBy('starts_at','desc')->get();
     }
 }

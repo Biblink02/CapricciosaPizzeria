@@ -36,7 +36,7 @@ const visitEvents = () => {
     </div>
 
     <div v-else class="card w-96 bg-base-100 shadow-xl">
-        <figure><img :src="'images/'+event?.img_url" alt="Shoes" /></figure>
+        <figure><img :src="'images/'+event?.img_url" alt="Event" /></figure>
         <div class="card-body">
             <h2 class="card-title">
                 {{ event.name }}
