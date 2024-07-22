@@ -9,10 +9,19 @@ import '@fontsource/roboto';
 import PrimeVue from 'primevue/config';
 import Wind from './Presets/Wind'
 
+
 import {languages, locale, fallbackLocale} from '../../lang/lang.js';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 
+// essential styles
+import 'vue-pdf-embed/dist/style/index.css'
+
+// optional styles
+import 'vue-pdf-embed/dist/style/annotationLayer.css'
+import 'vue-pdf-embed/dist/style/textLayer.css'
+
 const messages = Object.assign(languages);
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'CapricciosaPizzeria';
 
@@ -35,7 +44,7 @@ createInertiaApp({
         createApp({render: () => h(App, props)})
             .use(plugin)
             .use(i18n)
-            .use(PrimeVue,{
+            .use(PrimeVue, {
                 pt: Wind
             })
             .mount(el);

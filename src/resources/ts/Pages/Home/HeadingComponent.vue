@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
-import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
 import {images} from "@/Types/ImageHelper.js";
 import Carousel from "primevue/carousel";
-import Button from "primevue/button";
 import {router, usePage} from "@inertiajs/vue3";
 import route from "ziggy-js";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
@@ -71,9 +68,7 @@ const visitEvents = () => {
                             </div>
                         </div>
                         <div class="w-fit">
-                            <p class="text-4xl w-fit font-[CalloveScript] text-gray-800 sm:text-5xl">Capricciosa</p>
-                            <p class="mx-auto tracking-widest w-fit uppercase text-capricciosa_red sm:text-3xl">
-                                pizzeria</p>
+                            <img :src="images.name" alt="name">
                         </div>
                         <p class="mt-6 text-lg leading-8 text-gray-600">
                             {{ $t('Welcome to our pizzeria, where tradition meets quality. Enjoy a delightful dining experience with our diverse menu, crafted from the finest ingredients to ensure every bite is a burst of flavor.') }}</p>
@@ -81,7 +76,7 @@ const visitEvents = () => {
                             <ButtonComponent>
                                 {{ $t('Our story') }}
                             </ButtonComponent>
-                            <a href="https://maps.app.goo.gl/gvkqb3a28VrAaKmz6" target="_blank" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
+                            <a href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7" target="_blank" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
                                 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>

@@ -16,12 +16,9 @@ class HandleInertiaRequests extends Middleware
      */
     protected $rootView = 'app';
     private GetSidebar $getSidebar;
-    private GetFooter $getFooter;
-
-    public function __construct(GetSidebar $getSidebar, GetFooter $getFooter)
+    public function __construct(GetSidebar $getSidebar)
     {
         $this->getSidebar = $getSidebar;
-        $this->getFooter = $getFooter;
     }
 
     /**
@@ -40,8 +37,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $share = [
-            'sidebar' => $this->getSidebar->get(),
-            'footer' => $this->getFooter->get()
+            'sidebar' => $this->getSidebar->get()
         ];
 
         return array_merge(parent::share($request), $share);
