@@ -19,7 +19,8 @@ class Supplier extends Model
     protected $fillable=[
         'name',
         'img_url',
-        'is_visible'
+        'is_visible',
+        'link'
     ];
     public function info(): MorphTo
     {

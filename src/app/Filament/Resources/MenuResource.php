@@ -125,4 +125,8 @@ class MenuResource extends Resource
             'edit' => Pages\EditMenu::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+    {
+        return false;
+    }
 }

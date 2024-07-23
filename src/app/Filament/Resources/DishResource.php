@@ -107,4 +107,9 @@ class DishResource extends Resource
             'edit' => Pages\EditDish::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool
+    {
+        return false;
+    }
 }
