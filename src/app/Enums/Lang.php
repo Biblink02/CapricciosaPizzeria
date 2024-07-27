@@ -14,4 +14,11 @@ enum Lang: string
             self::EN => 'en',
         };
     }
+    public function extendedLabel(): string
+    {
+        return match($this) {
+            self::IT => 'Italiano',
+            self::EN => 'Inglese',
+        };
+    }
 }

@@ -59,7 +59,6 @@ class PdfmenuResource extends Resource
                             ->default(true)
                             ->columns(1)
                             ->label('È visibile?'),
-
                         FileUpload::make('pdf_url')
                             ->acceptedFileTypes(['application/pdf'])
                             ->label('PDF')
@@ -85,8 +84,11 @@ class PdfmenuResource extends Resource
                     ->label('PDF')
                     ->url(fn($record) => url('/pdf/' . $record->pdf_url), true)
                     ->formatStateUsing(fn($state) => 'Visualizza PDF'),
-
-
+                TextColumn::make('lang')
+                    ->label('Lingua')
+                    ->formatStateUsing(function ($state) {
+                        return Lang::tryFrom($state)?->extendedLabel() ?? 'Unknown';
+                    }),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
