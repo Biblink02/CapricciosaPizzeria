@@ -59,7 +59,6 @@ const responsiveOptions = ref([
                 <div class="flex flex-col">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         {{ $t('Some of our Dishes') }}</h2>
-                    <p class="mt-3 max-w-3xl text-lg text-gray-500">{{$t('Indulge in a culinary journey with our diverse menu, crafted from the finest ingredients and bursting with flavor.')}}</p>
                 </div>
 
                 <Carousel

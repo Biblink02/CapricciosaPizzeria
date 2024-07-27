@@ -21,7 +21,7 @@ const sidebar = computed(() => getSidebar());
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-2xl py-12">
             <div class="flex flex-row h-16 justify-between w-full ">
-                <img :src="images.logo" alt="logo" class="object-scale-down w-24">
+                <img :src="images.logo" alt="logo" class="object-scale-down w-28">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
                         <a

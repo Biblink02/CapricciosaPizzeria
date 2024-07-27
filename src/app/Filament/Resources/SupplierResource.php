@@ -36,6 +36,7 @@ class SupplierResource extends Resource
                 ->schema([
                     Forms\Components\TextInput::make('name')
                         ->required()
+                        ->label('Nome')
                         ->maxLength(255)
                         ->columns(1),
                     Forms\Components\Toggle::make('is_visible')

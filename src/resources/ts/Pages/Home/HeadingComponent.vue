@@ -55,7 +55,7 @@ const visitEvents = () => {
                 <div class="relative pt-6 lg:pl-8 lg:pr-0 max-sm:pb-8">
                     <NavbarComponent class="shadow-none"></NavbarComponent>
                 </div>
-                <div class="relative sm:py-40 lg:py-40 lg:pr-0">
+                <div class="relative sm:py-20 lg:py-20 lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
                             <div
@@ -67,11 +67,11 @@ const visitEvents = () => {
                                 aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
-                        <div class="w-fit">
+                        <div class="w-fit mb-8 max-w-2xl">
                             <img :src="images.name" alt="name">
                         </div>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">
-                            {{ $t('Welcome to our pizzeria, where tradition meets quality. Enjoy a delightful dining experience with our diverse menu, crafted from the finest ingredients to ensure every bite is a burst of flavor.') }}</p>
+                        <strong class="mt-8 text-lg leading-8 text-gray-600">
+                            {{ $t('Welcome to our pizzeria, where tradition meets quality.') }}</strong>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent>
                                 {{ $t('Our story') }}
