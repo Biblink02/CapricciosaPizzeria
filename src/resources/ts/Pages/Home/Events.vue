@@ -65,7 +65,7 @@ const showOpeningHoursDialog = () => {
 
         <!-- 3 bottoni -->
         <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 my-auto">
-            <ButtonComponent @click="visitMenus" class="sm:w-2/5 w-full mx-auto">
+            <ButtonComponent @click="visitMenus()" class="sm:w-2/5 w-full mx-auto">
                 {{ $t('Menu') }}
             </ButtonComponent>
             <ButtonComponent @click="showBookDialog" class="sm:w-2/5 w-full mx-auto">

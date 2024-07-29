@@ -21,6 +21,11 @@ return Application::configure(basePath: dirname(__DIR__))
             '192.168.220.4'
         ]);
     })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: [
+            '192.168.220.4'
+        ]);
+    })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

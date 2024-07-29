@@ -22,7 +22,7 @@ export default ({mode}: Params) => {
                 }
             }),
             laravel({
-                input: ['//resources/ts/app.ts', '//resources/css/app.css'],
+                input: ['./resources/ts/app.ts', './resources/css/app.css'],
                 transformOnServe: (code, url) => code.replaceAll('/@imagetools', url+'/@imagetools'),
                 refresh: true
             }),

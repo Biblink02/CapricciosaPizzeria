@@ -61,7 +61,7 @@ const visitEvents = () => {
                             <div
                                 @click="visitEvents"
                                 class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                {{ $t('Events organized by us') }} <a href="#"
+                                {{ $t('Events organized by us') }} <a href="/events"
                                                                       class="whitespace-nowrap font-semibold text-capricciosa_green"><span
                                 class="absolute inset-0" aria-hidden="true"/>{{ $t('Read more') }} <span
                                 aria-hidden="true">&rarr;</span></a>

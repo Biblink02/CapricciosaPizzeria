@@ -6,10 +6,6 @@ import Carousel from "primevue/carousel";
 import {images} from "@/Types/ImageHelper";
 import Events from "@/Pages/Home/Events.vue";
 import Suppliers from "@/Pages/Home/Suppliers.vue";
-import {Dialog, DialogPanel} from '@headlessui/vue'
-import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
-import Button from "primevue/button";
-import ButtonComponent from "@/Components/ButtonComponent.vue";
 import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
 import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
 import NavbarComponent from "@/Components/NavbarComponent.vue";
