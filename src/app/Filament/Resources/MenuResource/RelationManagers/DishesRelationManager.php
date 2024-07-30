@@ -14,9 +14,11 @@ use Filament\Tables\Table;
 
 class DishesRelationManager extends RelationManager
 {
-    protected static ?string $modelLabel = 'pietanza';
 
-    protected static ?string $pluralModelLabel = 'pietanze';
+    protected static ?string $title = 'Pietanze';
+
+    protected static ?string $label = 'pietanza';
+    protected static ?string $pluralLabel = 'pietanze';
 
     protected static string $relationship = 'dishes';
 
@@ -24,47 +26,51 @@ class DishesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label('Nome'),
-                TextInput::make('price')
-                    ->prefix('€')
-                    ->numeric()
-                    ->rules([
-                        function () {
-                            return function (string $attribute, $value, Closure $fail) {
-                                if ($value <= 0) {
-                                    $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
-                                }
-                                if (!preg_match("/^[0-9]+(\.[0-9]{2})?$/", $value)) {
-                                    if (preg_match("/^[0-9]+(\,[0-9]{2})?$/", $value)) {
-                                        $fail('Il separatore tra cifre intere e decimali deve essere: .');
-                                    } else {
-                                        $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
-                                    }
-                                }
-                            };
-                        },
-                    ])
-                    ->label('Prezzo')
-                    ->required(),
-                TextInput::make('sort_key')
-                    ->numeric()
-                    ->required()
-                    ->default(0)
-                    ->label('Ordine di comparsa (0 viene prima di 1)'),
                 Forms\Components\Toggle::make('is_visible')
                     ->required()
                     ->default(true)
                     ->label('È visibile?'),
-                FileUpload::make('img_url')
+                /*FileUpload::make('img_url')
                     ->image()
                     ->imageEditor()
                     ->label('Immagine')
                     ->openable()
                     ->panelLayout('integrated')
-                    ->default(null),
+                    ->default(null),*/
+                Forms\Components\Section::make('Nella pagina dei menù')
+                    ->schema([
+                        TextInput::make('price')
+                            ->prefix('€')
+                            ->numeric()
+                            ->rules([
+                                function () {
+                                    return function (string $attribute, $value, Closure $fail) {
+                                        if ($value <= 0) {
+                                            $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
+                                        }
+                                        if (!preg_match("/^[0-9]+(\.[0-9]{2})?$/", $value)) {
+                                            if (preg_match("/^[0-9]+(\,[0-9]{2})?$/", $value)) {
+                                                $fail('Il separatore tra cifre intere e decimali deve essere: .');
+                                            } else {
+                                                $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
+                                            }
+                                        }
+                                    };
+                                },
+                            ])
+                            ->label('Prezzo')
+                            ->required(),
+                        TextInput::make('sort_key')
+                            ->numeric()
+                            ->required()
+                            ->default(0)
+                            ->label('Ordine di comparsa (0 viene prima di 1)'),
+                    ])->columns(2)
             ]);
     }
 
@@ -86,9 +92,9 @@ class DishesRelationManager extends RelationManager
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\ImageColumn::make('img_url')
+                /*Tables\Columns\ImageColumn::make('img_url')
                     ->searchable()
-                    ->label('Immagine'),
+                    ->label('Immagine'),*/
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -108,7 +114,6 @@ class DishesRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\AttachAction::make()
                     ->preloadRecordSelect()
                     ->form(fn(AttachAction $action): array => [

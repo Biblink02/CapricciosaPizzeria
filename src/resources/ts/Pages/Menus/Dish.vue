@@ -4,18 +4,36 @@
 const props = defineProps<{
     dish: Dish
 }>()
+
 </script>
 
 <template>
-    <strong class="flex justify-center text-lg"> {{ $t(dish.name)}} </strong>
-    <div class="flex justify-center">
-        <div v-for="(ingredient, index) in dish.ingredients" class="inline-flex">
-            {{ $t(ingredient.name) }}
-            <span v-if="index < dish.ingredients.length - 1">,&nbsp;</span>
-        </div>
-    </div>
-    <div class="flex justify-center pt-3"> €&nbsp{{ $t(dish.pivot.price) }} </div>
+    <div>
+        <div class="flex justify-center text-lg w-full">
+            <strong class="lg:max-w-[80%] md:max-w-[85%] sm:max-w-[90%] text-center w-min-[80%]">{{ $t(dish.name) }}&nbsp</strong>
 
+            <!-- servirà avere un "link" per gli allergeni?
+            <div class="inline-flex text-xs text-gray-400">
+                {{ dish.allergens.map(allergen => allergen.number).join(', ') }}
+            </div>
+            -->
+
+            <div v-for="(allergen, index) in dish.allergens" class="inline-flex text-xs text-gray-400">
+                {{ allergen.number }}
+                <span class="lg:max-w-[80%] md:max-w-[85%] sm:max-w-[90%] text-center" v-if="index < dish.allergens.length - 1">,&nbsp;</span>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <div class="lg:max-w-[80%] md:max-w-[85%] sm:max-w-[90%] text-center">
+                <!-- Non cambiare con un join perché servirà per i futuri link tra ingredienti e aziende -->
+                <div v-for="(ingredient, index) in dish.ingredients" class="inline-flex">
+                    {{ $t(ingredient.name) }}
+                    <span v-if="index < dish.ingredients.length - 1">,&nbsp;</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center pt-3 w-full"> €&nbsp; {{ $t(dish.pivot.price) }}</div>
+    </div>
 </template>
 
 <style scoped>

@@ -26,6 +26,8 @@ class SupplierResource extends Resource
 
     protected static ?string $navigationGroup = 'Pizzeria';
 
+
+    protected static ?int $navigationSort = 5;
     public static function form(Form $form): Form
     {
         return $form
@@ -34,6 +36,7 @@ class SupplierResource extends Resource
                 ->schema([
                     Forms\Components\TextInput::make('name')
                         ->required()
+                        ->label('Nome')
                         ->maxLength(255)
                         ->columns(1),
                     Forms\Components\Toggle::make('is_visible')
@@ -41,6 +44,9 @@ class SupplierResource extends Resource
                         ->default(true)
                         ->columns(1)
                         ->label('È visibile?'),
+                    Forms\Components\TextInput::make('link')
+                        ->label('Link al sito')
+                        ->columnSpanFull(),
                     FileUpload::make('img_url')
                         ->image()
                         ->imageEditor()
@@ -63,6 +69,8 @@ class SupplierResource extends Resource
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
+                Tables\Columns\TextColumn::make('link')
+                    ->label('Link al sito'),
                 Tables\Columns\ImageColumn::make('img_url')
                     ->label('Immagine'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -90,7 +98,7 @@ class SupplierResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\IngredientsRelationManager::class
+            //RelationManagers\IngredientsRelationManager::class
         ];
     }
 

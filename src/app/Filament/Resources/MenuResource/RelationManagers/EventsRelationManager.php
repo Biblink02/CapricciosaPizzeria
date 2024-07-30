@@ -15,35 +15,51 @@ class EventsRelationManager extends RelationManager
 {
     protected static string $relationship = 'events';
 
+    protected static ?string $title='Eventi';
+
+    protected static ?string $label = 'evento';
+    protected static ?string $pluralLabel = 'eventi';
+
+
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Evento:')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->label('Nome'),
-                        Forms\Components\Toggle::make('is_visible')
+                            ->label('Nome')
+                            ->columnSpan(1),
+                        Forms\Components\Textarea::make('description')
                             ->required()
-                            ->default(true)
-                            ->label('È visibile?'),
+                            ->label('Descrizione')
+                            ->columnSpan(2),
                         Forms\Components\DateTimePicker::make('starts_at')
                             ->required()
-                            ->label('Comincia'),
+                            ->label('Comincia')
+                            ->columnSpan(1),
                         Forms\Components\DateTimePicker::make('ends_at')
                             ->required()
                             ->after('starts_at')
-                            ->label('Termina'),
+                            ->label('Termina')
+                            ->columnSpan(1),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?')
+                            ->columnSpan(1),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
-                    ])->columns(2)
+                            ->default(null)
+                            ->required()
+                            ->columnSpanFull(),
+                    ])->columns(3)
             ]);
     }
 
@@ -89,7 +105,6 @@ class EventsRelationManager extends RelationManager
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DetachAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

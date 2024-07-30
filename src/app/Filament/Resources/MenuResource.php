@@ -21,9 +21,12 @@ class MenuResource extends Resource
     protected static ?string $modelLabel = 'menu';
 
     protected static ?string $pluralModelLabel = 'menu';
+
     protected static ?string $navigationIcon = 'phosphor-scroll';
 
     protected static ?string $navigationGroup = 'Pizzeria';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -39,7 +42,16 @@ class MenuResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        Forms\Components\Section::make('Pagina menu')
+                        FileUpload::make('img_url')
+                            ->image()
+                            ->imageEditor()
+                            ->label('Immagine')
+                            ->openable()
+                            ->panelLayout('integrated')
+                            ->default(null)
+                            ->columnSpanFull()
+                                ->required(),
+                        Forms\Components\Section::make('Nella pagina dei menù')
                             ->schema([
                                 Forms\Components\Toggle::make('is_visible_in_menus')
                                     ->required()
@@ -52,13 +64,6 @@ class MenuResource extends Resource
                                     ->default(0)
                                     ->label('Ordine di comparsa (pagina menu)'),
                             ])->columns(2),
-                        FileUpload::make('img_url')
-                            ->image()
-                            ->imageEditor()
-                            ->label('Immagine')
-                            ->openable()
-                            ->panelLayout('integrated')
-                            ->default(null),
                     ])->columns(2)
             ]);
     }
@@ -119,5 +124,9 @@ class MenuResource extends Resource
             'create' => Pages\CreateMenu::route('/create'),
             'edit' => Pages\EditMenu::route('/{record}/edit'),
         ];
+    }
+    public static function canViewAny(): bool
+    {
+        return false;
     }
 }

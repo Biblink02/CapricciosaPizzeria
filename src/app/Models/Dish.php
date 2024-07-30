@@ -11,19 +11,21 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Dish extends Model
 {
     use HasUuids;
+
     protected $primaryKey = 'uuid';
 
-    protected $with = ['ingredients'];
+    protected $with = ['ingredients', 'allergens'];
     protected $guarded = [
         'uuid',
         'created_at',
         'updated_at',
     ];
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'img_url',
         'is_visible'
     ];
+
     public function info(): MorphTo
     {
         return $this->morphTo('info');
@@ -31,7 +33,7 @@ class Dish extends Model
 
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Menu::class)->withPivot(['price','sort_key']);
+        return $this->belongsToMany(Menu::class)->withPivot(['price', 'sort_key']);
     }
 
     public function ingredients(): BelongsToMany
@@ -39,11 +41,21 @@ class Dish extends Model
         return $this->belongsToMany(Ingredient::class)->withPivot('sort_key');
     }
 
+    public function allergens(): BelongsToMany
+    {
+        return $this->belongsToMany(Allergen::class);
+    }
+
     protected static function booted(): void
     {
         static::addGlobalScope(function (Builder $builder) {
             $builder->with(['ingredients' => function ($query) {
-                $query->where('is_visible', true)->orderBy('sort_key','asc');
+                $query->where('is_visible', true)->orderBy('sort_key', 'asc');
+            }]);
+        });
+        static::addGlobalScope(function (Builder $builder) {
+            $builder->with(['allergens' => function ($query) {
+                $query->orderBy('number', 'asc');
             }]);
         });
     }

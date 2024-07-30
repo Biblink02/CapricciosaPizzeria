@@ -21,7 +21,8 @@ class Event extends Model
         'img_url',
         'is_visible',
         'starts_at',
-        'ends_at'
+        'ends_at',
+        'description'
     ];
     public function info(): MorphTo
     {

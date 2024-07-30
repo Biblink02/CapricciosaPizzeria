@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import NavbarComponent from "@/Components/NavbarComponent.vue";
-import { Head as InertiaHead } from '@inertiajs/vue3';
+import {Head as InertiaHead} from '@inertiajs/vue3';
 import FooterComponent from "@/Components/FooterComponent.vue";
 
-defineProps<{
+const props = defineProps<{
     title: string,
     footer: Footer
+    navbarHidden?: boolean
 }>();
+
+const isNavbarHidden = props.navbarHidden ?? false;
 
 </script>
 
@@ -15,12 +18,11 @@ defineProps<{
 
     <div
         class="sticky top-0 z-40">
-        <NavbarComponent />
-
+        <NavbarComponent v-if="!isNavbarHidden"/>
     </div>
     <div
-            class="w-full h-content flex flex-col">
-        <slot />
+        class="w-full h-content flex flex-col">
+        <slot/>
     </div>
-    <!-- <FooterComponent :footer="footer" /> -->
+    <FooterComponent class="max-w-7xl mx-auto "/>
 </template>

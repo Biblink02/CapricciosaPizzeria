@@ -18,9 +18,10 @@ class MenusRelationManager extends RelationManager
 {
     protected static string $relationship = 'menus';
 
-    protected static ?string $modelLabel = 'menu';
+    protected static ?string $title='Menù';
 
-    protected static ?string $pluralModelLabel = 'menu';
+    protected static ?string $label = 'menù';
+    protected static ?string $pluralLabel = 'menù';
 
     public function form(Form $form): Form
     {
@@ -32,52 +33,60 @@ class MenusRelationManager extends RelationManager
                             ->required()
                             ->maxLength(255)
                             ->label('Nome'),
-                        TextInput::make('price')
-                            ->prefix('€')
-                            ->numeric()
-                            ->rules([
-                                function () {
-                                    return function (string $attribute, $value, Closure $fail) {
-                                        if ($value <= 0) {
-                                            $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
-                                        }
-                                        if (!preg_match("/^[0-9]+(\.[0-9]{2})?$/", $value)) {
-                                            if (preg_match("/^[0-9]+(\,[0-9]{2})?$/", $value)) {
-                                                $fail('Il separatore tra cifre intere e decimali deve essere: .');
-                                            } else {
-                                                $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
-                                            }
-                                        }
-                                    };
-                                },
-                            ])
-                            ->label('Prezzo')
-                            ->required(),
-                        TextInput::make('sort_key')
-                            ->numeric()
-                            ->required()
-                            ->label('Ordine di comparsa (0 viene prima di 1)'),
                         Forms\Components\Toggle::make('is_visible')
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        Forms\Components\Toggle::make('is_visible_in_menus')
-                            ->required()
-                            ->default(true)
-                            ->label('È visibile nella pagina dei menù?'),
-                        TextInput::make('sort_key_in_menus')
-                            ->required()
-                            ->numeric()
-                            ->minValue(0)
-                            ->default(0)
-                            ->label('Ordine di comparsa (pagina menu)'),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
+                            ->default(null)
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\Section::make('Prezzo e ordine della pietanza nel menù')
+                            ->schema([
+                                TextInput::make('price')
+                                    ->prefix('€')
+                                    ->numeric()
+                                    ->rules([
+                                        function () {
+                                            return function (string $attribute, $value, Closure $fail) {
+                                                if ($value <= 0) {
+                                                    $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
+                                                }
+                                                if (!preg_match("/^[0-9]+(\.[0-9]{2})?$/", $value)) {
+                                                    if (preg_match("/^[0-9]+(\,[0-9]{2})?$/", $value)) {
+                                                        $fail('Il separatore tra cifre intere e decimali deve essere: .');
+                                                    } else {
+                                                        $fail('Il prezzo deve essere un numero maggiore di zero con due cifre decimali');
+                                                    }
+                                                }
+                                            };
+                                        },
+                                    ])
+                                    ->label('Prezzo')
+                                    ->required(),
+                                TextInput::make('sort_key')
+                                    ->numeric()
+                                    ->required()
+                                    ->label('Ordine di comparsa (0 viene prima di 1)'),
+                            ])->columns(2),
+                        Forms\Components\Section::make('Il menù nella pagina dei menù')
+                            ->schema([
+                                TextInput::make('sort_key_in_menus')
+                                    ->required()
+                                    ->numeric()
+                                    ->minValue(0)
+                                    ->default(0)
+                                    ->label('Ordine di comparsa (pagina menu)'),
+                                Forms\Components\Toggle::make('is_visible_in_menus')
+                                    ->required()
+                                    ->default(true)
+                                    ->label('È visibile nella pagina dei menù?'),
+                            ])->columns(2)
                     ])->columns(2)
             ]);
     }
@@ -154,7 +163,6 @@ class MenusRelationManager extends RelationManager
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DetachAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

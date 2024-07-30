@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->string('name');
+            $table->text('description');
             $table->string('img_url')->nullable();
             $table->boolean('is_visible');
             $table->dateTime('starts_at');

@@ -10,20 +10,28 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/ts/**/*.vue',
     ],
-
+    daisyui: {
+        themes: ["light"],
+    },
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
+        require('daisyui')
     ],
     theme: {
         extend: {
             fontFamily: {
-                sans: ['roboto', ...defaultTheme.fontFamily.sans],
+                custom: ['CalloveScript', 'sans-serif'],
+                sans: [
+                    'Montserrat',
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             colors: {
-                capricciosa_green: '#C5EBAA',
-                capricciosa_orange: '#F2C18D'
+                capricciosa_green: '#a5b977',
+                capricciosa_dark_green: '#91a46a',
+                capricciosa_red: '#c2434c'
             }
         }
     }

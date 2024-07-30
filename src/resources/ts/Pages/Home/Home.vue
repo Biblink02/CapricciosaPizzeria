@@ -4,13 +4,18 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
 import Carousel from "primevue/carousel";
 import {images} from "@/Types/ImageHelper";
-import ActivityTimings from "@/Pages/Home/ActivityTimings.vue";
+import Events from "@/Pages/Home/Events.vue";
 import Suppliers from "@/Pages/Home/Suppliers.vue";
+import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
+import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
+import NavbarComponent from "@/Components/NavbarComponent.vue";
+import Social from "@/Pages/Home/Social.vue";
 
 const props = defineProps<{
     footer: Footer
     slidingImages: SlidingImage[]
-    suppliers: Supplier[]
+    suppliers: Supplier[],
+    event: Event
 }>()
 
 const responsiveOptions = ref([
@@ -36,43 +41,48 @@ const responsiveOptions = ref([
     }
 ]);
 
-
 </script>
 
 <template>
-    <AppLayout :footer="footer" title="home">
-        <div class="grid gap-5">
-            <div class="flex flex-row">
-                <div class="text-center font-extrabold text-5xl w-2/5 text [writing-mode:vertical-lr] rotate-180 mr-5">
-                    <p>{{ $t('Location') }}</p>
+    <AppLayout :navbar-hidden="true" :footer="footer" title="home">
+        <div class="flex px-5 flex-col w-full gap-24">
+
+            <HeadingComponent :sliding-images="slidingImages"></HeadingComponent>
+
+            <Events :event="event"></Events>
+
+            <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
+                <div class="flex flex-col">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        {{ $t('Some of our Dishes') }}</h2>
                 </div>
-                <div class="w-3/5 max-w-[120rem] mx-auto w-full">
-                    <Carousel
-                        :value="slidingImages"
-                        :num-visible="1"
-                        :num-scroll="1"
-                        :responsive-options="responsiveOptions"
-                        circular
-                        :autoplay-interval="6000"
-                    >
-                        <template #item="slotProps">
-                            <div>
-                                <a :href="slotProps.data.href">
-                                    <img
-                                        class="w-full h-fit object-scale-down"
-                                        :src="images[slotProps.data.image]"
-                                        alt="Location"
-                                    >
-                                </a>
-                            </div>
-                        </template>
-                    </Carousel>
-                </div>
+
+                <Carousel
+                    class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                    :value="slidingImages"
+                    :num-visible="1"
+                    :num-scroll="1"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="6000"
+                >
+                    <template #item="slotProps">
+                        <div>
+                            <a :href="slotProps.data.href">
+                                <img
+                                    class=" w-screen h-[30rem] object-cover rounded-xl"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                >
+                            </a>
+                        </div>
+                    </template>
+                </Carousel>
             </div>
 
-            <Suppliers :suppliers="suppliers" class="pb-10"/>
+            <Suppliers class="mt-12" :suppliers="suppliers"/>
 
-
+            <Social/>
         </div>
     </AppLayout>
 </template>
@@ -91,3 +101,4 @@ const responsiveOptions = ref([
     display: none;
 }
 </style>
+

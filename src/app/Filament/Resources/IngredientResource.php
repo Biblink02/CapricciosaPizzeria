@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class IngredientResource extends Resource
@@ -28,11 +29,13 @@ class IngredientResource extends Resource
 
     protected static ?string $navigationGroup = 'Pizzeria';
 
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Ingrediente:')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -42,18 +45,22 @@ class IngredientResource extends Resource
                             ->required()
                             ->default(true)
                             ->label('È visibile?'),
-                        FileUpload::make('img_url')
+                        /*FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
-                        Forms\Components\Select::make('supplier_uuid')
-                            ->relationship('supplier', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->label('Azienda di provenienza')
+                            ->default(null)
+                            ->columnSpanFull(),*/
+                        Forms\Components\Section::make('Azienda:')
+                            ->schema([
+                                Forms\Components\Select::make('supplier_uuid')
+                                    ->relationship('supplier', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->label('Azienda di provenienza')
+                            ])
                     ])->columns(2)
             ]);
     }
@@ -110,5 +117,10 @@ class IngredientResource extends Resource
             'create' => Pages\CreateIngredient::route('/create'),
             'edit' => Pages\EditIngredient::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return false;
     }
 }

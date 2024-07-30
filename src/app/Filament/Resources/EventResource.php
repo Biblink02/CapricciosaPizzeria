@@ -27,36 +27,48 @@ class EventResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     protected static ?string $navigationGroup = 'Pizzeria';
+
+    protected static ?int $navigationSort = 4;
     public static function form(Form $form): Form
     {
 
         return $form
             ->schema([
-                Forms\Components\Section::make()
+                Forms\Components\Section::make('Evento:')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->label('Nome'),
-                        Forms\Components\Toggle::make('is_visible')
+                            ->label('Nome')
+                            ->columnSpan(1),
+                        Forms\Components\Textarea::make('description')
                             ->required()
-                            ->default(true)
-                            ->label('È visibile?'),
+                            ->label('Descrizione')
+                            ->columnSpan(2),
                         Forms\Components\DateTimePicker::make('starts_at')
                             ->required()
-                            ->label('Comincia'),
+                            ->label('Comincia')
+                            ->columnSpan(1),
                         Forms\Components\DateTimePicker::make('ends_at')
                             ->required()
                             ->after('starts_at')
-                            ->label('Termina'),
+                            ->label('Termina')
+                            ->columnSpan(1),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->required()
+                            ->default(true)
+                            ->label('È visibile?')
+                            ->columnSpan(1),
                         FileUpload::make('img_url')
                             ->image()
                             ->imageEditor()
                             ->label('Immagine')
                             ->openable()
                             ->panelLayout('integrated')
-                            ->default(null),
-                        ])->columns(2)
+                            ->default(null)
+                            ->required()
+                            ->columnSpanFull(),
+                        ])->columns(3)
             ]);
     }
 
@@ -105,7 +117,7 @@ class EventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\MenusRelationManager::class
+            //RelationManagers\MenusRelationManager::class
         ];
     }
 
