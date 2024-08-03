@@ -1,11 +1,9 @@
 <?php
 namespace App\Http\Middleware;
 
-use App\Actions\Navigation\GetFooter;
 use App\Actions\Navigation\GetSidebar;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {

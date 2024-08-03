@@ -14,7 +14,6 @@ class HomeController extends Controller
     public function index(GetSuppliers $getSuppliers, GetLastEvent $getLastEvent): Response
     {
         return Inertia::render('Home/Home', [
-            'slidingImages' => config('custom.home'),
             'suppliers' => $getSuppliers->get()->toArray(),
             'event' =>$getLastEvent->get()?->toArray() ?? null
         ]);

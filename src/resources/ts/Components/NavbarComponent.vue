@@ -19,9 +19,9 @@ const sidebar = computed(() => getSidebar());
         as="nav"
         class="w-full bg-white shadow"
     >
-        <div class="flex flex-col justify-center navbar mx-auto max-w-2xl py-12">
+        <div class="flex flex-col justify-center navbar mx-auto max-w-2xl py-12 overflow-y-hidden">
             <div class="flex flex-row h-16 justify-between w-full ">
-                <img :src="images.logo" alt="logo" class="object-scale-down w-28">
+                <img :src="images.logo" alt="logo" class="object-cover w-32 h-24 mt-1">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
                         <a

@@ -23,11 +23,11 @@ const props = defineProps<{
             </div>
 
 
-            <div class="mx-auto gap-8 max-w-5xl flex flex-row flex-wrap justify-between place-content-center">
+            <div class="mx-auto gap-8 max-w-5xl flex flex-row flex-wrap justify-center place-content-center">
                 <template v-for="supplier in suppliers">
-                    <a :href="supplier.link" @click="console.log(supplier.link)" target="_blank">
+                    <a class="flex w-1/2 sm:w-1/5" :href="supplier.link" @click="console.log(supplier.link)" target="_blank">
                         <img
-                            class="w-1/5 h-auto object-scale-down"
+                            class="my-auto h-auto object-scale-down"
                             :src="'images/'+ supplier?.img_url"
                             :alt="supplier.name"
                         >

@@ -13,7 +13,6 @@ import Social from "@/Pages/Home/Social.vue";
 
 const props = defineProps<{
     footer: Footer
-    slidingImages: SlidingImage[]
     suppliers: Supplier[],
     event: Event
 }>()
@@ -41,13 +40,43 @@ const responsiveOptions = ref([
     }
 ]);
 
+const locationImages = [
+    {
+        image: "carousel_1"
+    },
+    {
+        image: "carousel_2"
+    },
+    {
+        image: "carousel_3"
+    },
+    {
+        image: "carousel_4"
+    }
+]
+
+const dishesImages = [
+    {
+        image: "dish_1"
+    },
+    {
+        image: "dish_2"
+    },
+    {
+        image: "dish_3"
+    },
+    {
+        image: "dish_4"
+    }
+]
+
 </script>
 
 <template>
     <AppLayout :navbar-hidden="true" :footer="footer" title="home">
         <div class="flex px-5 flex-col w-full gap-24">
 
-            <HeadingComponent :sliding-images="slidingImages"></HeadingComponent>
+            <HeadingComponent :sliding-images="locationImages"></HeadingComponent>
 
             <Events :event="event"></Events>
 
@@ -59,7 +88,7 @@ const responsiveOptions = ref([
 
                 <Carousel
                     class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
-                    :value="slidingImages"
+                    :value="dishesImages"
                     :num-visible="1"
                     :num-scroll="1"
                     :responsive-options="responsiveOptions"

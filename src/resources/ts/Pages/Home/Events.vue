@@ -7,6 +7,7 @@ import route from "ziggy-js";
 import {router} from "@inertiajs/vue3";
 import ButtonComponent from "@/Components/ButtonComponent.vue";
 import {ref} from "vue";
+import {images} from "@/Types/ImageHelper";
 
 defineProps<{
     event: Event
@@ -77,8 +78,8 @@ const showOpeningHoursDialog = () => {
         </div>
 
         <!-- Eventi -->
-        <div class="h-full sm:w-2/3 w-full">
-            <EmptyStateComponent v-if="!event" class="max-w-2xl mx-auto">
+        <div class="h-full sm:w-2/3 w-full background rounded-md p-10">
+            <EmptyStateComponent v-if="!event" class="bg-white max-w-xl mx-auto">
                 <template #title>
                     {{ $t('There are no events') }}
                 </template>
@@ -99,5 +100,9 @@ const showOpeningHoursDialog = () => {
 </template>
 
 <style scoped>
+.background {
+    background: url("~/media/pages/home/wall_paper_red.jpg");
+    background-size: 40%;
+}
 
 </style>
