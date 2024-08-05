@@ -79,7 +79,8 @@ class SupplierResource extends Resource
                 TextColumn::make('link')
                     ->label('Link al sito'),
                 ImageColumn::make('img_url')
-                    ->label('Immagine'),
+                    ->label('Immagine')
+                    ->url(fn($record) => url('/images/' . $record->img_url), true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

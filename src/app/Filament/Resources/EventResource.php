@@ -91,7 +91,8 @@ class EventResource extends Resource
                     ->sortable()
                     ->label('Termina'),
                 Tables\Columns\ImageColumn::make('img_url')
-                    ->label('Immagine'),
+                    ->label('Immagine')
+                    ->url(fn($record) => url('/images/' . $record->img_url), true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
