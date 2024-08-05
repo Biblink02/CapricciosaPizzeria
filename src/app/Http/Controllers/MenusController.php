@@ -10,7 +10,6 @@ class MenusController
 {
     public function index(GetMenusForMenusPage $getMenusForHome): Response
     {
-        //TODO togli props inutili
         return Inertia::render('Menus/Menus');
     }
 }
