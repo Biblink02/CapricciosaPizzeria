@@ -10,9 +10,9 @@ import ButtonComponent from "@/Components/ButtonComponent.vue";
 import VuePdfEmbed from 'vue-pdf-embed'
 
 
-const props = defineProps<{
+/*const props = defineProps<{
     menus: Menu[]
-}>()
+}>()*/
 
 const visitAllergens = () => {
     window.open(route('allergens-table'), '_blank');

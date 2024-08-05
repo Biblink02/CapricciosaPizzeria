@@ -15,7 +15,7 @@ const props = defineProps<{
     footer: Footer
     suppliers: Supplier[],
     event: Event
-}>()
+}>();
 
 const responsiveOptions = ref([
     {
@@ -89,11 +89,11 @@ const dishesImages = [
                 <Carousel
                     class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
                     :value="dishesImages"
-                    :num-visible="1"
+                    :num-visible="2"
                     :num-scroll="1"
                     :responsive-options="responsiveOptions"
                     circular
-                    :autoplay-interval="6000"
+                    :autoplay-interval="2000"
                 >
                     <template #item="slotProps">
                         <div>

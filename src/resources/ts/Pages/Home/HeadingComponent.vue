@@ -40,6 +40,10 @@ const responsiveOptions = ref([
 const visitEvents = () => {
     router.visit(route('events'))
 }
+const visitAboutUs = () => {
+    router.visit(route('about-us'))
+}
+
 
 </script>
 
@@ -73,7 +77,7 @@ const visitEvents = () => {
                         <strong class="mt-8 text-lg leading-8 text-gray-600">
                             {{ $t('Welcome to our pizzeria, where tradition meets quality.') }}</strong>
                         <div class="mt-10 flex items-center gap-x-6">
-                            <ButtonComponent>
+                            <ButtonComponent @click="visitAboutUs">
                                 {{ $t('Our story') }}
                             </ButtonComponent>
                             <a href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7" target="_blank" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}

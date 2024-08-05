@@ -7,9 +7,14 @@ use App\Filament\Resources\SupplierResource\RelationManagers;
 use App\Models\Supplier;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -32,20 +37,22 @@ class SupplierResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Azienda:')
+                Section::make('Azienda:')
                 ->schema([
-                    Forms\Components\TextInput::make('name')
+                    TextInput::make('name')
                         ->required()
                         ->label('Nome')
                         ->maxLength(255)
                         ->columns(1),
-                    Forms\Components\Toggle::make('is_visible')
+                    Toggle::make('is_visible')
                         ->required()
                         ->default(true)
                         ->columns(1)
                         ->label('È visibile?'),
-                    Forms\Components\TextInput::make('link')
+                    TextInput::make('link')
                         ->label('Link al sito')
+                        ->url()
+                        ->suffixIcon('heroicon-m-globe-alt')
                         ->columnSpanFull(),
                     FileUpload::make('img_url')
                         ->image()
@@ -63,21 +70,21 @@ class SupplierResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable()
                     ->label('Nome'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('link')
+                TextColumn::make('link')
                     ->label('Link al sito'),
-                Tables\Columns\ImageColumn::make('img_url')
+                ImageColumn::make('img_url')
                     ->label('Immagine'),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
