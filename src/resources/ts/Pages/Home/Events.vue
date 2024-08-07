@@ -55,7 +55,7 @@ const showOpeningHoursDialog = () => {
                 </button>
             </form>
             <h3 class="font-bold text-lg">{{ $t("Opening hours") }}:</h3>
-            <p class="py-4">{{ $t("Every day, except Tuesday, from 6:00 PM to 11:00 PM") }}</p>
+            <p class="py-4">{{ $t("Every day, except Tuesday, from 6:00 PM to 11:30 PM") }}</p>
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
