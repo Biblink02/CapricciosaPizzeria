@@ -11,6 +11,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -29,6 +30,7 @@ class EventResource extends Resource
     protected static ?string $navigationGroup = 'Pizzeria';
 
     protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
 
@@ -68,7 +70,7 @@ class EventResource extends Resource
                             ->default(null)
                             ->required()
                             ->columnSpanFull(),
-                        ])->columns(3)
+                    ])->columns(3)
             ]);
     }
 
@@ -76,28 +78,29 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable()
                     ->label('Nome'),
                 Tables\Columns\IconColumn::make('is_visible')
                     ->boolean()
                     ->label('È visibile?'),
-                Tables\Columns\TextColumn::make('starts_at')
+                TextColumn::make('starts_at')
                     ->dateTime()
                     ->sortable()
                     ->label('Comincia'),
-                Tables\Columns\TextColumn::make('ends_at')
+                TextColumn::make('ends_at')
                     ->dateTime()
                     ->sortable()
                     ->label('Termina'),
-                Tables\Columns\ImageColumn::make('img_url')
+                TextColumn::make('img_url')
                     ->label('Immagine')
-                    ->url(fn($record) => url('/images/' . $record->img_url), true),
-                Tables\Columns\TextColumn::make('created_at')
+                    ->url(fn($record) => url('/images/' . $record->img_url), true)
+                    ->formatStateUsing(fn($state) => 'Visualizza immagine'),
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

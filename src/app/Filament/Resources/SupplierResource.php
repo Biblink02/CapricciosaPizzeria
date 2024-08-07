@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\Lang;
 use App\Filament\Resources\SupplierResource\Pages;
 use App\Filament\Resources\SupplierResource\RelationManagers;
 use App\Models\Supplier;
@@ -78,9 +79,10 @@ class SupplierResource extends Resource
                     ->label('È visibile?'),
                 TextColumn::make('link')
                     ->label('Link al sito'),
-                ImageColumn::make('img_url')
+                TextColumn::make('img_url')
                     ->label('Immagine')
-                    ->url(fn($record) => url('/images/' . $record->img_url), true),
+                    ->url(fn($record) => url('/images/' . $record->img_url), true)
+                    ->formatStateUsing(fn($state) => 'Visualizza immagine'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
