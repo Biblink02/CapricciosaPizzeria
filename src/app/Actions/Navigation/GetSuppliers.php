@@ -9,6 +9,7 @@ class GetSuppliers
 {
     public function get()
     {
-        return Supplier::where('is_visible',true)->get();
+        return Supplier::where('is_visible', true)->orderByRaw('`sort_key` IS NULL, `sort_key` ASC')->get();
+
     }
 }

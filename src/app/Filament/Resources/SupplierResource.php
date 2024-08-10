@@ -54,7 +54,14 @@ class SupplierResource extends Resource
                         ->label('Link al sito')
                         ->url()
                         ->suffixIcon('heroicon-m-globe-alt')
-                        ->columnSpanFull(),
+                        ->columns(1),
+                    TextInput::make('sort_key')
+                        ->minValue(0)
+                        ->numeric()
+                        ->required()
+                        ->default(0)
+                        ->columns(1)
+                        ->label('Ordine di comparsa (0 viene prima di 1)'),
                     FileUpload::make('img_url')
                         ->image()
                         ->imageEditor()
@@ -79,6 +86,10 @@ class SupplierResource extends Resource
                     ->label('È visibile?'),
                 TextColumn::make('link')
                     ->label('Link al sito'),
+                Tables\Columns\TextColumn::make('sort_key')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Ordine di comparsa'),
                 TextColumn::make('img_url')
                     ->label('Immagine')
                     ->url(fn($record) => url('/images/' . $record->img_url), true)

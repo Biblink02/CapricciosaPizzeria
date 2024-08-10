@@ -16,8 +16,8 @@ export default ({mode}: Params) => {
             imagetools({
                 defaultDirectives: () => {
                     return new URLSearchParams({
-                        format: 'jpg',
-                        quality: 50
+                        format: 'webp',
+                        quality: 40
                     });
                 }
             }),

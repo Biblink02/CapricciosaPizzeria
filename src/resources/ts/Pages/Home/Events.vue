@@ -62,7 +62,7 @@ const showOpeningHoursDialog = () => {
         </form>
     </dialog>
 
-    <div class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col">
+    <div class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col md:h-full">
 
         <!-- 3 bottoni -->
         <div class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 my-auto">
@@ -101,7 +101,7 @@ const showOpeningHoursDialog = () => {
 
 <style scoped>
 .background {
-    background: url("~/media/pages/home/wall_paper_red.jpg");
+    background: url("~/media/pages/home/wall_paper.jpg");
     background-size: 40%;
 }
 

@@ -22,7 +22,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                custom: ['CalloveScript', 'sans-serif'],
+                custom: ['Brighted','CalloveScript','sans-serif'],
                 sans: [
                     'Montserrat',
                     ...defaultTheme.fontFamily.sans,

@@ -8,7 +8,7 @@ const page = usePage();
 <template>
 <AppLayout :title="$t('Menus')" :footer="page.footer">
 
-    <strong class="md:text-xl sm:text-lg mx-auto my-8 uppercase">{{ $t('Capricciosa in taste and design') }}</strong>
+    <strong class="md:text-xl sm:text-lg mx-auto my-8 uppercase font-custom">{{ $t('Capricciosa in taste and design') }}</strong>
     <p class="mb-3 w-5/6 mx-auto lg:max-w-4xl md:max-w-3xl"> {{ $t('Our project was born from a desire to get back into the game, in fact, in addition to taking care of our work as Interior Designer Gianluca, Microbiologist and nutritionist Paola and ceramics salesperson Andrea, we wanted to create something original, outside of any box.') }} </p>
     <p class="mb-3 w-5/6 mx-auto lg:max-w-4xl md:max-w-3xl"> {{ $t('Capricciosa was born.') }} </p>
     <p class="mb-3 w-5/6 mx-auto lg:max-w-4xl md:max-w-3xl"> {{ $t('In the past we have had other experiences in the world of catering both as designers and entrepreneurs, but in this case we wanted to create something absolutely special and unique, "finally free from any pattern" says Gianluca.') }} </p>

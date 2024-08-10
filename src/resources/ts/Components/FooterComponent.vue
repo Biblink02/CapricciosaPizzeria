@@ -26,7 +26,7 @@ const navigation = [
     <footer class="footer p-10 bg-white text-base-content my-24">
         <aside class="max-sm:mx-auto">
             <img :src="images.logo" alt="logo" class="object-scale-down w-48 mx-5">
-            <p class="w-full max-sm:text-center">Capricciosa Pizzeria SRL<br>P.IVA 01223580554</p>
+            <p class="w-full max-sm:text-center">Capricciosa Pizzeria srl<br>P.IVA 01223580554</p>
         </aside>
         <nav v-for="item in navigation" class="max-sm:mx-auto max-sm:text-center">
             <h6 class="w-full footer-title">{{ $t(item.name) }}</h6>

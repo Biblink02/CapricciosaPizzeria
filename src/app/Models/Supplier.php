@@ -20,7 +20,8 @@ class Supplier extends Model
         'name',
         'img_url',
         'is_visible',
-        'link'
+        'link',
+        'sort_key'
     ];
     public function info(): MorphTo
     {

@@ -74,13 +74,15 @@ const visitAboutUs = () => {
                         <div class="w-fit mb-8 max-w-2xl">
                             <img :src="images.name" alt="name">
                         </div>
-                        <strong class="mt-8 text-lg leading-8 text-gray-600">
-                            {{ $t('Welcome to our pizzeria, where tradition meets quality.') }}</strong>
+                            <strong class="mt-8 text-lg leading-8 text-gray-600 md:whitespace-nowrap">
+                                {{ $t('Welcome to our pizzeria, where design meets quality.') }}
+                            </strong>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent @click="visitAboutUs">
                                 {{ $t('Our story') }}
                             </ButtonComponent>
-                            <a href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7" target="_blank" class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
+                            <a href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7" target="_blank"
+                               class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
                                 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>

@@ -15,6 +15,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Brighted';
+    src: url('../fonts/Brighten.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .aspect-square {
     aspect-ratio: 1 / 1;
