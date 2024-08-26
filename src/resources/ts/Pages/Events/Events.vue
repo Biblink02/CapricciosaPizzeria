@@ -20,7 +20,7 @@ const page = usePage();
     <AppLayout :title="$t('Events')" :footer="page.footer">
         <div class="px-5">
             <div class="py-24 text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $t('Eventi') }}</h2>
+                <h2 class="text-4xl font-[AwakeTheBeauty] tracking-tight text-gray-900 sm:text-4xl">{{ $t('Eventi') }}</h2>
                 <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
                     {{
                         $t('Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.')

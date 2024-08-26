@@ -10,13 +10,13 @@ const props = defineProps<{
 <template>
 
     <div>
+        <div>
+            <p class="font-[AwakeTheBeauty] text-4xl tracking-tight text-gray-900 sm:text-4xl">{{ $t('Our excellences') }}</p>
+            <div class="mt-8 sm:flex">
+            </div>
+        </div>
         <div class="grid place-content-center">
 
-            <div>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-16">{{ $t('Our excellences') }}</h2>
-                <div class="mt-8 sm:flex">
-                </div>
-            </div>
 
 
             <div class="mx-auto gap-8 max-w-5xl flex flex-row flex-wrap justify-center place-content-center">
