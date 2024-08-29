@@ -78,7 +78,7 @@ const showOpeningHoursDialog = () => {
         </div>
 
         <!-- Eventi -->
-        <div class="h-full sm:w-2/3 w-full background rounded-md p-10">
+        <div class="h-full sm:w-2/3 w-full background opacity-80 rounded-md p-10">
             <EmptyStateComponent v-if="!event" class="bg-white max-w-xl mx-auto">
                 <template #title>
                     {{ $t('There are no events') }}
@@ -102,7 +102,7 @@ const showOpeningHoursDialog = () => {
 <style scoped>
 .background {
     background: url("~/media/pages/home/wall_paper.jpg");
-    background-size: 40%;
+    background-size: 50%;
 }
 
 </style>

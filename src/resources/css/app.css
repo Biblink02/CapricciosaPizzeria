@@ -27,6 +27,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Salmela';
+    src: url('../fonts/Salmela.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .aspect-square {
     aspect-ratio: 1 / 1;

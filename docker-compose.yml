@@ -14,9 +14,12 @@ services:
         ipv4_address: "${CONTAINER_SERVICE_PROXY_IP_ADDRESS}"
         aliases:
           - "${CONTAINER_NAME}-docker.local"
-    # Resource limits for nginx
-    cpu_shares: 128
-    mem_limit: 500M
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    memswap_limit: 4G
+
 
   app:
     image: "sindriainc/nginx-php:6.0.0-8.2"
@@ -36,8 +39,11 @@ services:
           - "${CONTAINER_NAME}-docker.local"
     command: "bash /scripts/startup-wrapper.sh"
     # Resource limits for app service
-    cpu_shares: 512
-    mem_limit: 1250M
+    deploy:
+      resources:
+        limits:
+          memory: 1250M
+    memswap_limit: 6G
 
 networks:
   default:

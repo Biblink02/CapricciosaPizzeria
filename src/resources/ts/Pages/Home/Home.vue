@@ -82,8 +82,9 @@ const dishesImages = [
 
             <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
-                    <h2 class="text-4xl tracking-tight text-gray-900 sm:text-4xl font-[AwakeTheBeauty]">
-                        {{ $t('Some of our Dishes') }}</h2>
+                    <p class="mx-auto text-4xl tracking-tight text-gray-900 font-[Salmela]">
+                        {{ $t('Our Dishes') }}
+                    </p>
                 </div>
 
                 <Carousel

@@ -71,12 +71,12 @@ const visitAboutUs = () => {
                                 aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
-                        <div class="w-fit mb-8 max-w-2xl">
+                        <div class="w-fit my-16 max-w-2xl">
                             <img :src="images.name" alt="name">
                         </div>
-                            <strong class="mt-8 text-lg leading-8 text-gray-600 md:whitespace-nowrap">
+                            <p class="mt-8 text-lg leading-8 text-gray-500 md:whitespace-nowrap text-center md:text-left">
                                 {{ $t('Welcome to our pizzeria, where design meets quality.') }}
-                            </strong>
+                            </p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent @click="visitAboutUs">
                                 {{ $t('Our story') }}
