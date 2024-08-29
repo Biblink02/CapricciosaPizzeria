@@ -82,7 +82,7 @@ const dishesImages = [
 
             <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
-                    <p class="mx-auto text-4xl tracking-tight text-gray-900 font-[Salmela]">
+                    <p class="mx-auto text-4xl tracking-tight text-gray-900 font-[Salmela] mb-6">
                         {{ $t('Our Dishes') }}
                     </p>
                 </div>
