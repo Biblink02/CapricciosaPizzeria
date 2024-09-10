@@ -40,8 +40,8 @@ const showOpeningHoursDialog = () => {
             </form>
             <h3 class="font-bold text-lg">{{ $t("Book") }}:</h3>
             <p class="py-4">{{ $t("Bookings are accepted at the following numbers") }}:</p>
-            <p class="font-bold">{{ 'Tel: +390444022349' }}</p>
-            <p class="font-bold">{{ 'Mobile: +393292983245' }}</p>
+            <a href="tel:+390444022349" class="font-bold">{{ 'Tel: +39 0444 022 349' }}</a>
+            <a href="tel:+393292983245" class="font-bold">{{ 'Mobile: +39 329 298 3245' }}</a>
         </div>
 
         <form method="dialog" class="modal-backdrop">
