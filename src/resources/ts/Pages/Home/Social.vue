@@ -3,12 +3,12 @@ import {images} from "@/Types/ImageHelper";
 </script>
 
 <template>
-    <p class="mt-24 mx-auto text-4xl tracking-tight text-gray-900 font-[Salmela]">
+    <p class="mt-24 mb-0 mx-auto tracking-tight text-gray-900 text-5xl md:text-7xl sacramento-regular">
         {{ $t('Follow us on social media') }}
     </p>
 
     <div class="sm:h-[30rem] h-96 max-w-7xl w-full mx-auto relative">
-        <div class="absolute rounded-2xl opacity-70 inset-0 h-full bg-repeat"
+        <div class="absolute rounded-2xl inset-0 h-full bg-repeat"
              :style="{'background-size': 'auto 100%', 'background-image': 'url(' + images.wall_paper + ')'}">
         </div>
         <div class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-between max-w-2xl">
@@ -80,4 +80,12 @@ import {images} from "@/Types/ImageHelper";
         </div>
     </div>
 </template>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+.sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+</style>
 

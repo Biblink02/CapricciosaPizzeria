@@ -56,13 +56,13 @@ const visitAboutUs = () => {
                     viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="0,0 90,0 50,100 0,100"/>
                 </svg>
-                <div class="relative pt-6 lg:pl-8 lg:pr-0 max-sm:pb-8">
+                <div class="relative lg:pl-8 lg:pr-0">
                     <NavbarComponent class="shadow-none"></NavbarComponent>
                 </div>
-                <div class="relative sm:py-20 lg:py-20 lg:pr-0">
+                <div class="relative lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
-                            <div
+                            <div v-if="false"
                                 @click="visitEvents"
                                 class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                 {{ $t('Events organized by us') }} <a href="/events"
@@ -71,11 +71,12 @@ const visitAboutUs = () => {
                                 aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
-                        <div class="w-fit my-16 max-w-2xl">
+                        <div class="max-w-2xl w-88 md:w-fit">
                             <img :src="images.name" alt="name">
                         </div>
-                            <p class="mt-8 text-lg leading-8 text-gray-500 md:whitespace-nowrap text-center md:text-left">
-                                {{ $t('Welcome to our pizzeria, where design meets quality.') }}
+                            <p class="mt-8 md:text-5xl text-3xl text-black text-center leading-[1.3] sacramento-regular">
+
+                                <p>Benvenuti nella nostra pizzeria,</p><p>dove il design incontra la qualità.</p>
                             </p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent @click="visitAboutUs">
@@ -114,3 +115,11 @@ const visitAboutUs = () => {
         </div>
     </div>
 </template>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+.sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+</style>

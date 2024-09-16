@@ -23,7 +23,7 @@ const showBookDialog = () => {
     bookDialog.value.showModal()
 }
 
-const openingHoursDialog = ref()
+const openingHoursDialog = ref();
 const showOpeningHoursDialog = () => {
     openingHoursDialog.value.showModal()
 }

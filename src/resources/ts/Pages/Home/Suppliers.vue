@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <p class="mx-auto font-[Salmela] tracking-tight text-gray-900 text-4xl">
+    <p class="mx-auto text-5xl md:text-7xl sacramento-regular tracking-tight text-gray-900">
         {{ $t('Our excellences') }}
     </p>
     <div class="grid place-content-center">
@@ -26,5 +26,10 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+.sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
 </style>

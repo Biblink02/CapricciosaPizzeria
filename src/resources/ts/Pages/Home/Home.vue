@@ -82,9 +82,9 @@ const dishesImages = [
 
             <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
-                    <p class="mx-auto text-4xl tracking-tight text-gray-900 font-[Salmela] mb-6">
+                    <h1 class="mx-auto text-5xl md:text-7xl bold text-gray-900  mb-6 sacramento-regular">
                         {{ $t('Our Dishes') }}
-                    </p>
+                    </h1>
                 </div>
 
                 <Carousel
@@ -118,7 +118,12 @@ const dishesImages = [
 </template>
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+.sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
 .p-carousel-indicators {
     display: none;
 }
@@ -130,5 +135,6 @@ const dishesImages = [
 .p-carousel-next {
     display: none;
 }
+
 </style>
 

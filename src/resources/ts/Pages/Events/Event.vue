@@ -17,9 +17,9 @@ const visitEvents = () => {
 </script>
 
 <template>
-
-    <div v-if="type === 'big'" class="card lg:card-side bg-base-100 shadow-xl">
-        <figure class="lg:w-3/5 w-full"><img :src="'images/'+event?.img_url" class="object-cover" alt="Album"/></figure>
+    <!-- TODO -->
+    <div v-if="type === 'big'" class="card h-72 lg:card-side bg-base-100 shadow-xl">
+        <figure class="lg:w-3/5 h-max-96"><img :src="'images/'+event?.img_url" class="object-cover" alt="Event"/></figure>
         <div class="card-body text-left">
             <h2 class="card-title">{{ event.name }}</h2>
             <p>{{ event.description }}</p>
@@ -37,7 +37,7 @@ const visitEvents = () => {
 
     <div v-else class="card w-96 bg-base-100 shadow-xl">
         <figure><img :src="'images/'+event?.img_url" alt="Event" /></figure>
-        <div class="card-body">
+        <div class="card-body h-1/2">
             <h2 class="card-title">
                 {{ event.name }}
             </h2>

@@ -20,7 +20,7 @@ const page = usePage();
     <AppLayout :title="$t('Events')" :footer="page.footer">
         <div class="px-5">
             <div class="py-24 text-center">
-                <h2 class="text-4xl font-[Salmela] tracking-tight text-gray-900 sm:text-4xl">{{ $t('Eventi') }}</h2>
+                <h2 class="tracking-tight text-gray-900 text-5xl md:text-7xl sacramento-regular">{{ $t('Events') }}</h2>
                 <p class="mx-auto mt-3 max-w-2xl  text-gray-500 sm:mt-4">
                     {{
                         $t('Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.')
@@ -37,7 +37,7 @@ const page = usePage();
                     <SparklesIcon></SparklesIcon>
 
                 </template>
-                <template #description>
+                <template #description class="md:text-lg">
                     {{
                         $t('There are currently no events scheduled, we will organize one as soon as possible!')
                     }}
@@ -49,4 +49,12 @@ const page = usePage();
     </AppLayout>
 
 </template>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+.sacramento-regular {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+</style>
 

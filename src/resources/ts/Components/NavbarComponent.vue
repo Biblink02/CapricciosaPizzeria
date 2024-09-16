@@ -5,11 +5,12 @@ import {getSidebar} from '@/actions/GetSidebar';
 import {images} from "@/Types/ImageHelper";
 import {computed} from 'vue';
 import route from 'ziggy-js';
-import {router} from '@inertiajs/vue3';
+import {router, usePage} from '@inertiajs/vue3';
+
 
 const sidebar = computed(() => getSidebar());
 
-
+const page = usePage();
 
 </script>
 
@@ -21,7 +22,7 @@ const sidebar = computed(() => getSidebar());
     >
         <div class="flex flex-col justify-center navbar mx-auto max-w-2xl py-12 overflow-y-hidden">
             <div class="flex flex-row h-16 justify-between w-full ">
-                <img :src="images.logo" alt="logo" class="object-cover w-32 h-24 mt-1">
+                <img v-if="page.url !== '/'" :src="images.logo" alt="logo" class="object-cover w-32 h-24 mt-1">
                 <div class="flex">
                     <div class="hidden sm:flex sm:space-x-5">
                         <a
