@@ -22,7 +22,7 @@ const visitEvents = () => {
         <figure class="lg:w-3/5 h-max-96"><img :src="'images/'+event?.img_url" class="object-cover" alt="Event"/></figure>
         <div class="card-body text-left">
             <h2 class="card-title">{{ event.name }}</h2>
-            <p>{{ event.description }}</p>
+            <p class="whitespace-pre-wrap">{{ event.description }}</p>
             <div class="flex space-x-1 text-sm text-gray-500">
                 <time :datetime="event.starts_at">{{$t('Dal ')}}{{ formatDate(event.starts_at) }}</time>
                 <time :datetime="event.ends_at">{{$t('al ')}}{{ formatDate(event.ends_at) }}</time>
@@ -41,7 +41,7 @@ const visitEvents = () => {
             <h2 class="card-title">
                 {{ event.name }}
             </h2>
-            <p>{{ event.description }}</p>
+            <p class="whitespace-pre-wrap">{{ event.description }}</p>
             <div class="flex space-x-1 text-sm text-gray-500">
                 <time :datetime="event.starts_at">{{$t('Dal ')}}{{ formatDate(event.starts_at) }}</time>
                 <time :datetime="event.ends_at">{{$t('al ')}}{{ formatDate(event.ends_at) }}</time>
