@@ -1,88 +1,87 @@
 <script setup lang="ts">
+import AppLayout from '@/Layouts/AppLayout.vue'
+import { ref } from 'vue'
+import Carousel from 'primevue/carousel'
+import { images } from '@/Types/ImageHelper'
+import Events from '@/Pages/Home/Events.vue'
+import Suppliers from '@/Pages/Home/Suppliers.vue'
+import HeadingComponent from '@/Pages/Home/HeadingComponent.vue'
+import Social from '@/Pages/Home/Social.vue'
+import Supplier from '@/Types/Supplier'
 
-import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue";
-import Carousel from "primevue/carousel";
-import {images} from "@/Types/ImageHelper";
-import Events from "@/Pages/Home/Events.vue";
-import Suppliers from "@/Pages/Home/Suppliers.vue";
-import HeadingComponent from "@/Pages/Home/HeadingComponent.vue";
-import IncentivesComponent from "@/Pages/Home/IncentivesComponent.vue";
-import NavbarComponent from "@/Components/NavbarComponent.vue";
-import Social from "@/Pages/Home/Social.vue";
-
-const props = defineProps<{
-    footer: Footer
-    suppliers: Supplier[],
+defineProps<{
+    suppliers: Supplier[]
     event: Event
-}>();
+}>()
 
 const responsiveOptions = ref([
     {
         breakpoint: '1400px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '1199px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '767px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '575px',
         numVisible: 1,
-        numScroll: 1
-    }
-]);
+        numScroll: 1,
+    },
+])
 
 const locationImages = [
     {
-        image: "carousel_1"
+        image: images.carousel_1,
     },
     {
-        image: "carousel_2"
+        image: images.carousel_2,
     },
     {
-        image: "carousel_3"
+        image: images.carousel_3,
     },
     {
-        image: "carousel_4"
-    }
+        image: images.carousel_4,
+    },
 ]
 
 const dishesImages = [
     {
-        image: "dish_1"
+        image: 'dish_1',
     },
     {
-        image: "dish_2"
+        image: 'dish_2',
     },
     {
-        image: "dish_3"
+        image: 'dish_3',
     },
     {
-        image: "dish_4"
-    }
+        image: 'dish_4',
+    },
 ]
-
 </script>
 
 <template>
-    <AppLayout :navbar-hidden="true" :footer="footer" title="home">
+    <AppLayout :navbar-hidden="true" title="home">
         <div class="flex px-5 flex-col w-full gap-24">
-
-            <HeadingComponent :sliding-images="locationImages"></HeadingComponent>
+            <HeadingComponent
+                :sliding-images="locationImages"
+            ></HeadingComponent>
 
             <Events :event="event"></Events>
 
             <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
-                    <h1 class="mx-auto text-5xl md:text-7xl bold text-gray-900  mb-6 sacramento-regular">
+                    <h1
+                        class="mx-auto text-5xl md:text-7xl bold text-gray-900 mb-6 sacramento-regular"
+                    >
                         {{ $t('Our Dishes') }}
                     </h1>
                 </div>
@@ -100,19 +99,19 @@ const dishesImages = [
                         <div>
                             <a :href="slotProps.data.href">
                                 <img
-                                    class=" w-screen h-[30rem] object-cover rounded-xl"
+                                    class="w-screen h-[30rem] object-cover rounded-xl"
                                     :src="images[slotProps.data.image]"
                                     alt="Location"
-                                >
+                                />
                             </a>
                         </div>
                     </template>
                 </Carousel>
             </div>
 
-            <Suppliers class="mt-12" :suppliers="suppliers"/>
+            <Suppliers class="mt-12" :suppliers="suppliers" />
 
-            <Social/>
+            <Social />
         </div>
     </AppLayout>
 </template>
@@ -120,7 +119,7 @@ const dishesImages = [
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 .sacramento-regular {
-    font-family: "Sacramento", cursive;
+    font-family: 'Sacramento', cursive;
     font-weight: 400;
     font-style: normal;
 }
@@ -135,6 +134,4 @@ const dishesImages = [
 .p-carousel-next {
     display: none;
 }
-
 </style>
-

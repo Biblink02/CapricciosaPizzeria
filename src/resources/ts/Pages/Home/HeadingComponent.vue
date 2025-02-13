@@ -1,41 +1,39 @@
 <script setup lang="ts">
-import {ref} from 'vue'
-import {images} from "@/Types/ImageHelper.js";
-import Carousel from "primevue/carousel";
-import {router, usePage} from "@inertiajs/vue3";
-import route from "ziggy-js";
-import ButtonComponent from "@/Components/ButtonComponent.vue";
-import NavbarComponent from "@/Components/NavbarComponent.vue";
+import { ref } from 'vue'
+import { images } from '@/Types/ImageHelper'
+import Carousel from 'primevue/carousel'
+import { router } from '@inertiajs/vue3'
+import { route } from 'ziggy-js'
+import ButtonComponent from '@/Components/ButtonComponent.vue'
+import NavbarComponent from '@/Components/NavbarComponent.vue'
+import SlidingImage from '@/Types/SlidingImage'
 
 defineProps<{
     slidingImages: SlidingImage[]
 }>()
 
-const page = usePage();
-const navigation = page.props.sidebar;
-
 const responsiveOptions = ref([
     {
         breakpoint: '1400px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '1199px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '767px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
     {
         breakpoint: '575px',
         numVisible: 1,
-        numScroll: 1
-    }
-]);
+        numScroll: 1,
+    },
+])
 
 const visitEvents = () => {
     router.visit(route('events'))
@@ -43,8 +41,6 @@ const visitEvents = () => {
 const visitAboutUs = () => {
     router.visit(route('about-us'))
 }
-
-
 </script>
 
 <template>
@@ -53,8 +49,11 @@ const visitAboutUs = () => {
             <div class="relative z-10 lg:w-full lg:max-w-2xl">
                 <svg
                     class="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
-                    viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                    <polygon points="0,0 90,0 50,100 0,100"/>
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                >
+                    <polygon points="0,0 90,0 50,100 0,100" />
                 </svg>
                 <div class="relative lg:pl-8 lg:pr-0">
                     <NavbarComponent class="shadow-none"></NavbarComponent>
@@ -62,35 +61,53 @@ const visitAboutUs = () => {
                 <div class="relative lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                         <div class="hidden sm:mb-10 sm:flex">
-                            <div v-if="false"
+                            <div
+                                v-if="false"
                                 @click="visitEvents"
-                                class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                {{ $t('Events organized by us') }} <a href="/events"
-                                                                      class="whitespace-nowrap font-semibold text-capricciosa_green"><span
-                                class="absolute inset-0" aria-hidden="true"/>{{ $t('Read more') }} <span
-                                aria-hidden="true">&rarr;</span></a>
+                                class="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+                            >
+                                {{ $t('Events organized by us') }}
+                                <a
+                                    href="/events"
+                                    class="whitespace-nowrap font-semibold text-capricciosa_green"
+                                >
+                                    <span
+                                        class="absolute inset-0"
+                                        aria-hidden="true"
+                                    />
+                                    {{ $t('Read more') }}
+                                    <span aria-hidden="true">&rarr;</span>
+                                </a>
                             </div>
                         </div>
                         <div class="max-w-2xl w-88 md:w-fit">
-                            <img :src="images.name" alt="name">
+                            <img :src="images.name" alt="name" />
                         </div>
-                            <p class="mt-8 md:text-5xl text-3xl text-black text-center leading-[1.3] sacramento-regular">
-
-                                <p>Benvenuti nella nostra pizzeria,</p><p>dove il design incontra la qualità.</p>
-                            </p>
+                        <p
+                            class="mt-8 md:text-5xl text-3xl text-black text-center leading-[1.3] sacramento-regular"
+                        >
+                            Benvenuti nella nostra pizzeria, dove il design
+                            incontra la qualità.
+                        </p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <ButtonComponent @click="visitAboutUs">
                                 {{ $t('Our story') }}
                             </ButtonComponent>
-                            <a href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7" target="_blank"
-                               class="text-base font-semibold leading-7 text-gray-900">{{ $t('Find us') }}
-                                <span aria-hidden="true">→</span></a>
+                            <a
+                                href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7"
+                                target="_blank"
+                                class="text-base font-semibold leading-7 text-gray-900"
+                                >{{ $t('Find us') }}
+                                <span aria-hidden="true">→</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div
+            class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
+        >
             <Carousel
                 class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full"
                 :value="slidingImages"
@@ -107,7 +124,7 @@ const visitAboutUs = () => {
                                 class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
                                 :src="images[slotProps.data.image]"
                                 alt="Location"
-                            >
+                            />
                         </a>
                     </div>
                 </template>
@@ -117,8 +134,9 @@ const visitAboutUs = () => {
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 .sacramento-regular {
-    font-family: "Sacramento", cursive;
+    font-family: 'Sacramento', cursive;
     font-weight: 400;
     font-style: normal;
 }

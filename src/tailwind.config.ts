@@ -1,5 +1,8 @@
-import type {Config} from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import typographyPlugin from '@tailwindcss/typography'
+import formsPlugin from '@tailwindcss/forms'
+import aspectRation from '@tailwindcss/aspect-ratio'
 
 // noinspection JSUnusedGlobalSymbols
 export default {
@@ -11,29 +14,25 @@ export default {
         './resources/ts/**/*.vue',
     ],
     daisyui: {
-        themes: ["light"],
+        themes: ['light'],
     },
-    plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
-        require('@tailwindcss/aspect-ratio'),
-        require('daisyui')
-    ],
+    plugins: [formsPlugin, typographyPlugin, aspectRation],
     theme: {
         extend: {
             fontFamily: {
-                custom: ['Salmela','AwakeTheBeauty','CalloveScript', 'sans-serif'],
-                sans: [
-                    'Montserrat',
-                    ...defaultTheme.fontFamily.sans,
+                custom: [
+                    'Salmela',
+                    'AwakeTheBeauty',
+                    'CalloveScript',
+                    'sans-serif',
                 ],
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 capricciosa_green: '#a5b977',
                 capricciosa_dark_green: '#91a46a',
-                capricciosa_red: '#c2434c'
-            }
-        }
-    }
-
-} satisfies Config;
+                capricciosa_red: '#c2434c',
+            },
+        },
+    },
+} satisfies Config
