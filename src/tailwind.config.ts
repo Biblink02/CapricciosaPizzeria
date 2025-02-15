@@ -6,6 +6,7 @@ import aspectRation from '@tailwindcss/aspect-ratio'
 
 // noinspection JSUnusedGlobalSymbols
 export default {
+    important: true,
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -16,16 +17,12 @@ export default {
     daisyui: {
         themes: ['light'],
     },
+    safeList: ['font-cursive'],
     plugins: [formsPlugin, typographyPlugin, aspectRation],
     theme: {
         extend: {
             fontFamily: {
-                custom: [
-                    'Salmela',
-                    'AwakeTheBeauty',
-                    'CalloveScript',
-                    'sans-serif',
-                ],
+                cursive: ['Sacramento', 'sans-serif'],
                 sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
             colors: {

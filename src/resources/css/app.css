@@ -1,26 +1,7 @@
+@import '@fontsource/sacramento';
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'CalloveScript';
-    src: url('../fonts/callove-script.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+@theme {
+    --font-cursive: "Sacramento", sans-serif;
 }
-@font-face {
-    font-family: 'Brighted';
-    src: url('../fonts/Brighten.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'AwakeTheBeauty';
-    src: url('../fonts/awake-the-beauty.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Salmela';
-    src: url('../fonts/Salmela.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+

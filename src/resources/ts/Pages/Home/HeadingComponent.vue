@@ -1,39 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { images } from '@/Types/ImageHelper'
-import Carousel from 'primevue/carousel'
 import { router } from '@inertiajs/vue3'
 import { route } from 'ziggy-js'
-import ButtonComponent from '@/Components/ButtonComponent.vue'
 import NavbarComponent from '@/Components/NavbarComponent.vue'
 import SlidingImage from '@/Types/SlidingImage'
 
-defineProps<{
+const props = defineProps<{
     slidingImages: SlidingImage[]
 }>()
-
-const responsiveOptions = ref([
-    {
-        breakpoint: '1400px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '1199px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '575px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-])
 
 const visitEvents = () => {
     router.visit(route('events'))
@@ -41,6 +16,12 @@ const visitEvents = () => {
 const visitAboutUs = () => {
     router.visit(route('about-us'))
 }
+
+const headerImage = ref(0)
+
+setInterval(() => {
+    headerImage.value = (headerImage.value + 1) % props.slidingImages.length
+}, 6000)
 </script>
 
 <template>
@@ -84,15 +65,36 @@ const visitAboutUs = () => {
                             <img :src="images.name" alt="name" />
                         </div>
                         <p
-                            class="mt-8 md:text-5xl text-3xl text-black text-center leading-[1.3] sacramento-regular"
+                            class="mt-8 md:text-5xl text-3xl text-center leading-[1.3] font-cursive"
                         >
                             Benvenuti nella nostra pizzeria, dove il design
                             incontra la qualità.
                         </p>
-                        <div class="mt-10 flex items-center gap-x-6">
-                            <ButtonComponent @click="visitAboutUs">
+                        <section
+                            class="mt-5 flex flex-row gap-5 justify-center"
+                        >
+                            <Chip
+                                @click="visitMenus()"
+                                :label="$t('Menu')"
+                                icon="pi pi-clipboard"
+                            />
+                            <Chip
+                                @click="visitMenus()"
+                                :label="$t('Book')"
+                                icon="pi pi-phone"
+                            />
+                            <Chip
+                                @click="showOpeningHoursDialog"
+                                :label="$t('Opening hours')"
+                                icon="pi pi-times"
+                            />
+                        </section>
+                        <div
+                            class="mt-10 flex items-center justify-center gap-x-6"
+                        >
+                            <Button @click="visitAboutUs">
                                 {{ $t('Our story') }}
-                            </ButtonComponent>
+                            </Button>
                             <a
                                 href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7"
                                 target="_blank"
@@ -108,36 +110,12 @@ const visitAboutUs = () => {
         <div
             class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
         >
-            <Carousel
-                class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full"
-                :value="slidingImages"
-                :num-visible="1"
-                :num-scroll="1"
-                :responsive-options="responsiveOptions"
-                circular
-                :autoplay-interval="6000"
-            >
-                <template #item="slotProps">
-                    <div>
-                        <a :href="slotProps.data.href">
-                            <img
-                                class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
-                                :src="images[slotProps.data.image]"
-                                alt="Location"
-                            />
-                        </a>
-                    </div>
-                </template>
-            </Carousel>
+            <img
+                class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
+                :src="images[slidingImages[headerImage].image]"
+                alt="Location"
+            />
         </div>
     </div>
 </template>
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
-
-.sacramento-regular {
-    font-family: 'Sacramento', cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
-interface Supplier{
-    name: string,
-    img_url: string,
+export interface Supplier {
+    name: string
+    img_url: string
     link: string
 }

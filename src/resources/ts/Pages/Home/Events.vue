@@ -6,6 +6,7 @@ import { route } from 'ziggy-js'
 import { router } from '@inertiajs/vue3'
 import ButtonComponent from '@/Components/ButtonComponent.vue'
 import { ref } from 'vue'
+import { images } from '@/Types/ImageHelper'
 
 defineProps<{
     event: Event
@@ -76,63 +77,28 @@ const showOpeningHoursDialog = () => {
     </dialog>
 
     <div
-        class="h-full max-w-7xl w-full mx-auto flex sm:flex-row flex-col md:h-full"
+        class="h-full mx-auto sm:w-2/3 max-w-3xl w-full opacity-80 rounded-md p-10 background"
     >
-        <!-- 3 bottoni -->
-        <div
-            class="sm:w-1/3 w-full flex flex-col justify-between sm:mb-24 my-auto"
+        <EmptyStateComponent
+            v-if="!event"
+            class="backdrop-blur-xl max-w-xl mx-auto bg-white/30"
         >
-            <Button @click="visitMenus()"> Ciao </Button>
-            <ButtonComponent
-                @click="visitMenus()"
-                class="sm:w-2/5 w-full mx-auto"
-            >
-                {{ $t('Menu') }}
-            </ButtonComponent>
-            <ButtonComponent
-                @click="showBookDialog"
-                class="sm:w-2/5 w-full mx-auto"
-            >
-                {{ $t('Book') }}
-            </ButtonComponent>
-            <ButtonComponent
-                @click="showOpeningHoursDialog"
-                class="sm:w-2/5 w-full mx-auto"
-            >
-                {{ $t('Opening hours') }}
-            </ButtonComponent>
-        </div>
-
-        <!-- Eventi -->
-        <div
-            class="h-full sm:w-2/3 w-full background opacity-80 rounded-md p-10"
-        >
-            <EmptyStateComponent
-                v-if="!event"
-                class="bg-white max-w-xl mx-auto"
-            >
-                <template #title>
-                    {{ $t('There are no events') }}
-                </template>
-                <template #icon>
-                    <SparklesIcon></SparklesIcon>
-                </template>
-                <template #description>
-                    {{
-                        $t(
-                            'There are currently no events scheduled, we will organize one as soon as possible!'
-                        )
-                    }}
-                </template>
-                <template #button> </template>
-            </EmptyStateComponent>
-            <Event
-                class="h-full"
-                type="big"
-                v-if="event"
-                :event="event"
-            ></Event>
-        </div>
+            <template #title>
+                {{ $t('There are no events') }}
+            </template>
+            <template #icon>
+                <SparklesIcon></SparklesIcon>
+            </template>
+            <template #description>
+                {{
+                    $t(
+                        'There are currently no events scheduled, we will organize one as soon as possible!'
+                    )
+                }}
+            </template>
+            <template #button> </template>
+        </EmptyStateComponent>
+        <Event class="h-full" type="big" v-if="event" :event="event"></Event>
     </div>
 </template>
 

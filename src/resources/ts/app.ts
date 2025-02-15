@@ -7,8 +7,11 @@ import 'primeicons/primeicons.css'
 import Aura from '@primevue/themes/aura'
 import { definePreset } from '@primevue/themes'
 import LocaleIt from 'primelocale/it.json'
-import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { createI18n } from 'vue-i18n'
+import { createInertiaApp } from '@inertiajs/vue3'
+import { languages, locale, fallbackLocale } from '../../lang/lang.js'
+import '@fontsource/sacramento/index.css'
 
 /*// essential styles
 import 'vue-pdf-embed/dist/style/index.css'
@@ -16,6 +19,8 @@ import 'vue-pdf-embed/dist/style/index.css'
 // optional styles
 import 'vue-pdf-embed/dist/style/annotationLayer.css'
 import 'vue-pdf-embed/dist/style/textLayer.css'*/
+
+const messages = Object.assign(languages)
 
 const preset = definePreset(Aura, {
     semantic: {
@@ -35,6 +40,10 @@ const preset = definePreset(Aura, {
     },
 })
 
+const appName =
+    window.document.getElementsByTagName('title')[0]?.innerText ||
+    'CapricciosaPizzerie'
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => {
@@ -44,6 +53,14 @@ createInertiaApp({
         ).then()
     },
     setup({ el, App, props, plugin }) {
+        const i18n = createI18n({
+            legacy: false,
+            locale: locale,
+            fallbackLocale: fallbackLocale,
+            formatFallbackMessages: true,
+            messages: messages,
+        })
+
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18n)

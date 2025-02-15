@@ -38,6 +38,7 @@
         "vue-eslint-parser": "^9.4.3"
     },
     "dependencies": {
+        "@fontsource/sacramento": "^5.1.1",
         "@heroicons/vue": "^2.2.0",
         "@primevue/themes": "^4.2.5",
         "@tailwindcss/postcss": "^4.0.6",

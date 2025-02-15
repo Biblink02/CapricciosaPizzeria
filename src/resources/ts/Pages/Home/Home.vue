@@ -4,10 +4,10 @@ import { ref } from 'vue'
 import Carousel from 'primevue/carousel'
 import { images } from '@/Types/ImageHelper'
 import Events from '@/Pages/Home/Events.vue'
-import Suppliers from '@/Pages/Home/Suppliers.vue'
 import HeadingComponent from '@/Pages/Home/HeadingComponent.vue'
 import Social from '@/Pages/Home/Social.vue'
 import Supplier from '@/Types/Supplier'
+import SuppliersComponent from '@/Pages/Home/SuppliersComponent.vue'
 
 defineProps<{
     suppliers: Supplier[]
@@ -39,16 +39,16 @@ const responsiveOptions = ref([
 
 const locationImages = [
     {
-        image: images.carousel_1,
+        image: 'carousel_1',
     },
     {
-        image: images.carousel_2,
+        image: 'carousel_2',
     },
     {
-        image: images.carousel_3,
+        image: 'carousel_3',
     },
     {
-        image: images.carousel_4,
+        image: 'carousel_4',
     },
 ]
 
@@ -69,7 +69,7 @@ const dishesImages = [
 </script>
 
 <template>
-    <AppLayout :navbar-hidden="true" title="home">
+    <AppLayout :navbar-hidden="true" title="home" class="font-sans">
         <div class="flex px-5 flex-col w-full gap-24">
             <HeadingComponent
                 :sliding-images="locationImages"
@@ -80,14 +80,14 @@ const dishesImages = [
             <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
                 <div class="flex flex-col">
                     <h1
-                        class="mx-auto text-5xl md:text-7xl bold text-gray-900 mb-6 sacramento-regular"
+                        class="mx-auto text-5xl md:text-7xl bold mb-6 sacramento-regular font-cursive"
                     >
                         {{ $t('Our Dishes') }}
                     </h1>
                 </div>
 
                 <Carousel
-                    class="overflow-hidden object-cover lg:aspect-auto lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                    class="overflow-hidden lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
                     :value="dishesImages"
                     :num-visible="2"
                     :num-scroll="1"
@@ -96,42 +96,20 @@ const dishesImages = [
                     :autoplay-interval="2000"
                 >
                     <template #item="slotProps">
-                        <div>
-                            <a :href="slotProps.data.href">
-                                <img
-                                    class="w-screen h-[30rem] object-cover rounded-xl"
-                                    :src="images[slotProps.data.image]"
-                                    alt="Location"
-                                />
-                            </a>
+                        <div class="p-3">
+                            <img
+                                class="w-150 h-100 object-cover rounded-xl"
+                                :src="images[slotProps.data.image]"
+                                alt="Location"
+                            />
                         </div>
                     </template>
                 </Carousel>
             </div>
 
-            <Suppliers class="mt-12" :suppliers="suppliers" />
+            <SuppliersComponent class="mt-12" :suppliers="suppliers" />
 
             <Social />
         </div>
     </AppLayout>
 </template>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
-.sacramento-regular {
-    font-family: 'Sacramento', cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-.p-carousel-indicators {
-    display: none;
-}
-
-.p-carousel-prev {
-    display: none;
-}
-
-.p-carousel-next {
-    display: none;
-}
-</style>
