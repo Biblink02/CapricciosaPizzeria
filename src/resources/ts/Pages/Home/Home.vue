@@ -16,22 +16,12 @@ defineProps<{
 
 const responsiveOptions = ref([
     {
-        breakpoint: '1400px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-    {
         breakpoint: '1199px',
-        numVisible: 1,
+        numVisible: 2,
         numScroll: 1,
     },
     {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1,
-    },
-    {
-        breakpoint: '575px',
+        breakpoint: '830px',
         numVisible: 1,
         numScroll: 1,
     },
@@ -66,6 +56,12 @@ const dishesImages = [
         image: 'dish_4',
     },
 ]
+
+const currentImage = ref(0)
+
+setInterval(() => {
+    currentImage.value = (currentImage.value + 1) % dishesImages.length
+}, 6000)
 </script>
 
 <template>
@@ -77,34 +73,41 @@ const dishesImages = [
 
             <Events :event="event"></Events>
 
-            <div class="mx-auto mt-12 max-w-7xl flex flex-col gap-10">
-                <div class="flex flex-col">
-                    <h1
-                        class="mx-auto text-5xl md:text-7xl bold mb-6 sacramento-regular font-cursive"
+            <div class="mx-auto max-w-7xl flex flex-col gap-10">
+                <h1
+                    class="mx-auto text-5xl md:text-7xl bold sacramento-regular font-cursive"
+                >
+                    {{ $t('Our Dishes') }}
+                </h1>
+
+                <div class="max-sm:hidden">
+                    <Carousel
+                        class="max-sm:hidden overflow-hidden lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
+                        :value="dishesImages"
+                        :num-visible="2"
+                        :responsive-options="responsiveOptions"
+                        circular
+                        :autoplay-interval="2000"
                     >
-                        {{ $t('Our Dishes') }}
-                    </h1>
+                        <template #item="slotProps">
+                            <div class="p-3">
+                                <img
+                                    class="mx-auto w-150 h-100 object-cover rounded-xl"
+                                    :src="images[slotProps.data.image]"
+                                    alt="Location"
+                                />
+                            </div>
+                        </template>
+                    </Carousel>
                 </div>
 
-                <Carousel
-                    class="overflow-hidden lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
-                    :value="dishesImages"
-                    :num-visible="2"
-                    :num-scroll="1"
-                    :responsive-options="responsiveOptions"
-                    circular
-                    :autoplay-interval="2000"
-                >
-                    <template #item="slotProps">
-                        <div class="p-3">
-                            <img
-                                class="w-150 h-100 object-cover rounded-xl"
-                                :src="images[slotProps.data.image]"
-                                alt="Location"
-                            />
-                        </div>
-                    </template>
-                </Carousel>
+                <div class="sm:hidden">
+                    <img
+                        class="w-150 h-100 object-cover rounded-xl"
+                        :src="images[dishesImages[currentImage].image]"
+                        alt="Location"
+                    />
+                </div>
             </div>
 
             <SuppliersComponent class="mt-12" :suppliers="suppliers" />

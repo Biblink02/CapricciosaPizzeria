@@ -3,5 +3,8 @@
 
 @theme {
     --font-cursive: "Sacramento", sans-serif;
+    --color-capricciosa_green: #a5b977;
+    --color-capricciosa_dark_green: #91a46a;
+    --color-capricciosa_darker_green: #637143;
+    --color-capricciosa_red: #c2434c;
 }
-

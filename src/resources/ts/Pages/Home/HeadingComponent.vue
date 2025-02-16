@@ -37,7 +37,10 @@ setInterval(() => {
                     <polygon points="0,0 90,0 50,100 0,100" />
                 </svg>
                 <div class="relative lg:pl-8 lg:pr-0">
-                    <NavbarComponent class="shadow-none"></NavbarComponent>
+                    <NavbarComponent
+                        current-page="Home"
+                        class="shadow-none"
+                    ></NavbarComponent>
                 </div>
                 <div class="relative lg:pr-0">
                     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
@@ -61,32 +64,38 @@ setInterval(() => {
                                 </a>
                             </div>
                         </div>
-                        <div class="max-w-2xl w-88 md:w-fit">
+                        <div class="max-w-2xl w-88 w-fit">
                             <img :src="images.name" alt="name" />
                         </div>
                         <p
-                            class="mt-8 md:text-5xl text-3xl text-center leading-[1.3] font-cursive"
+                            class="mt-8 max-md:text-4xl text-5xl text-center leading-[1.3] font-cursive"
                         >
-                            Benvenuti nella nostra pizzeria, dove il design
-                            incontra la qualità.
+                            {{
+                                $t(
+                                    'Benvenuti nella nostra pizzeria, dove il design incontra la qualità.'
+                                )
+                            }}
                         </p>
                         <section
-                            class="mt-5 flex flex-row gap-5 justify-center"
+                            class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
                         >
                             <Chip
+                                class="whitespace-pre"
                                 @click="visitMenus()"
                                 :label="$t('Menu')"
                                 icon="pi pi-clipboard"
                             />
                             <Chip
+                                class="whitespace-pre"
                                 @click="visitMenus()"
                                 :label="$t('Book')"
                                 icon="pi pi-phone"
                             />
                             <Chip
+                                class="whitespace-pre"
                                 @click="showOpeningHoursDialog"
                                 :label="$t('Opening hours')"
-                                icon="pi pi-times"
+                                icon="pi pi-calendar-clock"
                             />
                         </section>
                         <div
@@ -108,7 +117,7 @@ setInterval(() => {
             </div>
         </div>
         <div
-            class="overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
+            class="max-lg:mt-10 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
         >
             <img
                 class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"

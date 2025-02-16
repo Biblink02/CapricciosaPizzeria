@@ -19,7 +19,9 @@ const navigation = [
 </script>
 
 <template>
-    <footer class="footer p-10 bg-white text-base-content my-24">
+    <footer
+        class="flex flex-row p-10 justify-around bg-white text-base-content my-24"
+    >
         <aside class="max-sm:mx-auto">
             <img
                 :src="images.logo"
@@ -35,7 +37,9 @@ const navigation = [
             :key="item.name"
             class="max-sm:mx-auto max-sm:text-center"
         >
-            <h6 class="w-full footer-title">{{ $t(item.name) }}</h6>
+            <h6 class="w-full font-bold uppercase text-gray-500">
+                {{ $t(item.name) }}
+            </h6>
             <p
                 v-for="(row, index) in item.rows"
                 :key="index"

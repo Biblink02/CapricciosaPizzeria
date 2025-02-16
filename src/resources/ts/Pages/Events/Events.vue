@@ -19,7 +19,7 @@ const page = usePage()
         <div class="px-5">
             <div class="py-24 text-center">
                 <h2
-                    class="tracking-tight text-gray-900 text-5xl md:text-7xl sacramento-regular"
+                    class="font-cursive tracking-tight text-5xl md:text-7xl sacramento-regular"
                 >
                     {{ $t('Events') }}
                 </h2>
@@ -44,9 +44,6 @@ const page = usePage()
                 v-if="showEmptyState"
                 class="max-w-2xl mx-auto"
             >
-                <template #title>
-                    {{ $t('Events') }}
-                </template>
                 <template #icon>
                     <SparklesIcon></SparklesIcon>
                 </template>

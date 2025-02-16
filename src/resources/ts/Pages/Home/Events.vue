@@ -76,13 +76,11 @@ const showOpeningHoursDialog = () => {
         </form>
     </dialog>
 
-    <div
-        class="h-full mx-auto sm:w-2/3 max-w-3xl w-full opacity-80 rounded-md p-10 background"
-    >
-        <EmptyStateComponent
-            v-if="!event"
-            class="backdrop-blur-xl max-w-xl mx-auto bg-white/30"
-        >
+    <div class="h-full mx-auto sm:w-2/3 max-w-3xl w-full p-10 relative">
+        <div
+            class="-z-1 absolute inset-0 background opacity-80 rounded-md"
+        ></div>
+        <EmptyStateComponent v-if="!event" class="max-w-xl mx-auto bg-white">
             <template #title>
                 {{ $t('There are no events') }}
             </template>
