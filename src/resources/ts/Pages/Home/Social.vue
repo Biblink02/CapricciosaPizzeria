@@ -20,7 +20,7 @@ import { images } from '@/Types/ImageHelper'
                 target="_blank"
             >
                 <i
-                    class="text-capricciosa_darker_green pi pi-facebook"
+                    class="text-capricciosa_red pi pi-facebook"
                     style="font-size: 5rem"
                 ></i>
             </a>
@@ -30,7 +30,7 @@ import { images } from '@/Types/ImageHelper'
                 target="_blank"
             >
                 <i
-                    class="text-capricciosa_darker_green pi pi-instagram"
+                    class="text-capricciosa_red pi pi-instagram"
                     style="font-size: 5rem"
                 ></i>
             </a>

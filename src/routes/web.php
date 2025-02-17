@@ -24,7 +24,4 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    /*
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    */
 });

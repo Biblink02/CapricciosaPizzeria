@@ -10,7 +10,7 @@ class MenusController
 {
     public function index(GetMenusForMenusPage $getMenusForHome): Response
     {
-        return Inertia::render('Menus/Menus');
+        return Inertia::render('Menus/MenuPage');
     }
 }
 

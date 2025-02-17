@@ -13,13 +13,6 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { languages, locale, fallbackLocale } from '../../lang/lang.js'
 import '@fontsource/sacramento/index.css'
 
-/*// essential styles
-import 'vue-pdf-embed/dist/style/index.css'
-
-// optional styles
-import 'vue-pdf-embed/dist/style/annotationLayer.css'
-import 'vue-pdf-embed/dist/style/textLayer.css'*/
-
 const messages = Object.assign(languages)
 
 const preset = definePreset(Aura, {
