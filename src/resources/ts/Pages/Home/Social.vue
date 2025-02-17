@@ -3,12 +3,6 @@ import { images } from '@/Types/ImageHelper'
 </script>
 
 <template>
-    <p
-        class="mt-24 mb-0 mx-auto tracking-tight font-cursive text-5xl md:text-7xl sacramento-regular"
-    >
-        {{ $t('Follow us on social media') }}
-    </p>
-
     <div class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative">
         <div
             class="absolute rounded-2xl inset-0 opacity-80 h-full bg-repeat"

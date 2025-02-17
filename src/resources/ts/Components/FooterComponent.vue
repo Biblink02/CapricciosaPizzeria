@@ -20,7 +20,7 @@ const navigation = [
 
 <template>
     <footer
-        class="flex flex-row p-10 justify-around bg-white text-base-content my-24"
+        class="flex max-sm:flex-col max-sm:gap-5 flex-row max-sm:p-2 p-10 justify-around text-base-content my-24"
     >
         <aside class="max-sm:mx-auto">
             <img
@@ -28,7 +28,7 @@ const navigation = [
                 alt="logo"
                 class="object-scale-down w-48 mx-5"
             />
-            <p class="text-gray-500 w-full max-sm:text-center hidden md:block">
+            <p class="text-gray-500 w-full max-sm:text-center">
                 Capricciosa Pizzeria srl<br />P.IVA 01223580554
             </p>
         </aside>

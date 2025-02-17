@@ -65,54 +65,68 @@ setInterval(() => {
 </script>
 
 <template>
-    <AppLayout :navbar-hidden="true" title="home" class="font-sans">
-        <div class="flex px-5 flex-col w-full gap-24">
+    <AppLayout
+        current-page="Home"
+        :navbar-hidden="true"
+        title="home"
+        class="font-sans"
+    >
+        <div class="flex flex-col items-center w-full gap-24">
             <HeadingComponent
+                class="w-full"
                 :sliding-images="locationImages"
             ></HeadingComponent>
 
-            <Events :event="event"></Events>
-
-            <div class="mx-auto max-w-7xl flex flex-col gap-10">
-                <h1
-                    class="mx-auto text-5xl md:text-7xl bold sacramento-regular font-cursive"
-                >
-                    {{ $t('Our Dishes') }}
-                </h1>
-
-                <div class="max-sm:hidden">
-                    <Carousel
-                        class="max-sm:hidden overflow-hidden lg:h-full lg:w-full max-w-7xl mx-auto rounded-xl"
-                        :value="dishesImages"
-                        :num-visible="2"
-                        :responsive-options="responsiveOptions"
-                        circular
-                        :autoplay-interval="2000"
-                    >
-                        <template #item="slotProps">
-                            <div class="p-3">
-                                <img
-                                    class="mx-auto w-150 h-100 object-cover rounded-xl"
-                                    :src="images[slotProps.data.image]"
-                                    alt="Location"
-                                />
-                            </div>
-                        </template>
-                    </Carousel>
-                </div>
-
-                <div class="sm:hidden">
-                    <img
-                        class="w-150 h-100 object-cover rounded-xl"
-                        :src="images[dishesImages[currentImage].image]"
-                        alt="Location"
-                    />
-                </div>
+            <div class="mx-3">
+                <Events :event="event"></Events>
             </div>
 
-            <SuppliersComponent class="mt-12" :suppliers="suppliers" />
+            <h1
+                class="px-3 text-5xl md:text-7xl sacramento-regular font-cursive"
+            >
+                {{ $t('Our Dishes') }}
+            </h1>
 
-            <Social />
+            <div class="max-sm:hidden">
+                <Carousel
+                    class="overflow-hidden max-w-7xl"
+                    :value="dishesImages"
+                    :num-visible="2"
+                    :responsive-options="responsiveOptions"
+                    circular
+                    :autoplay-interval="2000"
+                >
+                    <template #item="slotProps">
+                        <div class="p-3">
+                            <img
+                                class="mx-auto w-150 h-100 object-cover rounded-xl"
+                                :src="images[slotProps.data.image]"
+                                alt="Location"
+                            />
+                        </div>
+                    </template>
+                </Carousel>
+            </div>
+
+            <div class="px-3 w-full">
+                <img
+                    class="sm:hidden mx-auto max-w-xl w-full h-100 object-cover rounded-xl"
+                    :src="images[dishesImages[currentImage].image]"
+                    alt="Location"
+                />
+            </div>
+
+            <SuppliersComponent class="mx-3" :suppliers="suppliers" />
+
+            <p
+                class="mx-3 font-cursive text-5xl md:text-7xl sacramento-regular"
+            >
+                {{ $t('Follow us on social media') }}
+            </p>
+
+            <div class="px-3 w-full">
+                <Social />
+            </div>
         </div>
     </AppLayout>
 </template>

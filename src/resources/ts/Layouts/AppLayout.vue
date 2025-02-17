@@ -5,6 +5,7 @@ import FooterComponent from '@/Components/FooterComponent.vue'
 
 const props = defineProps<{
     title: string
+    currentPage: string
     navbarHidden?: boolean
 }>()
 
@@ -14,9 +15,7 @@ const isNavbarHidden = props.navbarHidden ?? false
 <template>
     <InertiaHead :title="title"></InertiaHead>
 
-    <div class="sticky top-0 z-40">
-        <NavbarComponent v-if="!isNavbarHidden" />
-    </div>
+    <NavbarComponent :current-page="currentPage" v-if="!isNavbarHidden" />
     <div class="w-full h-content flex flex-col">
         <slot />
     </div>

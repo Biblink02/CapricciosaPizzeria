@@ -15,7 +15,11 @@ const page = usePage()
 </script>
 
 <template>
-    <AppLayout :title="$t('Events')" :footer="page.footer">
+    <AppLayout
+        current-page="Events"
+        :title="$t('Events')"
+        :footer="page.footer"
+    >
         <div class="px-5">
             <div class="py-24 text-center">
                 <h2
@@ -31,9 +35,7 @@ const page = usePage()
                     }}
                 </p>
             </div>
-            <div
-                class="mx-auto mt-12 flex flex-row flex-wrap justify-center gap-4"
-            >
+            <div class="mx-auto flex flex-row flex-wrap justify-center gap-4">
                 <Event
                     v-for="event in events"
                     :key="event.uuid"
