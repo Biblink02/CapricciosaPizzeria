@@ -5,7 +5,11 @@ const page = usePage()
 </script>
 
 <template>
-    <AppLayout :title="$t('Menus')" :footer="page.footer">
+    <AppLayout
+        current-page="About us"
+        :title="$t('Menus')"
+        :footer="page.footer"
+    >
         <p
             class="p-5 font-cursive mx-auto max-md:my-10 my-20 text-justify text-5xl md:text-6xl sacramento-regular"
         >

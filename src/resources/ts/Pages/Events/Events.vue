@@ -35,9 +35,10 @@ const page = usePage()
                     }}
                 </p>
             </div>
-            <div class="mx-auto flex flex-row flex-wrap justify-center gap-4">
+            <div class="mx-auto flex flex-col items-center gap-4 space-y-7">
                 <Event
-                    v-for="event in events"
+                    v-for="(event, index) in events"
+                    :reverse="index % 2 != 0"
                     :key="event.uuid"
                     :event="event"
                 />

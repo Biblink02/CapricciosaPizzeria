@@ -1,6 +1,10 @@
 @import '@fontsource/sacramento';
 @import "tailwindcss";
 
+
+@import 'vue-pdf-embed/dist/styles/annotationLayer.css';
+@import 'vue-pdf-embed/dist/styles/textLayer.css';
+
 @theme {
     --font-cursive: "Sacramento", sans-serif;
     --color-capricciosa_green: #a5b977;

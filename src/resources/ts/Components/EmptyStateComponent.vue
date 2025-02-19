@@ -2,7 +2,7 @@
 
 <template>
     <div
-        class="text-center rounded-lg border-2 border-dashed p-5 border-gray-500"
+        class="bg-white text-center rounded-lg border-2 border-dashed p-5 border-gray-500"
     >
         <div class="mx-auto h-12 w-12">
             <slot name="icon" />

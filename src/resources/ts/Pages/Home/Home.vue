@@ -77,7 +77,22 @@ setInterval(() => {
                 :sliding-images="locationImages"
             ></HeadingComponent>
 
-            <div class="mx-3">
+            <div class="px-3 text-center">
+                <h2
+                    class="font-cursive tracking-tight text-5xl md:text-7xl sacramento-regular"
+                >
+                    {{ $t('Events') }}
+                </h2>
+                <p class="mx-auto mt-3 max-w-2xl text-gray-500 sm:mt-4">
+                    {{
+                        $t(
+                            'Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.'
+                        )
+                    }}
+                </p>
+            </div>
+
+            <div class="px-3 w-full max-w-6xl">
                 <Events :event="event"></Events>
             </div>
 
@@ -124,7 +139,7 @@ setInterval(() => {
                 {{ $t('Follow us on social media') }}
             </p>
 
-            <div class="px-3 w-full">
+            <div class="px-3 w-full max-w-6xl">
                 <Social />
             </div>
         </div>

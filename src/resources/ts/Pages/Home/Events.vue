@@ -2,6 +2,7 @@
 import Event from '@/Pages/Events/Event.vue'
 import { SparklesIcon } from '@heroicons/vue/16/solid'
 import EmptyStateComponent from '@/Components/EmptyStateComponent.vue'
+import { images } from '@/Types/ImageHelper'
 
 defineProps<{
     event: Event
@@ -9,33 +10,50 @@ defineProps<{
 </script>
 
 <template>
-    <div class="h-full max-w-3xl w-full p-10 relative">
+    <div v-if="event" class="relative md:p-5">
+        <Event
+            :reverse="false"
+            class="h-full"
+            type="big"
+            v-if="event"
+            :event="event"
+        ></Event>
         <div
-            class="-z-1 absolute inset-0 background opacity-80 rounded-md"
+            class="max-md:hidden -z-1 absolute rounded-2xl inset-0 opacity-80 h-full bg-repeat"
+            :style="{
+                'background-size': 'auto 130%',
+                'background-image': 'url(' + images.wall_paper + ')',
+            }"
         ></div>
-        <EmptyStateComponent v-if="!event" class="max-w-xl mx-auto bg-white">
-            <template #title>
-                {{ $t('There are no events') }}
-            </template>
-            <template #icon>
-                <SparklesIcon></SparklesIcon>
-            </template>
-            <template #description>
-                {{
-                    $t(
-                        'There are currently no events scheduled, we will organize one as soon as possible!'
-                    )
-                }}
-            </template>
-            <template #button> </template>
-        </EmptyStateComponent>
-        <Event class="h-full" type="big" v-if="event" :event="event"></Event>
+    </div>
+    <div v-else class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative">
+        <div
+            class="absolute rounded-2xl inset-0 opacity-80 h-full bg-repeat"
+            :style="{
+                'background-size': 'auto 130%',
+                'background-image': 'url(' + images.wall_paper + ')',
+            }"
+        ></div>
+        <div
+            class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl p-3"
+        >
+            <EmptyStateComponent class="h-fit max-w-3xl" v-if="!event">
+                <template #title>
+                    {{ $t('There are no events') }}
+                </template>
+                <template #icon>
+                    <SparklesIcon></SparklesIcon>
+                </template>
+                <template #description>
+                    {{
+                        $t(
+                            'There are currently no events scheduled, we will organize one as soon as possible!'
+                        )
+                    }}
+                </template>
+            </EmptyStateComponent>
+        </div>
     </div>
 </template>
 
-<style scoped>
-.background {
-    background: url('~/media/pages/home/wall_paper.jpg');
-    background-size: 50%;
-}
-</style>
+<style scoped></style>

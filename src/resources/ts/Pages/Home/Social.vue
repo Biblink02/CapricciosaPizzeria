@@ -7,7 +7,7 @@ import { images } from '@/Types/ImageHelper'
         <div
             class="absolute rounded-2xl inset-0 opacity-80 h-full bg-repeat"
             :style="{
-                'background-size': 'auto 100%',
+                'background-size': 'auto 130%',
                 'background-image': 'url(' + images.wall_paper + ')',
             }"
         ></div>
@@ -31,6 +31,16 @@ import { images } from '@/Types/ImageHelper'
             >
                 <i
                     class="text-capricciosa_red pi pi-instagram"
+                    style="font-size: 5rem"
+                ></i>
+            </a>
+            <a
+                class="bg-white mb-10 max-sm:mx-auto h-fit w-fit p-3 rounded-xl"
+                href="https://www.linkedin.com/company/capricciosa-pizzeria/"
+                target="_blank"
+            >
+                <i
+                    class="text-capricciosa_red pi pi-linkedin"
                     style="font-size: 5rem"
                 ></i>
             </a>

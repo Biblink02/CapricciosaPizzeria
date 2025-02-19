@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { getSidebar } from '@/actions/GetSidebar'
-import { images } from '@/Types/ImageHelper'
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
 import { ref } from 'vue'
 
 defineProps<{

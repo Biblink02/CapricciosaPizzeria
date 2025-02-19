@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { route } from 'ziggy-js'
-import ButtonComponent from '@/Components/ButtonComponent.vue'
 import VuePdfEmbed from 'vue-pdf-embed'
 
 const visitAllergens = () => {
@@ -29,19 +28,11 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
             :source="pdfSource"
         />
         <div class="flex justify-center pt-6 pb-6">
-            <ButtonComponent @click="visitAllergens">
+            <Button @click="visitAllergens">
                 {{ $t('Allergenes list') }}
-            </ButtonComponent>
+            </Button>
         </div>
     </AppLayout>
 </template>
 
-<style>
-.p-tabmenu-ink-bar {
-    display: none;
-}
-
-.hiddenCanvasElement {
-    display: none;
-}
-</style>
+<style></style>

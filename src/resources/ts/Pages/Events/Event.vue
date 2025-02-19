@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Event } from '@/Types/Event'
-import ButtonComponent from '@/Components/ButtonComponent.vue'
 import { formatDate } from '@/Types/DateFormatterHelper'
 import { router } from '@inertiajs/vue3'
 import { route } from 'ziggy-js'
+import { images } from '@/Types/ImageHelper'
 
 const props = defineProps<{
     event: Event
-    type?: 'big' | 'normal'
+    reverse: boolean
 }>()
 
 const visitEvents = () => {
@@ -16,51 +16,65 @@ const visitEvents = () => {
 </script>
 
 <template>
-    <!-- TODO -->
     <div
-        v-if="type === 'big'"
-        class="card h-72 lg:card-side bg-base-100 shadow-xl"
+        class="flex items-center gap-5 max-lg:flex-col"
+        :class="reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'"
     >
-        <figure class="lg:w-3/5 h-max-96">
-            <img
-                :src="'images/' + event?.img_url"
-                class="object-cover"
-                alt="Event"
-            />
-        </figure>
-        <div class="card-body text-left">
-            <h2 class="card-title">{{ event.name }}</h2>
-            <p class="whitespace-pre-wrap">{{ event.description }}</p>
-            <div class="flex space-x-1 text-sm text-gray-500">
-                <time :datetime="event.starts_at"
-                    >{{ $t('Dal ') }}{{ formatDate(event.starts_at) }}</time
-                >
-                <time :datetime="event.ends_at"
-                    >{{ $t('al ') }}{{ formatDate(event.ends_at) }}</time
-                >
-            </div>
-            <div class="card-actions justify-end">
-                <ButtonComponent @click="visitEvents">
-                    {{ $t('Go to events') }}
-                </ButtonComponent>
-            </div>
+        <div
+            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square h-full bg-cover object-scale-down"
+            :style="{
+                'background-image': 'url(images/' + event.img_url + ')',
+            }"
+        ></div>
+        <div class="flex-1 max-sm:hidden max-w-5xl">
+            <Card>
+                <template #title>
+                    <p>{{ event.name }}</p>
+                    <div
+                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square h-full bg-cover object-scale-down"
+                        :style="{
+                            'background-image':
+                                'url(images/' + event.img_url + ')',
+                        }"
+                    ></div>
+                </template>
+                <template #content>
+                    <div class="h-full flex flex-col gap-5">
+                        <p class="whitespace-pre-wrap">
+                            {{ event.description }}
+                        </p>
+                        <div class="flex space-x-1 text-sm text-gray-500">
+                            <time :datetime="event.starts_at"
+                                >{{ $t('Dal ')
+                                }}{{ formatDate(event.starts_at) }}</time
+                            >
+                            <time :datetime="event.ends_at"
+                                >{{ $t('al ')
+                                }}{{ formatDate(event.ends_at) }}</time
+                            >
+                        </div>
+                    </div>
+                </template>
+            </Card>
         </div>
-    </div>
-
-    <div v-else class="card w-96 bg-base-100 shadow-xl">
-        <figure><img :src="'images/' + event?.img_url" alt="Event" /></figure>
-        <div class="card-body h-1/2">
-            <h2 class="card-title">
-                {{ event.name }}
-            </h2>
-            <p class="whitespace-pre-wrap">{{ event.description }}</p>
-            <div class="flex space-x-1 text-sm text-gray-500">
-                <time :datetime="event.starts_at"
-                    >{{ $t('Dal ') }}{{ formatDate(event.starts_at) }}</time
-                >
-                <time :datetime="event.ends_at"
-                    >{{ $t('al ') }}{{ formatDate(event.ends_at) }}</time
-                >
+        <div class="sm:hidden">
+            <p class="font-bold">{{ event.name }}</p>
+            <div
+                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square h-full bg-cover object-scale-down"
+                :style="{
+                    'background-image': 'url(images/' + event.img_url + ')',
+                }"
+            ></div>
+            <div class="h-full flex flex-col gap-5">
+                <p class="whitespace-pre-wrap">{{ event.description }}</p>
+                <div class="flex space-x-1 text-sm text-gray-500">
+                    <time :datetime="event.starts_at"
+                        >{{ $t('Dal ') }}{{ formatDate(event.starts_at) }}</time
+                    >
+                    <time :datetime="event.ends_at"
+                        >{{ $t('al ') }}{{ formatDate(event.ends_at) }}</time
+                    >
+                </div>
             </div>
         </div>
     </div>

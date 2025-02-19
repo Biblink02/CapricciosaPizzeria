@@ -20,24 +20,24 @@ const navigation = [
 
 <template>
     <footer
-        class="flex max-sm:flex-col max-sm:gap-5 flex-row max-sm:p-2 p-10 justify-around text-base-content my-24"
+        class="max-sm:items-center flex max-sm:flex-col max-sm:gap-5 flex-row max-sm:p-2 justify-around text-base-content my-24"
     >
-        <aside class="max-sm:mx-auto">
+        <aside class="w-fit">
             <img
                 :src="images.logo"
                 alt="logo"
-                class="object-scale-down w-48 mx-5"
+                class="object-scale-down w-48 -mt-20"
             />
-            <p class="text-gray-500 w-full max-sm:text-center">
+            <p class="text-gray-500 w-full text-center">
                 Capricciosa Pizzeria srl<br />P.IVA 01223580554
             </p>
         </aside>
         <nav
             v-for="item in navigation"
             :key="item.name"
-            class="max-sm:mx-auto max-sm:text-center"
+            class="max-sm:text-center"
         >
-            <h6 class="w-full font-bold uppercase text-gray-500">
+            <h6 class="font-bold uppercase text-gray-500">
                 {{ $t(item.name) }}
             </h6>
             <p
