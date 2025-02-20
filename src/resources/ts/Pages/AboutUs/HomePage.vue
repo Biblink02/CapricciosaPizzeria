@@ -14,7 +14,7 @@ const page = usePage()
         <main role="main" class="container mx-auto">
             <section aria-labelledby="about-us-heading">
                 <header>
-                    <TitleComponent class="mt-10 mb-15">
+                    <TitleComponent class="my-15">
                         <template #title>
                             {{ $t('Capricciosa in taste and design') }}
                         </template>

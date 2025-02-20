@@ -3,12 +3,12 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { ref } from 'vue'
 import Carousel from 'primevue/carousel'
 import { images } from '@/Types/ImageHelper'
-import HeadingComponent from '@/Pages/Home/HeadingComponent.vue'
-import Social from '@/Pages/Home/Social.vue'
 import Supplier from '@/Types/Supplier'
-import SuppliersComponent from '@/Pages/Home/SuppliersComponent.vue'
 import EventPartial from '@/Pages/Home/EventPartial.vue'
 import TitleComponent from '@/Components/TitleComponent.vue'
+import HeadingPartial from '@/Pages/Home/HeadingPartial.vue'
+import SocialPartial from '@/Pages/Home/SocialPartial.vue'
+import SuppliersPartial from '@/Pages/Home/SuppliersPartial.vue'
 
 defineProps<{
     suppliers: Supplier[]
@@ -60,7 +60,7 @@ setInterval(() => {
         <main role="main" class="flex flex-col items-center w-full gap-24">
             <!-- Hero Banner / Header -->
             <header class="w-full">
-                <HeadingComponent :sliding-images="locationImages" />
+                <HeadingPartial :sliding-images="locationImages" />
             </header>
 
             <!-- Events Section -->
@@ -139,7 +139,7 @@ setInterval(() => {
                         }}
                     </template>
                 </TitleComponent>
-                <SuppliersComponent :suppliers="suppliers" />
+                <SuppliersPartial :suppliers="suppliers" />
             </section>
 
             <!-- Social Media Section -->
@@ -159,7 +159,7 @@ setInterval(() => {
                         }}
                     </template>
                 </TitleComponent>
-                <Social />
+                <SocialPartial />
             </section>
         </main>
     </AppLayout>

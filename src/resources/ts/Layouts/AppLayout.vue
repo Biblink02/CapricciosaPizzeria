@@ -15,7 +15,11 @@ const isNavbarHidden = props.navbarHidden ?? false
 <template>
     <InertiaHead :title="title"></InertiaHead>
 
-    <NavbarComponent :current-page="currentPage" v-if="!isNavbarHidden" />
+    <NavbarComponent
+        :simplified="false"
+        :current-page="currentPage"
+        v-if="!isNavbarHidden"
+    />
     <div class="w-full h-content flex flex-col">
         <slot />
     </div>

@@ -12,6 +12,8 @@ import { createI18n } from 'vue-i18n'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { languages, locale, fallbackLocale } from '../../lang/lang.js'
 import '@fontsource/sacramento/index.css'
+import { createGtm } from '@gtm-support/vue-gtm'
+import { watch } from 'vue'
 
 const messages = Object.assign(languages)
 
@@ -56,6 +58,12 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18n)
+            .use(
+                createGtm({
+                    id: 'G-XXXXXXXXXX', // Inserisci il tuo ID GA4
+                    vueRouter: router, // Associa al router di Inertia se necessario
+                })
+            )
             .use(PrimeVue, {
                 theme: {
                     preset: preset,
@@ -68,3 +76,14 @@ createInertiaApp({
             .mount(el)
     },
 }).then()
+
+watch(
+    () => router.page,
+    (page) => {
+        if (window.gtag) {
+            window.gtag('config', 'G-XXXXXXXXXX', {
+                page_path: page.url,
+            })
+        }
+    }
+)

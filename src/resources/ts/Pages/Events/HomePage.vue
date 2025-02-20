@@ -22,10 +22,10 @@ const page = usePage()
         :footer="page.footer"
     >
         <!-- Main content area -->
-        <main class="px-5" role="main">
+        <main class="px-3" role="main">
             <!-- Header section for the page title and description -->
             <header role="banner" aria-label="Events Header">
-                <TitleComponent class="mt-10 mb-15">
+                <TitleComponent class="my-20">
                     <template #title>
                         {{ $t('Events') }}
                     </template>

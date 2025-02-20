@@ -19,9 +19,9 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
 
 <template>
     <AppLayout current-page="Menu" :title="$t('Menus')">
-        <main role="main">
+        <main role="main" class="px-3">
             <TitleComponent
-                class="mt-10 mb-15"
+                class="my-15"
                 :html-description-content="
                     $t('menu_page_subtitle', {
                         route: route('allergens-table'),
@@ -33,9 +33,9 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
                     {{ $t('Menu') }}
                 </template>
             </TitleComponent>
-            <section aria-label="Menu PDF">
+            <section aria-label="Menu PDF" class="flex items-center">
                 <VuePdfEmbed
-                    class="w-full mx-auto"
+                    class="w-full mx-auto max-w-7xl"
                     annotation-layer
                     text-layer
                     :source="pdfSource"

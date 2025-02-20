@@ -1,27 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { images } from '@/Types/ImageHelper'
-import { router } from '@inertiajs/vue3'
 import { route } from 'ziggy-js'
 import NavbarComponent from '@/Components/NavbarComponent.vue'
 import { SlidingImage } from '@/Types/SlidingImage'
+import { ArrowRightIcon } from '@heroicons/vue/16/solid'
 
 const props = defineProps<{
     slidingImages: SlidingImage[]
 }>()
 
-const visitEvents = () => {
-    router.visit(route('events'))
-}
-const visitAboutUs = () => {
-    router.visit(route('about-us'))
-}
-
 const headerImage = ref(0)
-
-const visitMenus = () => {
-    router.visit(route('menus'))
-}
 
 const bookDialog = ref(false)
 const showBookDialog = () => {
@@ -39,7 +28,7 @@ setInterval(() => {
 </script>
 
 <template>
-    <div class="overflow-hidden relative">
+    <header class="overflow-hidden relative" role="banner">
         <Dialog
             v-model:visible="openingHoursDialog"
             modal
@@ -63,16 +52,15 @@ setInterval(() => {
                 {{ $t('Bookings are accepted at the following numbers') }}:
             </p>
             <p>
-                <a href="tel:+390444022349" class="font-bold">{{
-                    'Tel: +39 0444 022 349'
-                }}</a>
+                <a href="tel:+390444022349" class="font-bold">
+                    {{ 'Tel: +39 0444 022 349' }}
+                </a>
             </p>
             <p>
-                <a href="tel:+393292983245" class="font-bold">{{
-                    'Mobile: +39 329 298 3245'
-                }}</a>
+                <a href="tel:+393292983245" class="font-bold">
+                    {{ 'Mobile: +39 329 298 3245' }}
+                </a>
             </p>
-
             <p class="py-4">
                 {{ $t('Every day, except Tuesday, from 6:00 PM to 11:30 PM') }}
             </p>
@@ -86,8 +74,9 @@ setInterval(() => {
             </div>
         </Dialog>
 
+        <!-- Main container for header content -->
         <div class="mx-auto max-w-7xl">
-            <div class="relative z-10 lg:w-full lg:max-w-2xl">
+            <section class="relative z-10 lg:w-full lg:max-w-2xl">
                 <svg
                     class="absolute inset-y-0 right-8 hidden h-full w-80 translate-x-1/2 transform fill-white lg:block"
                     viewBox="0 0 100 100"
@@ -96,37 +85,20 @@ setInterval(() => {
                 >
                     <polygon points="0,0 90,0 50,100 0,100" />
                 </svg>
+                <!-- NavbarComponent is assumed to include its own navigation semantics -->
                 <NavbarComponent
+                    :simplified="true"
                     current-page="Home"
-                    class="shadow-none"
+                    class="sm:p-10"
                 ></NavbarComponent>
+                <!-- Grouping header elements inside a content container -->
                 <div
                     class="relative px-3 mx-auto max-w-2xl lg:mx-0 lg:max-w-xl"
                 >
-                    <div class="hidden sm:mb-10 sm:flex">
-                        <div
-                            v-if="false"
-                            @click="visitEvents"
-                            class="rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
-                        >
-                            {{ $t('Events organized by us') }}
-                            <a
-                                href="/events"
-                                class="whitespace-nowrap font-semibold text-capricciosa_green"
-                            >
-                                <span
-                                    class="absolute inset-0"
-                                    aria-hidden="true"
-                                />
-                                {{ $t('Read more') }}
-                                <span aria-hidden="true">&rarr;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="max-w-2xl w-88 w-fit">
+                    <figure class="mt-10 max-w-2xl sm:w-88 w-40 mx-auto">
                         <img :src="images.name" alt="name" />
-                    </div>
-                    <p
+                    </figure>
+                    <h1
                         class="mt-8 max-md:text-4xl text-5xl text-center leading-15 font-cursive"
                     >
                         {{
@@ -134,16 +106,19 @@ setInterval(() => {
                                 'Benvenuti nella nostra pizzeria, dove il design incontra la qualità.'
                             )
                         }}
-                    </p>
+                    </h1>
+                    <!-- Section for call-to-action buttons -->
                     <section
                         class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
+                        aria-label="Primary actions"
                     >
-                        <Chip
-                            class="whitespace-pre"
-                            @click="visitMenus()"
-                            :label="$t('Menu')"
-                            icon="pi pi-clipboard"
-                        />
+                        <a :href="route('menus')">
+                            <Chip
+                                class="whitespace-pre"
+                                :label="$t('Menu')"
+                                icon="pi pi-clipboard"
+                            />
+                        </a>
                         <Chip
                             class="whitespace-pre"
                             @click="showBookDialog()"
@@ -157,22 +132,28 @@ setInterval(() => {
                             icon="pi pi-calendar-clock"
                         />
                     </section>
-                    <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <Button @click="visitAboutUs">
+                    <nav
+                        class="mt-10 flex items-center justify-center gap-x-6"
+                        aria-label="Additional navigation"
+                    >
+                        <Button as="a" :href="route('about-us')">
                             {{ $t('Our story') }}
                         </Button>
                         <a
                             href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7"
                             target="_blank"
-                            class="text-base font-semibold leading-7 text-gray-900"
-                            >{{ $t('Find us') }}
-                            <span aria-hidden="true">→</span>
+                            class="inline-flex items-center text-base font-semibold leading-7 gap-2"
+                        >
+                            {{ $t('Find us') }}
+                            <arrow-right-icon
+                                class="w-5 h-5 text-black"
+                            ></arrow-right-icon>
                         </a>
-                    </div>
+                    </nav>
                 </div>
-            </div>
+            </section>
         </div>
-        <div
+        <figure
             class="max-lg:px-3 max-lg:mt-10 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
         >
             <img
@@ -180,7 +161,8 @@ setInterval(() => {
                 :src="images[slidingImages[headerImage].image]"
                 alt="Location"
             />
-        </div>
-    </div>
+        </figure>
+    </header>
 </template>
+
 <style scoped></style>
