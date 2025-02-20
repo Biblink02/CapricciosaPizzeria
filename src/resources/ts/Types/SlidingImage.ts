@@ -1,3 +1,3 @@
-interface SlidingImage {
+export interface SlidingImage {
     image: string
 }

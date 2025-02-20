@@ -1,3 +1,3 @@
-interface Pivot {
-    price: string,
+export interface Pivot {
+    price: string
 }

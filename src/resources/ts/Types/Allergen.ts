@@ -1,4 +1,4 @@
-interface Allergen{
-    name: string,
-    number: number,
+export interface Allergen {
+    name: string
+    number: number
 }

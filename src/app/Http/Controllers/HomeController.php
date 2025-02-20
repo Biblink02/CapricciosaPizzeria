@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index(GetSuppliers $getSuppliers, GetLastEvent $getLastEvent): Response
     {
-        return Inertia::render('Home/Home', [
+        return Inertia::render('Home/HomePage', [
             'suppliers' => $getSuppliers->get()->toArray(),
             'event' =>$getLastEvent->get()?->toArray() ?? null
         ]);

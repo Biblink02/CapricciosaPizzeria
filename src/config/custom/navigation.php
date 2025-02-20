@@ -22,9 +22,6 @@ return [
             'name' => 'Events',
             'route' => 'events',
         ]
-    ],
-
-    'link' => [
     ]
 
 

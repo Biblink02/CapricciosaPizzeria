@@ -2,11 +2,8 @@
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { route } from 'ziggy-js'
 import VuePdfEmbed from 'vue-pdf-embed'
+import TitleComponent from '@/Components/TitleComponent.vue'
 
-const visitAllergens = () => {
-    window.open(route('allergens-table'), '_blank')
-}
-// either URL, Base64, binary, or document proxy
 const getCurrentLang = () => {
     if (navigator.languages && navigator.languages.length) {
         return navigator.languages[0].split('-')[0]
@@ -16,23 +13,36 @@ const getCurrentLang = () => {
         return 'it'
     }
 }
+
 const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
 </script>
 
 <template>
     <AppLayout current-page="Menu" :title="$t('Menus')">
-        <VuePdfEmbed
-            class="md:w-3/4 w-full mx-auto"
-            annotation-layer
-            text-layer
-            :source="pdfSource"
-        />
-        <div class="flex justify-center pt-6 pb-6">
-            <Button @click="visitAllergens">
-                {{ $t('Allergenes list') }}
-            </Button>
-        </div>
+        <main role="main">
+            <TitleComponent
+                class="mt-10 mb-15"
+                :html-description-content="
+                    $t('menu_page_subtitle', {
+                        route: route('allergens-table'),
+                        styles: 'text-capricciosa_darker_green font-bold',
+                    })
+                "
+            >
+                <template #title>
+                    {{ $t('Menu') }}
+                </template>
+            </TitleComponent>
+            <section aria-label="Menu PDF">
+                <VuePdfEmbed
+                    class="w-full mx-auto"
+                    annotation-layer
+                    text-layer
+                    :source="pdfSource"
+                />
+            </section>
+        </main>
     </AppLayout>
 </template>
 
-<style></style>
+<style scoped></style>

@@ -9,6 +9,6 @@ class AboutUsController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('AboutUs/AboutUs');
+        return Inertia::render('AboutUs/HomePage');
     }
 }

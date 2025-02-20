@@ -4,7 +4,7 @@ import { images } from '@/Types/ImageHelper'
 import { router } from '@inertiajs/vue3'
 import { route } from 'ziggy-js'
 import NavbarComponent from '@/Components/NavbarComponent.vue'
-import SlidingImage from '@/Types/SlidingImage'
+import { SlidingImage } from '@/Types/SlidingImage'
 
 const props = defineProps<{
     slidingImages: SlidingImage[]

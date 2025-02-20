@@ -17,7 +17,7 @@ export default {
     daisyui: {
         themes: ['light'],
     },
-    safeList: ['font-cursive'],
+    safeList: ['text-capricciosa_green'],
     plugins: [formsPlugin, typographyPlugin, aspectRation],
     theme: {
         extend: {
