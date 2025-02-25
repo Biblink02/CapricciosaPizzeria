@@ -10,25 +10,25 @@ defineProps<{
 
 <template>
     <article
-        class="flex items-center gap-5 max-lg:flex-col"
+        class="flex items-center gap-5 max-lg:flex-col w-full max-w-7xl"
         :class="reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'"
         aria-labelledby="event-title"
     >
         <figure
-            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square bg-cover"
+            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
             :style="{
                 'background-image': 'url(images/' + event.img_url + ')',
             }"
             aria-hidden="true"
         ></figure>
-        <section class="flex-1 max-sm:hidden max-w-5xl">
-            <Card>
+        <section class="flex-1 max-sm:hidden max-w-5xl w-full h-full">
+            <Card class="h-full">
                 <template #title>
                     <h1 class="font-cursive text-4xl" id="event-title">
                         {{ event.name }}
                     </h1>
                     <figure
-                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square bg-cover"
+                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
                         :style="{
                             'background-image':
                                 'url(images/' + event.img_url + ')',
@@ -37,7 +37,7 @@ defineProps<{
                     ></figure>
                 </template>
                 <template #content>
-                    <div class="h-full flex flex-col gap-5">
+                    <div class="h-full flex flex-col gap-5 w-full">
                         <p class="text-gray-600 whitespace-pre-wrap">
                             {{ event.description }}
                         </p>
@@ -55,16 +55,16 @@ defineProps<{
                 </template>
             </Card>
         </section>
-        <section class="sm:hidden flex flex-col items-center">
+        <section class="sm:hidden flex flex-col items-center w-full">
             <h1 class="font-cursive text-4xl">{{ event.name }}</h1>
             <figure
-                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm max-h-xl w-full h-full aspect-square bg-cover"
+                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
                 :style="{
                     'background-image': 'url(images/' + event.img_url + ')',
                 }"
                 aria-hidden="true"
             ></figure>
-            <div class="h-full flex flex-col gap-5">
+            <div class="h-full flex flex-col gap-5 w-full">
                 <p class="text-gray-600 whitespace-pre-wrap">
                     {{ event.description }}
                 </p>
