@@ -68,7 +68,7 @@ const open = ref(false)
                 <li v-for="page in sidebar" :key="page.name" role="none">
                     <a
                         :href="page.href"
-                        class="block rounded-md px-3 py-2 text-base font-medium"
+                        class="text-right block rounded-md px-3 py-2 text-base font-medium"
                         :class="{
                             'bg-green-50 text-capricciosa_dark_green':
                                 currentPage === page.name,

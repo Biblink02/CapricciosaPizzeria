@@ -3,14 +3,14 @@ import { images } from '@/Types/ImageHelper'
 </script>
 
 <template>
-    <div class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative">
-        <div
+    <section class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative">
+        <figure
             class="absolute rounded-2xl inset-0 opacity-80 h-full bg-repeat"
             :style="{
                 'background-size': 'auto 130%',
                 'background-image': 'url(' + images.wall_paper + ')',
             }"
-        ></div>
+        ></figure>
         <div
             class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl"
         >
@@ -45,6 +45,6 @@ import { images } from '@/Types/ImageHelper'
                 ></i>
             </a>
         </div>
-    </div>
+    </section>
 </template>
 <style scoped></style>

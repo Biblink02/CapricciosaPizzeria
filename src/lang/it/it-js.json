@@ -12,7 +12,7 @@
     "Events organized by us": "Eventi organizzati da noi ",
     "Read more": "Leggi di più",
     "Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.": "Unisciti a noi per i nostri eventi speciali, dove ottimo cibo e un'atmosfera accogliente creano ricordi indimenticabili. Segna sul calendario i nostri prossimi appuntamenti.",
-    "menu_page_subtitle": "Assapora i sapori dei nostri piatti accuratamente preparati con ingredienti di prima qualità. Esplora il nostro menu e trova il tuo gusto perfetto. Clicca <a href='{route}' class='{styles}' target='_blank' >qui</a> per consultare la nostra guida agli allergeni per un'esperienza senza preoccupazioni.",
+    "menu_page_subtitle": "Clicca <a href='{route}' class='{styles}' target='_blank' >qui</a> per consultare la nostra guida agli allergeni.",
     "Book": "Prenota",
     "Bookings are accepted at the following numbers": "Si accettano prenotazioni ai seguenti numeri",
     "There are currently no events scheduled, we will organize one as soon as possible!": "Al momento non ci sono eventi in programma, provvederemo ad organizzarne uno il prima possibile!",
