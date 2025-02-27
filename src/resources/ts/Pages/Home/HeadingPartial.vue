@@ -123,13 +123,13 @@ setInterval(() => {
                     >
                         <a :href="route('menus')">
                             <Chip
-                                class="whitespace-pre"
+                                class="whitespace-pre cursor-pointer"
                                 :label="$t('Menu')"
                                 icon="pi pi-clipboard"
                             />
                         </a>
                         <Chip
-                            class="whitespace-pre"
+                            class="whitespace-pre cursor-pointer"
                             @click="showBookDialog()"
                             :label="$t('Book')"
                             icon="pi pi-phone"

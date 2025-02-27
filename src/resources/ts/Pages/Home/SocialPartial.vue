@@ -19,7 +19,7 @@ import { images } from '@/Types/ImageHelper'
 
         <!-- Social links -->
         <div
-            class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl"
+            class="flex-wrap absolute gap-7 inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl"
         >
             <a
                 class="bg-white my-auto max-sm:mx-auto h-fit w-fit p-3 rounded-xl"
