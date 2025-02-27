@@ -3,6 +3,7 @@ import NavbarComponent from '@/Components/NavbarComponent.vue'
 import {Head as InertiaHead} from '@inertiajs/vue3'
 import FooterComponent from '@/Components/FooterComponent.vue'
 import {onMounted} from 'vue'
+import {useI18n} from "vue-i18n";
 
 const props = defineProps<{
     title: string
@@ -13,9 +14,10 @@ const props = defineProps<{
 const isNavbarHidden = props.navbarHidden ?? false
 
 // Dynamic SEO metadata
-const metaDescription = "Welcome to Pizzeria Capricciosa - Authentic Italian pizza with fresh ingredients. Visit us in Vancimuglio (VI)!"
-const metaKeywords = "pizzeria, Italian pizza, best pizza, Pizzeria Capricciosa, Vancimuglio, Italy"
-const metaAuthor = "Pizzeria Capricciosa"
+const { t } = useI18n()
+const metaDescription = t("meta.description")
+const metaKeywords = t("meta.keywords")
+const metaAuthor = t("meta.author")
 
 
 const jsonLd = {
@@ -23,7 +25,7 @@ const jsonLd = {
     "@type": "Restaurant",
     "name": "Pizzeria Capricciosa",
     "image": "/logo.jpeg",
-    "description": "Benvenuti alla Pizzeria Capricciosa - Dove il design incontra la qualità. Vieni a trovarci a Vancimuglio (VI)!",
+    "description": metaDescription,
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via nazionale n°32",
