@@ -11,7 +11,7 @@ class EventsController extends Controller
 {
     public function index(GetEvents $getEvents): Response
     {
-        return Inertia::render('Events/HomePage', [
+        return Inertia::render('Events/EventsPage', [
             'events' => $getEvents->get()->toArray()
         ]);
     }

@@ -14,14 +14,15 @@ defineProps<{
     <section
         v-if="event"
         class="relative md:p-5"
-        aria-labelledby="event-details-heading"
+        :aria-label="$t('Event details')"
     >
-        <article id="event-details-heading">
+        <article>
             <EventDetails
                 :reverse="false"
                 class="h-full"
                 type="big"
                 :event="event"
+                :aria-label="$t('Details of the event') + ': ' + event.name"
             />
         </article>
         <figure
@@ -38,7 +39,7 @@ defineProps<{
     <section
         v-else
         class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative"
-        aria-labelledby="no-events-heading"
+        :aria-label="$t('No upcoming events')"
     >
         <figure
             aria-hidden="true"
@@ -53,10 +54,11 @@ defineProps<{
             class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl p-3"
             role="status"
             aria-live="polite"
+            :aria-label="$t('No scheduled events')"
         >
             <EmptyStateComponent class="h-fit max-w-3xl">
                 <template #title>
-                    <h2 id="no-events-heading">
+                    <h2>
                         {{ $t('There are no events') }}
                     </h2>
                 </template>

@@ -4,7 +4,7 @@ import { route } from 'ziggy-js'
 import VuePdfEmbed from 'vue-pdf-embed'
 import TitleComponent from '@/Components/TitleComponent.vue'
 
-const getCurrentLang = () => {
+function getCurrentLang(): string {
     if (navigator.languages && navigator.languages.length) {
         return navigator.languages[0].split('-')[0]
     } else if (navigator.language) {
@@ -19,7 +19,7 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
 
 <template>
     <AppLayout current-page="Menu" :title="$t('Menus')">
-        <main role="main" class="px-3">
+        <main role="main" class="px-3" :aria-label="$t('Main content')">
             <TitleComponent
                 class="my-15"
                 :html-description-content="
@@ -33,12 +33,15 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
                     {{ $t('Menu') }}
                 </template>
             </TitleComponent>
-            <section aria-label="Menu PDF" class="flex items-center">
+
+            <!-- Section for menu PDF -->
+            <section class="flex items-center" :aria-label="$t('Menu PDF viewer')">
                 <VuePdfEmbed
                     class="w-full mx-auto max-w-7xl"
                     annotation-layer
                     text-layer
                     :source="pdfSource"
+                    :aria-label="$t('Embedded PDF menu')"
                 />
             </section>
         </main>

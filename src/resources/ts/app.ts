@@ -54,6 +54,7 @@ createInertiaApp({
     },
     setup({ el, App, props, plugin }) {
         const i18n = createI18n({
+            globalInjection: true,
             locale: locale,
             fallbackLocale: fallbackLocale,
             formatFallbackMessages: true,

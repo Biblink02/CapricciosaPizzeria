@@ -28,11 +28,13 @@ setInterval(() => {
 </script>
 
 <template>
-    <header class="overflow-hidden relative" role="banner">
+    <header class="overflow-hidden relative" role="banner" :aria-label="$t('Main header')">
+        <!-- Dialog for Opening Hours -->
         <Dialog
             v-model:visible="openingHoursDialog"
             modal
             :header="$t('Opening hours')"
+            :aria-label="$t('Opening hours dialog')"
         >
             <p class="py-4">
                 {{ $t('Every day, except Tuesday, from 6:00 PM to 11:30 PM') }}
@@ -47,7 +49,13 @@ setInterval(() => {
             </div>
         </Dialog>
 
-        <Dialog v-model:visible="bookDialog" modal :header="$t('Book')">
+        <!-- Dialog for Booking -->
+        <Dialog
+            v-model:visible="bookDialog"
+            modal
+            :header="$t('Book')"
+            :aria-label="$t('Booking dialog')"
+        >
             <p class="pb-4">
                 {{ $t('Bookings are accepted at the following numbers') }}:
             </p>
@@ -85,32 +93,33 @@ setInterval(() => {
                 >
                     <polygon points="0,0 90,0 50,100 0,100" />
                 </svg>
-                <!-- NavbarComponent is assumed to include its own navigation semantics -->
+
+                <!-- Navbar -->
                 <NavbarComponent
                     :simplified="true"
                     current-page="Home"
                     class="sm:p-10"
+                    :aria-label="$t('Main navigation')"
                 ></NavbarComponent>
-                <!-- Grouping header elements inside a content container -->
-                <div
-                    class="relative px-3 mx-auto max-w-2xl lg:mx-0 lg:max-w-xl"
-                >
+
+                <!-- Header content -->
+                <div class="relative px-3 mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                     <figure class="mt-10 max-w-2xl sm:w-88 w-40 mx-auto">
-                        <img :src="images.name" alt="name" />
+                        <img :src="images.name" alt="Capricciosa Logo" />
                     </figure>
                     <h1
                         class="mt-8 max-md:text-4xl text-5xl text-center leading-15 font-cursive"
+                        :aria-label="$t('Welcome message')"
                     >
                         {{
-                            $t(
-                                'Benvenuti nella nostra pizzeria, dove il design incontra la qualità.'
-                            )
+                            $t('Benvenuti nella nostra pizzeria, dove il design incontra la qualità.')
                         }}
                     </h1>
-                    <!-- Section for call-to-action buttons -->
+
+                    <!-- CTA Buttons -->
                     <section
                         class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
-                        aria-label="Primary actions"
+                        :aria-label="$t('Primary actions')"
                     >
                         <a :href="route('menus')">
                             <Chip
@@ -132,9 +141,11 @@ setInterval(() => {
                             icon="pi pi-calendar-clock"
                         />
                     </section>
+
+                    <!-- Additional Navigation -->
                     <nav
                         class="mt-10 flex items-center justify-center gap-x-6"
-                        aria-label="Additional navigation"
+                        :aria-label="$t('Additional navigation')"
                     >
                         <Button as="a" :href="route('about-us')">
                             {{ $t('Our story') }}
@@ -143,23 +154,24 @@ setInterval(() => {
                             href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7"
                             target="_blank"
                             class="inline-flex items-center text-base font-semibold leading-7 gap-2"
+                            :aria-label="$t('Find us on Google Maps')"
                         >
                             {{ $t('Find us') }}
-                            <arrow-right-icon
-                                class="w-5 h-5 text-black"
-                            ></arrow-right-icon>
+                            <ArrowRightIcon class="w-5 h-5 text-black" aria-hidden="true"></ArrowRightIcon>
                         </a>
                     </nav>
                 </div>
             </section>
         </div>
+
+        <!-- Background Image -->
         <figure
             class="max-lg:px-3 max-lg:mt-10 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
         >
             <img
                 class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
                 :src="images[slidingImages[headerImage].image]"
-                alt="Location"
+                :alt="$t('Restaurant interior')"
             />
         </figure>
     </header>

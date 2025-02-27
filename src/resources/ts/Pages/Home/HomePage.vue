@@ -3,7 +3,7 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { ref } from 'vue'
 import Carousel from 'primevue/carousel'
 import { images } from '@/Types/ImageHelper'
-import Supplier from '@/Types/Supplier'
+import { Supplier } from '@/Types/Supplier'
 import EventPartial from '@/Pages/Home/EventPartial.vue'
 import TitleComponent from '@/Components/TitleComponent.vue'
 import HeadingPartial from '@/Pages/Home/HeadingPartial.vue'
@@ -53,18 +53,21 @@ setInterval(() => {
     <AppLayout
         current-page="Home"
         :navbar-hidden="true"
-        title="home"
-        class="font-sans"
+        :title="$t('Home')"
     >
         <!-- Main content area with semantic structure -->
         <main role="main" class="flex flex-col items-center w-full gap-24">
             <!-- Hero Banner / Header -->
-            <header class="w-full">
+            <header class="w-full" :aria-label="$t('Homepage banner')">
                 <HeadingPartial :sliding-images="locationImages" />
             </header>
 
             <!-- Events Section -->
-            <section aria-labelledby="events" class="px-3 w-full max-w-6xl">
+            <section
+                aria-labelledby="events"
+                class="px-3 w-full max-w-6xl"
+                :aria-label="$t('Upcoming events')"
+            >
                 <TitleComponent>
                     <template #title>
                         {{ $t('Events') }}
@@ -81,7 +84,10 @@ setInterval(() => {
             </section>
 
             <!-- Our Dishes Section -->
-            <section aria-labelledby="dishes-heading">
+            <section
+                aria-labelledby="dishes-heading"
+                :aria-label="$t('Our dishes')"
+            >
                 <TitleComponent>
                     <template #title>
                         {{ $t('Our Dishes') }}
@@ -95,7 +101,10 @@ setInterval(() => {
                     </template>
                 </TitleComponent>
                 <!-- Carousel for larger screens -->
-                <div class="max-sm:hidden" aria-label="Dishes Carousel">
+                <div
+                    class="max-sm:hidden"
+                    :aria-label="$t('Dishes Carousel')"
+                >
                     <Carousel
                         class="overflow-hidden max-w-7xl"
                         :value="dishesImages"
@@ -109,7 +118,7 @@ setInterval(() => {
                                 <img
                                     class="mx-auto w-150 h-100 object-cover rounded-xl"
                                     :src="images[slotProps.data.image]"
-                                    alt="Dish image"
+                                    :alt="$t('Dish image')"
                                 />
                             </figure>
                         </template>
@@ -120,13 +129,17 @@ setInterval(() => {
                     <img
                         class="sm:hidden mx-auto max-w-xl w-full h-100 object-cover rounded-xl"
                         :src="images[dishesImages[currentImage].image]"
-                        alt="Dish image"
+                        :alt="$t('Dish image')"
                     />
                 </figure>
             </section>
 
             <!-- Suppliers Section -->
-            <section aria-label="Our Suppliers" class="mx-3">
+            <section
+                aria-labelledby="suppliers"
+                class="mx-3"
+                :aria-label="$t('Our suppliers')"
+            >
                 <TitleComponent>
                     <template #title>
                         {{ $t('Our excellences') }}
@@ -146,6 +159,7 @@ setInterval(() => {
             <section
                 aria-labelledby="social-media"
                 class="px-3 w-full max-w-6xl"
+                :aria-label="$t('Follow us on social media')"
             >
                 <TitleComponent>
                     <template #title>

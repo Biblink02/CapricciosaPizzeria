@@ -19,12 +19,11 @@ const page = usePage()
     <AppLayout
         current-page="Events"
         :title="$t('Events')"
-        :footer="page.footer"
     >
         <!-- Main content area -->
-        <main class="px-3" role="main">
+        <main class="px-3" role="main" :aria-label="$t('Main content')">
             <!-- Header section for the page title and description -->
-            <header role="banner" aria-label="Events Header">
+            <header role="banner" :aria-label="$t('Events Header')">
                 <TitleComponent class="my-20">
                     <template #title>
                         {{ $t('Events') }}
@@ -41,7 +40,7 @@ const page = usePage()
 
             <!-- Section for listing events -->
             <section
-                aria-label="Event Listings"
+                :aria-label="$t('Event Listings')"
                 class="mx-auto flex flex-col items-center gap-4 space-y-7"
             >
                 <EventDetails
@@ -49,6 +48,7 @@ const page = usePage()
                     :reverse="index % 2 != 0"
                     :key="event.uuid"
                     :event="event"
+                    :aria-label="$t('Event details for') + ' ' + event.name"
                 />
             </section>
 
@@ -58,10 +58,11 @@ const page = usePage()
                 aria-live="polite"
                 aria-atomic="true"
                 class="max-w-2xl mx-auto"
+                :aria-label="$t('No events available')"
             >
                 <EmptyStateComponent>
                     <template #icon>
-                        <SparklesIcon />
+                        <SparklesIcon aria-hidden="true" />
                     </template>
                     <template #description>
                         {{
