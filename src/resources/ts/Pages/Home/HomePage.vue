@@ -53,12 +53,12 @@ setInterval(() => {
     <AppLayout
         current-page="Home"
         :navbar-hidden="true"
-        :title="$t('Home')"
+        :title="$t('home_section_title')"
     >
         <!-- Main content area with semantic structure -->
         <main role="main" class="flex flex-col items-center w-full gap-24">
             <!-- Hero Banner / Header -->
-            <header class="w-full" :aria-label="$t('Homepage banner')">
+            <header class="w-full" :aria-label="$t('homepage_banner_label')">
                 <HeadingPartial :sliding-images="locationImages" />
             </header>
 
@@ -66,17 +66,15 @@ setInterval(() => {
             <section
                 aria-labelledby="events"
                 class="px-3 w-full max-w-6xl"
-                :aria-label="$t('Upcoming events')"
+                :aria-label="$t('upcoming_events_label')"
             >
                 <TitleComponent>
                     <template #title>
-                        {{ $t('Events') }}
+                        {{ $t('events_section_title') }}
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                'Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.'
-                            )
+                            $t('events_description_text')
                         }}
                     </template>
                 </TitleComponent>
@@ -86,24 +84,22 @@ setInterval(() => {
             <!-- Our Dishes Section -->
             <section
                 aria-labelledby="dishes-heading"
-                :aria-label="$t('Our dishes')"
+                :aria-label="$t('our_dishes_label')"
             >
                 <TitleComponent>
                     <template #title>
-                        {{ $t('Our Dishes') }}
+                        {{ $t('our_dishes_section_title') }}
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                'Scopri le nostre creazioni artigianali, preparate con passione e ingredienti freschi. Vieni a trovarci per provare la nostra cucina!'
-                            )
+                            $t('our_dishes_description_text')
                         }}
                     </template>
                 </TitleComponent>
                 <!-- Carousel for larger screens -->
                 <div
                     class="max-sm:hidden"
-                    :aria-label="$t('Dishes Carousel')"
+                    :aria-label="$t('dishes_carousel_label')"
                 >
                     <Carousel
                         class="overflow-hidden max-w-7xl"
@@ -118,7 +114,7 @@ setInterval(() => {
                                 <img
                                     class="mx-auto w-150 h-100 object-cover rounded-xl"
                                     :src="images[slotProps.data.image]"
-                                    :alt="$t('Dish image')"
+                                    :alt="$t('dish_image_label')"
                                 />
                             </figure>
                         </template>
@@ -129,7 +125,7 @@ setInterval(() => {
                     <img
                         class="sm:hidden mx-auto max-w-xl w-full h-100 object-cover rounded-xl"
                         :src="images[dishesImages[currentImage].image]"
-                        :alt="$t('Dish image')"
+                        :alt="$t('dish_image_label')"
                     />
                 </figure>
             </section>
@@ -138,17 +134,15 @@ setInterval(() => {
             <section
                 aria-labelledby="suppliers"
                 class="mx-3"
-                :aria-label="$t('Our suppliers')"
+                :aria-label="$t('our_suppliers_label')"
             >
                 <TitleComponent>
                     <template #title>
-                        {{ $t('Our excellences') }}
+                        {{ $t('our_excellences_section_title') }}
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                "Selezioniamo con cura i nostri fornitori per garantirti ingredienti di alta qualità. Dalla farina al pomodoro, ogni prodotto proviene da realtà che condividono la nostra passione per il gusto e l'autenticità."
-                            )
+                            $t('our_excellences_description_text')
                         }}
                     </template>
                 </TitleComponent>
@@ -159,17 +153,15 @@ setInterval(() => {
             <section
                 aria-labelledby="social-media"
                 class="px-3 w-full max-w-6xl"
-                :aria-label="$t('Follow us on social media')"
+                :aria-label="$t('follow_us_label')"
             >
                 <TitleComponent>
                     <template #title>
-                        {{ $t('Follow us on social media') }}
+                        {{ $t('follow_us_section_title') }}
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                'Resta sempre aggiornato sulle nostre novità, eventi e piatti del giorno, unisciti alla nostra community e condividi la tua esperienza con noi!'
-                            )
+                            $t('follow_us_description_text')
                         }}
                     </template>
                 </TitleComponent>

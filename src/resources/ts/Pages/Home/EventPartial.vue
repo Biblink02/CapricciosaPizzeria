@@ -14,7 +14,7 @@ defineProps<{
     <section
         v-if="event"
         class="relative md:p-5"
-        :aria-label="$t('Event details')"
+        :aria-label="$t('event_details_label')"
     >
         <article>
             <EventDetails
@@ -22,7 +22,7 @@ defineProps<{
                 class="h-full"
                 type="big"
                 :event="event"
-                :aria-label="$t('Details of the event') + ': ' + event.name"
+                :aria-label="$t('event_specific_details_label') + ': ' + event.name"
             />
         </article>
         <figure
@@ -39,7 +39,7 @@ defineProps<{
     <section
         v-else
         class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative"
-        :aria-label="$t('No upcoming events')"
+        :aria-label="$t('no_upcoming_events_label')"
     >
         <figure
             aria-hidden="true"
@@ -54,12 +54,12 @@ defineProps<{
             class="flex-wrap absolute inset-0 h-fit m-auto flex flex-row justify-around max-w-2xl p-3"
             role="status"
             aria-live="polite"
-            :aria-label="$t('No scheduled events')"
+            :aria-label="$t('no_scheduled_events_label')"
         >
             <EmptyStateComponent class="h-fit max-w-3xl">
                 <template #title>
                     <h2>
-                        {{ $t('There are no events') }}
+                        {{ $t('no_events_title') }}
                     </h2>
                 </template>
                 <template #icon>
@@ -68,9 +68,7 @@ defineProps<{
                 <template #description>
                     <p>
                         {{
-                            $t(
-                                'There are currently no events scheduled, we will organize one as soon as possible!'
-                            )
+                            $t('no_events_description')
                         }}
                     </p>
                 </template>

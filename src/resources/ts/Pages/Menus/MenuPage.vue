@@ -18,30 +18,34 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
 </script>
 
 <template>
-    <AppLayout current-page="Menu" :title="$t('Menus')">
-        <main role="main" class="px-3" :aria-label="$t('Main content')">
+    <AppLayout current-page="Menu" :title="$t('menu.title')">
+        <main role="main" class="px-3" :aria-label="$t('menu.main_content')">
             <TitleComponent
                 class="my-15"
-                :html-description-content="
-                    $t('menu_page_subtitle', {
-                        route: route('allergens-table'),
-                        styles: 'text-capricciosa_darker_green font-bold',
-                    })
-                "
+                :description-content="{
+                    beforeText: $t('menu.subtitle.before'),
+                    aText: $t('menu.subtitle.intermediate'),
+                    afterText: $t('menu.subtitle.after'),
+                    href: route('allergens-table'),
+                    styles: 'text-capricciosa_darker_green font-bold',
+                }"
             >
                 <template #title>
-                    {{ $t('Menu') }}
+                    {{ $t('menu.title') }}
                 </template>
             </TitleComponent>
 
             <!-- Section for menu PDF -->
-            <section class="flex items-center" :aria-label="$t('Menu PDF viewer')">
+            <section
+                class="flex items-center"
+                :aria-label="$t('menu.pdf_viewer')"
+            >
                 <VuePdfEmbed
                     class="w-full mx-auto max-w-7xl"
                     annotation-layer
                     text-layer
                     :source="pdfSource"
-                    :aria-label="$t('Embedded PDF menu')"
+                    :aria-label="$t('menu.embedded_pdf')"
                 />
             </section>
         </main>

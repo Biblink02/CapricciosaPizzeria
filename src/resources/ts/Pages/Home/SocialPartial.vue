@@ -5,7 +5,7 @@ import { images } from '@/Types/ImageHelper'
 <template>
     <section
         class="sm:h-90 h-96 max-w-7xl w-full mx-auto relative"
-        :aria-label="$t('Follow us on social media')"
+        :aria-label="$t('follow_us_section_label')"
     >
         <!-- Background image -->
         <figure
@@ -26,7 +26,7 @@ import { images } from '@/Types/ImageHelper'
                 href="https://www.facebook.com/capricciosapizzerie/"
                 target="_blank"
                 rel="noopener noreferrer"
-                :aria-label="$t('Follow us on Facebook')"
+                :aria-label="$t('follow_us_facebook_label')"
             >
                 <i
                     class="text-capricciosa_red pi pi-facebook"
@@ -39,7 +39,7 @@ import { images } from '@/Types/ImageHelper'
                 href="https://www.instagram.com/capricciosapizzerie/"
                 target="_blank"
                 rel="noopener noreferrer"
-                :aria-label="$t('Follow us on Instagram')"
+                :aria-label="$t('follow_us_instagram_label')"
             >
                 <i
                     class="text-capricciosa_red pi pi-instagram"
@@ -52,7 +52,7 @@ import { images } from '@/Types/ImageHelper'
                 href="https://www.linkedin.com/company/capricciosa-pizzeria/"
                 target="_blank"
                 rel="noopener noreferrer"
-                :aria-label="$t('Follow us on LinkedIn')"
+                :aria-label="$t('follow_us_linkedin_label')"
             >
                 <i
                     class="text-capricciosa_red pi pi-linkedin"

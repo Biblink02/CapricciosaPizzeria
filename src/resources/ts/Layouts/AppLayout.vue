@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import NavbarComponent from '@/Components/NavbarComponent.vue'
-import {Head as InertiaHead} from '@inertiajs/vue3'
+import { Head as InertiaHead } from '@inertiajs/vue3'
 import FooterComponent from '@/Components/FooterComponent.vue'
-import {onMounted} from 'vue'
-import {useI18n} from "vue-i18n";
+import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
     title: string
@@ -15,50 +15,48 @@ const isNavbarHidden = props.navbarHidden ?? false
 
 // Dynamic SEO metadata
 const { t } = useI18n()
-const metaDescription = t("meta.description")
-const metaKeywords = t("meta.keywords")
-const metaAuthor = t("meta.author")
-
+const metaDescription = t('meta.description')
+const metaKeywords = t('meta.keywords')
+const metaAuthor = t('meta.author')
 
 const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Pizzeria Capricciosa",
-    "image": "/logo.jpeg",
-    "description": metaDescription,
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Via nazionale n°32",
-        "addressLocality": "Vancimuglio",
-        "addressRegion": "VI",
-        "postalCode": "36040",
-        "addressCountry": "IT"
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: 'Pizzeria Capricciosa',
+    image: '/logo.jpeg',
+    description: metaDescription,
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Via nazionale n°32',
+        addressLocality: 'Vancimuglio',
+        addressRegion: 'VI',
+        postalCode: '36040',
+        addressCountry: 'IT',
     },
-    "telephone": "+390444022349",
-    "priceRange": "$$",
-    "openingHoursSpecification": [
+    telephone: '+390444022349',
+    priceRange: '$$',
+    openingHoursSpecification: [
         {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Lunedì",
-                "Mercoledì",
-                "Giovedì",
-                "Venerdì",
-                "Sabato",
-                "Domenica"
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: [
+                t('meta.monday'),
+                t('meta.wednesday'),
+                t('meta.thursday'),
+                t('meta.friday'),
+                t('meta.saturday'),
+                t('meta.sunday'),
             ],
-            "opens": "18:00",
-            "closes": "23:30"
-        }
+            opens: '18:00',
+            closes: '23:30',
+        },
     ],
-    "openingHours": "Lun 18:00-23:30, Mer-Dom 18:00-23:30",
-    "sameAs": [
-        "https://maps.app.goo.gl/QscbV2P8b47SzXWm7",
-        "https://www.facebook.com/capricciosapizzerie/",
-        "https://www.instagram.com/capricciosapizzerie/"
-    ]
+    openingHours: t('meta.opening_hours'),
+    sameAs: [
+        'https://maps.app.goo.gl/QscbV2P8b47SzXWm7',
+        'https://www.facebook.com/capricciosapizzerie/',
+        'https://www.instagram.com/capricciosapizzerie/',
+    ],
 }
-
 
 onMounted(() => {
     const script = document.createElement('script')
@@ -71,23 +69,23 @@ onMounted(() => {
 <template>
     <InertiaHead :title="title">
         <!-- Basic SEO Meta Tags -->
-        <meta name="description" :content="metaDescription"/>
-        <meta name="keywords" :content="metaKeywords"/>
-        <meta name="author" :content="metaAuthor"/>
-        <meta name="robots" content="index, follow"/>
+        <meta name="description" :content="metaDescription" />
+        <meta name="keywords" :content="metaKeywords" />
+        <meta name="author" :content="metaAuthor" />
+        <meta name="robots" content="index, follow" />
 
         <!-- Open Graph / Facebook Meta Tags -->
-        <meta property="og:title" :content="title"/>
-        <meta property="og:description" :content="metaDescription"/>
-        <meta property="og:image" content="/logo.png"/>
-        <meta property="og:url" content="https://capricciosapizzerie.it"/>
-        <meta property="og:type" content="restaurant"/>
+        <meta property="og:title" :content="title" />
+        <meta property="og:description" :content="metaDescription" />
+        <meta property="og:image" content="/logo.png" />
+        <meta property="og:url" content="https://capricciosapizzerie.it" />
+        <meta property="og:type" content="restaurant" />
 
         <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:title" :content="title"/>
-        <meta name="twitter:description" :content="metaDescription"/>
-        <meta name="twitter:image" content="/logo.png"/>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" :content="title" />
+        <meta name="twitter:description" :content="metaDescription" />
+        <meta name="twitter:image" content="/logo.png" />
     </InertiaHead>
 
     <NavbarComponent

@@ -24,7 +24,7 @@ defineProps<{
         <!-- Event details (desktop) -->
         <section
             class="flex-1 max-sm:hidden max-w-5xl w-full h-full"
-            :aria-label="$t('Event details')"
+            :aria-label="$t('event_details_label')"
         >
             <Card class="h-full">
                 <template #title>
@@ -44,22 +44,22 @@ defineProps<{
                     <div class="h-full flex flex-col gap-5 w-full">
                         <p
                             class="text-gray-600 whitespace-pre-wrap"
-                            :aria-label="$t('Event description')"
+                            :aria-label="$t('event_description_label')"
                         >
                             {{ event.description }}
                         </p>
                         <div class="flex space-x-1 text-sm text-gray-500">
                             <time
                                 :datetime="event.starts_at"
-                                :aria-label="$t('Event starts at')"
+                                :aria-label="$t('event_start_label')"
                             >
-                                {{ $t('From ') }}{{ formatDate(event.starts_at) }}
+                                {{ $t('event_from_text') }}{{ formatDate(event.starts_at) }}
                             </time>
                             <time
                                 :datetime="event.ends_at"
-                                :aria-label="$t('Event ends at')"
+                                :aria-label="$t('event_end_label')"
                             >
-                                {{ $t('to ') }}{{ formatDate(event.ends_at) }}
+                                {{ $t('event_to_text') }}{{ formatDate(event.ends_at) }}
                             </time>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ defineProps<{
         <!-- Event details (mobile) -->
         <section
             class="sm:hidden flex flex-col items-center w-full"
-            :aria-label="$t('Event details')"
+            :aria-label="$t('event_details_label')"
         >
             <h1 class="font-cursive text-4xl" :id="'event-title-' + event.uuid">
                 {{ event.name }}
@@ -83,22 +83,22 @@ defineProps<{
             <div class="h-full flex flex-col gap-5 w-full">
                 <p
                     class="text-gray-600 whitespace-pre-wrap"
-                    :aria-label="$t('Event description')"
+                    :aria-label="$t('event_description_label')"
                 >
                     {{ event.description }}
                 </p>
                 <div class="flex space-x-1 text-sm text-gray-500">
                     <time
                         :datetime="event.starts_at"
-                        :aria-label="$t('Event starts at')"
+                        :aria-label="$t('event_start_label')"
                     >
-                        {{ $t('From ') }}{{ formatDate(event.starts_at) }}
+                        {{ $t('event_from_text') }}{{ formatDate(event.starts_at) }}
                     </time>
                     <time
                         :datetime="event.ends_at"
-                        :aria-label="$t('Event ends at')"
+                        :aria-label="$t('event_end_label')"
                     >
-                        {{ $t('to ') }}{{ formatDate(event.ends_at) }}
+                        {{ $t('event_to_text') }}{{ formatDate(event.ends_at) }}
                     </time>
                 </div>
             </div>
