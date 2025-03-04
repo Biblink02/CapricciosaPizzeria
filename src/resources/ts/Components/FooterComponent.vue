@@ -13,15 +13,15 @@ import { images } from '@/Types/ImageHelper.js'
                 class="object-scale-down w-48 -mt-20"
             />
             <p class="text-gray-500 w-full text-center">
-                <strong>Capricciosa Pizzeria srl</strong><br />
-                P.IVA 01223580554
+                <strong>{{ $t('footer.company_name') }}</strong><br />
+                {{ $t('footer.vat_number') }}
             </p>
         </section>
 
         <!-- Address & Contact Information -->
         <nav class="max-sm:text-center">
             <h6 class="font-bold uppercase text-gray-500">
-                Pizzeria Capricciosa
+                {{ $t('footer.pizzeria_name') }}
             </h6>
             <address class="not-italic text-gray-500">
                 <p>
@@ -30,36 +30,36 @@ import { images } from '@/Types/ImageHelper.js'
                         class="hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"
-                        :aria-label="$t('View Pizzeria Capricciosa on Google Maps')"
+                        :aria-label="$t('footer.google_maps')"
                     >
-                        {{ $t('Via nazionale n°32, 36040 Vancimuglio (VI)') }}
+                        {{ $t('footer.address') }}
                     </a>
                 </p>
                 <p>
                     <a
                         :href="'tel:+390444022349'"
                         class="hover:underline"
-                        :aria-label="$t('Call Pizzeria Capricciosa landline')"
+                        :aria-label="$t('footer.call_landline')"
                     >
-                        {{ $t('Call: +39 0444 022349') }}
+                        {{ $t('footer.call_landline') }}
                     </a>
                 </p>
                 <p>
                     <a
                         href="tel:+393292983245"
                         class="hover:underline"
-                        :aria-label="$t('Call Pizzeria Capricciosa mobile number')"
+                        :aria-label="$t('footer.call_mobile')"
                     >
-                        {{ $t('Call: +39 329 2983245') }}
+                        {{ $t('footer.call_mobile') }}
                     </a>
                 </p>
                 <p>
                     <a
                         :href="'mailto:info@capricciosapizzerie.it'"
                         class="hover:underline"
-                        :aria-label="$t('Email Pizzeria Capricciosa')"
+                        :aria-label="$t('footer.email')"
                     >
-                        {{ $t('Email')}}: info@capricciosapizzerie.it
+                        {{ $t('footer.email_label') }}: info@capricciosapizzerie.it
                     </a>
                 </p>
             </address>
@@ -68,13 +68,13 @@ import { images } from '@/Types/ImageHelper.js'
         <!-- Opening Hours Section -->
         <nav class="max-sm:text-center">
             <h6 class="font-bold uppercase text-gray-500">
-                {{ $t('Opening hours') }}
+                {{ $t('footer.opening_hours') }}
             </h6>
             <p class="text-gray-500 w-full">
-                <time datetime="18:00-23:30">{{ $t('From 18:00 to 23:30') }}</time>
+                <time datetime="18:00-23:30">{{ $t('footer.hours_range') }}</time>
             </p>
             <p class="text-gray-500 w-full">
-                {{ $t('Closed on Thursday') }}
+                {{ $t('footer.closed_thursday') }}
             </p>
         </nav>
     </footer>

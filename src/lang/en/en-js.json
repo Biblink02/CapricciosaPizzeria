@@ -1,7 +1,137 @@
 {
+    "Home": "Home",
+    "About us": "About us",
+    "Menu": "Menu",
+    "Events": "Events",
+
+    "footer": {
+        "company_name": "Capricciosa Pizzeria srl",
+        "vat_number": "VAT: 01223580554",
+        "pizzeria_name": "Pizzeria Capricciosa",
+        "google_maps": "View Pizzeria Capricciosa on Google Maps",
+        "address": "Via nazionale n°32, 36040 Vancimuglio (VI)",
+        "call_landline": "Call: +39 0444 022349",
+        "call_mobile": "Call: +39 329 2983245",
+        "email": "Email Pizzeria Capricciosa",
+        "email_label": "Email",
+        "opening_hours": "Opening hours",
+        "hours_range": "From 18:00 to 23:30",
+        "closed_thursday": "Closed on Thursday"
+    },
+
+    "navbar": {
+        "main_navigation": "Main Navigation",
+        "mobile_navigation": "Mobile Navigation",
+        "open_mobile_menu": "Open mobile menu",
+        "close_mobile_menu": "Close mobile menu",
+        "logo_alt": "Pizzeria Capricciosa Logo",
+        "go_to": "Go to"
+    },
+
     "meta": {
         "description": "Welcome to Pizzeria Capricciosa - Where design meets quality. Visit us in Vancimuglio (VI)!",
         "keywords": "pizzeria, Italian pizza, best pizza, Pizzeria Capricciosa, Vancimuglio, Italy",
-        "author": "Pizzeria Capricciosa"
+        "author": "Pizzeria Capricciosa",
+        "monday": "Monday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday",
+        "opening_hours": "Mon 18:00-23:30, Wed-Sun 18:00-23:30"
+    },
+
+    "about_us_page_title": "About us",
+    "menu_page_title": "Menus",
+    "capricciosa_motto_label": "Capricciosa's motto",
+    "capricciosa_design_title": "Capricciosa in taste and design",
+    "project_origin_description_label": "Project origin description",
+    "project_origin_description": "Our project was born from a desire to get back into the game, in fact, in addition to taking care of our work as Interior Designer Gianluca, Microbiologist and nutritionist Paola and ceramics salesperson Andrea, we wanted to create something original, outside of any box.",
+    "capricciosa_birth_label": "Capricciosa birth",
+    "capricciosa_birth": "Capricciosa was born.",
+    "past_experiences_catering_label": "Past experiences in catering",
+    "past_experiences_catering": "In the past we have had other experiences in the world of catering both as designers and entrepreneurs, but in this case we wanted to create something absolutely special and unique, \"finally free from any pattern\" says Gianluca.",
+    "interior_design_atmosphere_label": "Interior design and atmosphere",
+    "interior_design_atmosphere": "Capricciosa is made with a play of contrasts: a modern cut and a delicately vintage flavor. The tables on the veranda were recovered from an old bacaro, the handcrafted Cerasarda tiles contrast the minimal iron tables and the Olev glass lighting created by master glassmakers enhances the color of the modern Thibaut wallpapers, made in America. There is also a piano, one of the latest models built with wood from the Fiemme valley, which invites, as in the venues of the past, live performances. The wood used inside Capricciosa comes from the recovery of a 19th century villa, expertly crafted by an imaginative Venetian craftsman. It is a visual harmony that recalls that of jazz-blues which also vibrates in the countless Bose speakers present in the venue.",
+    "menu_quality_label": "Menu quality",
+    "menu_quality": "What about our menu chosen with particular attention to the quality of the PDO or organic raw materials, to have genuine in all aspects, both organoleptic and healthy. The dough is a highly digestible semi-wholemeal dough, because the \"after\" of pizza is also important. We have also decided to propose as an alternative cold cuts or cheese platters to pair with the wines in our wine shop which we have pleasantly called Viziosa: it contains wine from small wineries with limited production and artisanal care.",
+    "themed_evenings_events_label": "Themed evenings and events",
+    "themed_evenings_events": "Our intention is to propose themed evenings with the combination of music, beer, wine and gastronomic delicacies.",
+
+    "event_details_label": "Event details",
+    "event_description_label": "Event description",
+    "event_start_label": "Event starts at",
+    "event_end_label": "Event ends at",
+    "event_from_text": "From ",
+    "event_to_text": "to ",
+
+    "events_page_title": "Events",
+    "events_section_title": "Events",
+    "main_content_label": "Main content",
+    "events_header_label": "Events Header",
+    "events_description_text": "Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.",
+    "event_listings_label": "Event Listings",
+    "event_details_for_label": "Event details for",
+    "no_events_available_label": "No events available",
+    "no_events_text": "There are currently no events scheduled, we will organize one as soon as possible!",
+
+    "event_specific_details_label": "Details of the event",
+    "no_upcoming_events_label": "No upcoming events",
+    "no_scheduled_events_label": "No scheduled events",
+    "no_events_title": "There are no events",
+    "no_events_description": "There are currently no events scheduled, we will organize one as soon as possible!",
+
+    "main_header_label": "Main header",
+    "opening_hours_label": "Opening hours",
+    "opening_hours_dialog_label": "Opening hours dialog",
+    "opening_hours_text": "Every day, except Tuesday, from 6:00 PM to 11:30 PM",
+    "close_button_label": "Close",
+    "book_label": "Book",
+    "booking_dialog_label": "Booking dialog",
+    "booking_info_text": "Bookings are accepted at the following numbers",
+    "home_page_label": "Home",
+    "main_navigation_label": "Main navigation",
+    "welcome_message_label": "Welcome message",
+    "welcome_message_text": "Welcome to our pizzeria, where design meets quality.",
+    "primary_actions_label": "Primary actions",
+    "menu_label": "Menu",
+    "additional_navigation_label": "Additional navigation",
+    "our_story_label": "Our story",
+    "find_us_label": "Find us on Google Maps",
+    "find_us_text": "Find us",
+    "restaurant_interior_label": "Restaurant interior",
+
+    "home_section_title": "Home",
+    "homepage_banner_label": "Homepage banner",
+    "upcoming_events_label": "Upcoming events",
+    "our_dishes_label": "Our dishes",
+    "our_dishes_section_title": "Our Dishes",
+    "our_dishes_description_text": "Discover our handcrafted creations, prepared with passion and fresh ingredients. Visit us to try our cuisine!",
+    "dishes_carousel_label": "Dishes Carousel",
+    "dish_image_label": "Dish image",
+    "our_suppliers_label": "Our suppliers",
+    "our_excellences_section_title": "Our excellences",
+    "our_excellences_description_text": "We carefully select our suppliers to guarantee you high-quality ingredients. From flour to tomatoes, each product comes from realities that share our passion for taste and authenticity.",
+    "follow_us_label": "Follow us on social media",
+    "follow_us_section_title": "Follow us on social media",
+    "follow_us_description_text": "Stay up to date with our news, events, and daily dishes. Join our community and share your experience with us!",
+
+    "follow_us_section_label": "Follow us on social media",
+    "follow_us_facebook_label": "Follow us on Facebook",
+    "follow_us_instagram_label": "Follow us on Instagram",
+    "follow_us_linkedin_label": "Follow us on LinkedIn",
+
+    "visit_supplier_label": "Visit supplier",
+
+    "menu": {
+        "title": "Menus",
+        "main_content": "Main content",
+        "subtitle": {
+            "before": "Click",
+            "intermediate": "here",
+            "after": "to consult our allergen guide."
+        },
+        "pdf_viewer": "Menu PDF viewer",
+        "embedded_pdf": "Embedded PDF menu"
     }
 }

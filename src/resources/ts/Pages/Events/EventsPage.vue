@@ -18,21 +18,19 @@ const page = usePage()
 <template>
     <AppLayout
         current-page="Events"
-        :title="$t('Events')"
+        :title="$t('events_section_title')"
     >
         <!-- Main content area -->
-        <main class="px-3" role="main" :aria-label="$t('Main content')">
+        <main class="px-3" role="main" :aria-label="$t('main_content_label')">
             <!-- Header section for the page title and description -->
-            <header role="banner" :aria-label="$t('Events Header')">
+            <header role="banner" :aria-label="$t('events_header_label')">
                 <TitleComponent class="my-20">
                     <template #title>
-                        {{ $t('Events') }}
+                        {{ $t('events_section_title') }}
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                'Join us for our special events, where great food and a warm atmosphere create unforgettable memories. Mark your calendar for our upcoming gatherings.'
-                            )
+                            $t('events_description_text')
                         }}
                     </template>
                 </TitleComponent>
@@ -40,7 +38,7 @@ const page = usePage()
 
             <!-- Section for listing events -->
             <section
-                :aria-label="$t('Event Listings')"
+                :aria-label="$t('event_listings_label')"
                 class="mx-auto flex flex-col items-center gap-4 space-y-7"
             >
                 <EventDetails
@@ -48,7 +46,7 @@ const page = usePage()
                     :reverse="index % 2 != 0"
                     :key="event.uuid"
                     :event="event"
-                    :aria-label="$t('Event details for') + ' ' + event.name"
+                    :aria-label="$t('event_details_for_label') + ' ' + event.name"
                 />
             </section>
 
@@ -58,7 +56,7 @@ const page = usePage()
                 aria-live="polite"
                 aria-atomic="true"
                 class="max-w-2xl mx-auto"
-                :aria-label="$t('No events available')"
+                :aria-label="$t('no_events_available_label')"
             >
                 <EmptyStateComponent>
                     <template #icon>
@@ -66,9 +64,7 @@ const page = usePage()
                     </template>
                     <template #description>
                         {{
-                            $t(
-                                'There are currently no events scheduled, we will organize one as soon as possible!'
-                            )
+                            $t('no_events_text')
                         }}
                     </template>
                     <template #button></template>

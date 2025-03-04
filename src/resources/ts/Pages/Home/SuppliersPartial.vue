@@ -10,7 +10,7 @@ defineProps<{
     <div class="grid place-content-center">
         <div
             class="mx-auto gap-8 max-w-5xl flex flex-row flex-wrap justify-center place-content-center"
-            :aria-label="$t('Our suppliers')"
+            :aria-label="$t('our_suppliers_label')"
         >
             <template v-for="supplier in suppliers" :key="supplier.name">
                 <a
@@ -18,7 +18,7 @@ defineProps<{
                     :href="supplier.link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    :aria-label="$t('Visit supplier') + ': ' + supplier.name"
+                    :aria-label="$t('visit_supplier_label') + ': ' + supplier.name"
                 >
                     <img
                         class="my-auto h-auto object-scale-down"

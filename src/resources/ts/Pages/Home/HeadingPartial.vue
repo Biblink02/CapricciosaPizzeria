@@ -30,21 +30,21 @@ setInterval(() => {
 </script>
 
 <template>
-    <header class="overflow-hidden relative" role="banner" :aria-label="$t('Main header')">
+    <header class="overflow-hidden relative" role="banner" :aria-label="$t('main_header_label')">
         <!-- Dialog for Opening Hours -->
         <Dialog
             v-model:visible="openingHoursDialog"
             modal
-            :header="$t('Opening hours')"
-            :aria-label="$t('Opening hours dialog')"
+            :header="$t('opening_hours_label')"
+            :aria-label="$t('opening_hours_dialog_label')"
         >
             <p class="py-4">
-                {{ $t('Every day, except Tuesday, from 6:00 PM to 11:30 PM') }}
+                {{ $t('opening_hours_text') }}
             </p>
             <div class="flex justify-end gap-2">
                 <Button
                     type="button"
-                    :label="$t('Close')"
+                    :label="$t('close_button_label')"
                     severity="secondary"
                     @click="showOpeningHoursDialog()"
                 ></Button>
@@ -55,11 +55,11 @@ setInterval(() => {
         <Dialog
             v-model:visible="bookDialog"
             modal
-            :header="$t('Book')"
-            :aria-label="$t('Booking dialog')"
+            :header="$t('book_label')"
+            :aria-label="$t('booking_dialog_label')"
         >
             <p class="pb-4">
-                {{ $t('Bookings are accepted at the following numbers') }}:
+                {{ $t('booking_info_text') }}:
             </p>
             <p>
                 <a href="tel:+390444022349" class="font-bold">
@@ -72,12 +72,12 @@ setInterval(() => {
                 </a>
             </p>
             <p class="py-4">
-                {{ $t('Every day, except Tuesday, from 6:00 PM to 11:30 PM') }}
+                {{ $t('opening_hours_text') }}
             </p>
             <div class="flex justify-end gap-2">
                 <Button
                     type="button"
-                    :label="$t('Close')"
+                    :label="$t('close_button_label')"
                     severity="secondary"
                     @click="showBookDialog()"
                 ></Button>
@@ -101,7 +101,7 @@ setInterval(() => {
                     :simplified="true"
                     current-page="Home"
                     class="sm:p-10"
-                    :aria-label="$t('Main navigation')"
+                    :aria-label="$t('main_navigation_label')"
                 ></NavbarComponent>
 
                 <!-- Header content -->
@@ -111,35 +111,35 @@ setInterval(() => {
                     </figure>
                     <h1
                         class="mt-8 max-md:text-4xl text-5xl text-center leading-15 font-cursive"
-                        :aria-label="$t('Welcome message')"
+                        :aria-label="$t('welcome_message_label')"
                     >
                         {{
-                            $t('Benvenuti nella nostra pizzeria, dove il design incontra la qualità.')
+                            $t('welcome_message_text')
                         }}
                     </h1>
 
                     <!-- CTA Buttons -->
                     <section
                         class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
-                        :aria-label="$t('Primary actions')"
+                        :aria-label="$t('primary_actions_label')"
                     >
                         <Link :href="route('menus')">
                             <Chip
                                 class="whitespace-pre cursor-pointer"
-                                :label="$t('Menu')"
+                                :label="$t('menu_label')"
                                 icon="pi pi-clipboard"
                             />
                         </Link>
                         <Chip
                             class="whitespace-pre cursor-pointer"
                             @click="showBookDialog()"
-                            :label="$t('Book')"
+                            :label="$t('book_label')"
                             icon="pi pi-phone"
                         />
                         <Chip
                             class="whitespace-pre"
                             @click="showOpeningHoursDialog()"
-                            :label="$t('Opening hours')"
+                            :label="$t('opening_hours_label')"
                             icon="pi pi-calendar-clock"
                         />
                     </section>
@@ -147,18 +147,18 @@ setInterval(() => {
                     <!-- Additional Navigation -->
                     <nav
                         class="mt-10 flex items-center justify-center gap-x-6"
-                        :aria-label="$t('Additional navigation')"
+                        :aria-label="$t('additional_navigation_label')"
                     >
                         <Button as="a" :href="route('about-us')">
-                            {{ $t('Our story') }}
+                            {{ $t('our_story_label') }}
                         </Button>
                         <a
                             href="https://maps.app.goo.gl/QscbV2P8b47SzXWm7"
                             target="_blank"
                             class="inline-flex items-center text-base font-semibold leading-7 gap-2"
-                            :aria-label="$t('Find us on Google Maps')"
+                            :aria-label="$t('find_us_label')"
                         >
-                            {{ $t('Find us') }}
+                            {{ $t('find_us_text') }}
                             <ArrowRightIcon class="w-5 h-5 text-black" aria-hidden="true"></ArrowRightIcon>
                         </a>
                     </nav>
@@ -173,7 +173,7 @@ setInterval(() => {
             <img
                 class="overflow-hidden w-screen h-[812px] lg:h-content max-lg:h-96 max-lg:rounded-xl object-cover"
                 :src="images[slidingImages[headerImage].image]"
-                :alt="$t('Restaurant interior')"
+                :alt="$t('restaurant_interior_label')"
             />
         </figure>
     </header>

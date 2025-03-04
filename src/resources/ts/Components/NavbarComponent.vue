@@ -29,8 +29,10 @@ const open = ref(false)
                 type="button"
                 class="sm:hidden text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
                 aria-controls="mobile-menu"
-                :aria-expanded="open.toString()"
-                :aria-label="open ? $t('Close mobile menu') : $t('Open mobile menu')"
+                :aria-expanded="open"
+                :aria-label="
+                    open ? $t('navbar.open_mobile_menu') : $t('navbar.close_mobile_menu')
+                "
                 role="button"
                 @click="open = !open"
             >
@@ -56,14 +58,15 @@ const open = ref(false)
                 : 'text-gray-500'"
                         :href="page.href"
                         class="py-2 text-sm font-medium"
-                        :aria-label="$t('Go to') + ' ' + $t(page.name)"
-                        :aria-current="page.name === currentPage ? 'page' : null"
+                        :aria-label="$t('navbar.go_to') + ' ' + $t(page.name)"
+                        :aria-current="
+                            page.name === currentPage ? 'page' : undefined
+                        "
                     >
                         {{ $t(page.name) }}
                     </Link>
                 </li>
             </ul>
-
         </div>
 
         <!-- Mobile Navigation -->
@@ -71,17 +74,20 @@ const open = ref(false)
             <ul
                 class="space-y-1 px-2 pt-2 pb-3"
                 role="menu"
-                :aria-label="$t('Mobile Navigation')"
+                :aria-label="$t('navbar.mobile_navigation')"
             >
                 <li v-for="page in sidebar" :key="page.name" role="none">
                     <Link
                         :href="page.href"
                         class="text-right block rounded-md px-3 py-2 text-base font-medium"
                         :class="{
-                    'bg-green-50 text-capricciosa_dark_green': currentPage === page.name,
-                }"
-                        :aria-label="$t('Go to') + ' ' + $t(page.name)"
-                        :aria-current="page.name === currentPage ? 'page' : null"
+                            'bg-green-50 text-capricciosa_dark_green':
+                                currentPage === page.name,
+                        }"
+                        :aria-label="$t('navbar.go_to') + ' ' + $t(page.name)"
+                        :aria-current="
+                            page.name === currentPage ? 'page' : undefined
+                        "
                         role="menuitem"
                     >
                         {{ $t(page.name) }}

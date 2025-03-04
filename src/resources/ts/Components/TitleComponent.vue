@@ -1,6 +1,12 @@
 <script setup lang="ts">
 defineProps<{
-    htmlDescriptionContent?: string
+    descriptionContent?: {
+        beforeText: string
+        aText: string
+        afterText: string
+        href: string
+        styles: string
+    }
 }>()
 </script>
 
@@ -16,10 +22,19 @@ defineProps<{
             <slot name="description" />
         </p>
         <p
-            v-if="htmlDescriptionContent"
-            v-html="htmlDescriptionContent"
+            v-if="descriptionContent"
             class="mx-auto mt-3 max-w-2xl text-gray-500 sm:mt-4"
-        />
+        >
+            {{ descriptionContent.beforeText }}
+            <a
+                :href="descriptionContent.href"
+                :class="descriptionContent.styles"
+                target="_blank"
+            >
+                {{ descriptionContent.aText }}
+            </a>
+            {{ descriptionContent.afterText }}
+        </p>
     </div>
 </template>
 
