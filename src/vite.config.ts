@@ -4,7 +4,7 @@ import { imagetools } from 'vite-imagetools'
 import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
 import laravel from 'laravel-vite-plugin'
-
+import tailwindcss from "@tailwindcss/vite";
 interface Params {
     mode: string
 }
@@ -38,6 +38,7 @@ export default ({ mode }: Params) => {
                     },
                 },
             }),
+            tailwindcss()
         ],
 
         resolve: {

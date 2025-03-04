@@ -5,6 +5,8 @@ import { route } from 'ziggy-js'
 import NavbarComponent from '@/Components/NavbarComponent.vue'
 import { SlidingImage } from '@/Types/SlidingImage'
 import { ArrowRightIcon } from '@heroicons/vue/16/solid'
+import { Link } from '@inertiajs/vue3';
+
 
 const props = defineProps<{
     slidingImages: SlidingImage[]
@@ -121,13 +123,13 @@ setInterval(() => {
                         class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
                         :aria-label="$t('Primary actions')"
                     >
-                        <a :href="route('menus')">
+                        <Link :href="route('menus')">
                             <Chip
                                 class="whitespace-pre cursor-pointer"
                                 :label="$t('Menu')"
                                 icon="pi pi-clipboard"
                             />
-                        </a>
+                        </Link>
                         <Chip
                             class="whitespace-pre cursor-pointer"
                             @click="showBookDialog()"

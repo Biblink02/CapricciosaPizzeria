@@ -13,7 +13,6 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { languages, locale, fallbackLocale } from '../../lang/lang.js'
 import '@fontsource/sacramento/index.css'
 import VueGtag from 'vue-gtag'
-import { pageview } from 'vue-gtag'
 import { router } from '@inertiajs/vue3'
 
 const messages = Object.assign(languages)
@@ -35,14 +34,18 @@ const preset = definePreset(Aura, {
         },
     },
 })
-
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 const appName =
     window.document.getElementsByTagName('title')[0]?.innerText ||
     'CapricciosaPizzerie'
 
 router.on('navigate', (event) => {
-    pageview('login', { method: 'Google' })
-})
+    const gtag = useGtag();
+    gtag.pageview({
+        page_path: event.detail.page.url,
+        page_title: event.detail.page.title,
+    });
+});
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -66,7 +69,7 @@ createInertiaApp({
             .use(i18n)
             .use(VueGtag, {
                 config: {
-                    id: 'GA_MEASUREMENT_ID',
+                    id: GA_ID,
                     params: {
                         anonymize_ip: true,
                     },

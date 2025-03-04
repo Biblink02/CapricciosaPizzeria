@@ -17,6 +17,9 @@ Route::get('/allergens',[AllergensController::class, 'index'])->name('allergens-
 Route::get('/images/{path}', [ImageController::class, 'index'])->name('image');
 Route::get('/pdf/{path}',[PdfmenuController::class, 'getSpecificMenu'])->name('pdf-menu-specific');
 Route::get('/menus/pdf/{lang}', [PdfmenuController::class, 'getFirstVisibleMenu'])->name('pdf-menu');
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'));
+});
 
 
 Route::middleware([

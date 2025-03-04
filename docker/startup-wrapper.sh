@@ -2,6 +2,9 @@
 sudo apk add php82-xmlreader
 
 php artisan migrate --force
+php artisan app:sitemap-generate
+php artisan optimize
+php artisan filament:optimize
 
 chmod +x /scripts/scheduler.sh
 /scripts/scheduler.sh &
