@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Navigation\GetPdfmenus;
+use App\Actions\Navigation\GetPdfMenus;
 use App\Enums\Lang;
 use App\Http\Requests\PdfmenuRequest;
 use App\Models\Pdfmenu;
@@ -21,7 +21,7 @@ class PdfmenuController
         return response()->file(Storage::disk('public')->path($parameters['path']));
     }
 
-    public function getFirstVisibleMenu(GetPdfmenus $getPdfmenus, string $lang): BinaryFileResponse
+    public function getFirstVisibleMenu(GetPdfMenus $getPdfmenus, string $lang): BinaryFileResponse
     {
         // Converte il parametro in un valore dell'enum Lang
         try {
@@ -30,7 +30,7 @@ class PdfmenuController
             abort(404, 'Invalid language specified');
         }
 
-        $pdfMenu = $getPdfmenus->getLastCreated($lang);
+        $pdfMenu = $getPdfmenus->getLastUpdated($lang);
 
         if ($pdfMenu->isEmpty()) {
             abort(404, 'PDF not found');

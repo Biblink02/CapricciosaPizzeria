@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\Cache;
 
-class Event extends Model
+class   Event extends Model
 {
     use HasUuids;
     protected $primaryKey = 'uuid';
@@ -31,5 +32,18 @@ class Event extends Model
     public function menus(): BelongsToMany
     {
         return $this->belongsToMany(Menu::class);
+    }
+
+    protected static function booted()
+    {
+        static::saved(function () {
+            Cache::forget('visible_events');
+            Cache::forget('last_visible_event');
+        });
+
+        static::deleted(function () {
+            Cache::forget('visible_events');
+            Cache::forget('last_visible_event');
+        });
     }
 }

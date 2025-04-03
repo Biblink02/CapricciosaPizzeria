@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Actions\Navigation\GetMenusForMenusPage;
 
 class MenusController
 {
-    public function index(GetMenusForMenusPage $getMenusForHome): Response
+    public function index(): Response
     {
         return Inertia::render('Menus/MenuPage');
     }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\Cache;
 
 class Supplier extends Model
 {
@@ -31,5 +32,16 @@ class Supplier extends Model
     public function ingredients(): HasMany
     {
         return $this->hasMany(Ingredient::Class);
+    }
+
+    protected static function booted()
+    {
+        static::saved(function () {
+            Cache::forget('visible_suppliers');
+        });
+
+        static::deleted(function () {
+            Cache::forget('visible_suppliers');
+        });
     }
 }
