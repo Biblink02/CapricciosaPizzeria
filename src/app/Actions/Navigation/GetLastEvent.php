@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Events;
+namespace App\Actions\Navigation;
 
 use App\Models\Event;
 use Illuminate\Support\Carbon;

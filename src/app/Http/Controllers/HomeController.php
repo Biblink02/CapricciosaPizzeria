@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Actions\Events\GetLastEvent;
+use App\Actions\Navigation\GetLastEvent;
 use App\Actions\Navigation\GetSuppliers;
 use Inertia\Inertia;
 use Inertia\Response;
