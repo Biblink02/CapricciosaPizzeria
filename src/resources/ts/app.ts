@@ -12,8 +12,8 @@ import { createI18n } from 'vue-i18n'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { languages, locale, fallbackLocale } from '../../lang/lang.js'
 import '@fontsource/sacramento/index.css'
-import VueGtag from 'vue-gtag'
-import { router } from '@inertiajs/vue3'
+/*import VueGtag from 'vue-gtag'
+import { router } from '@inertiajs/vue3'*/
 
 const messages = Object.assign(languages)
 
@@ -34,18 +34,18 @@ const preset = definePreset(Aura, {
         },
     },
 })
-const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
-const appName =
-    window.document.getElementsByTagName('title')[0]?.innerText ||
-    'CapricciosaPizzerie'
-
+/*const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 router.on('navigate', (event) => {
     const gtag = useGtag();
     gtag.pageview({
         page_path: event.detail.page.url,
         page_title: event.detail.page.title,
     });
-});
+});*/
+
+const appName =
+    window.document.getElementsByTagName('title')[0]?.innerText ||
+    'CapricciosaPizzerie'
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -67,14 +67,14 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(i18n)
-            .use(VueGtag, {
+            /*.use(VueGtag, {
                 config: {
                     id: GA_ID,
                     params: {
                         anonymize_ip: true,
                     },
                 },
-            })
+            })*/
             .use(PrimeVue, {
                 theme: {
                     preset: preset,

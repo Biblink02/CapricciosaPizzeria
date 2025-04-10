@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { route } from 'ziggy-js'
-import VuePdfEmbed from 'vue-pdf-embed'
 import TitleComponent from '@/Components/TitleComponent.vue'
+import { defineAsyncComponent } from 'vue';
+
+const VuePdfEmbed = defineAsyncComponent(() => import('vue-pdf-embed'));
+
 
 function getCurrentLang(): string {
     if (navigator.languages && navigator.languages.length) {

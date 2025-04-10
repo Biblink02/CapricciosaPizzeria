@@ -137,7 +137,7 @@ setInterval(() => {
                             icon="pi pi-phone"
                         />
                         <Chip
-                            class="whitespace-pre"
+                            class="whitespace-pre cursor-pointer"
                             @click="showOpeningHoursDialog()"
                             :label="$t('opening_hours_label')"
                             icon="pi pi-calendar-clock"

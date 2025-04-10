@@ -29,7 +29,7 @@ defineProps<{
             <Card class="h-full">
                 <template #title>
                     <h1
-                        class="font-cursive text-4xl"
+                        class="font-cursive text-4xl m-0"
                         :id="'event-title-' + event.uuid"
                     >
                         {{ event.name }}
@@ -72,7 +72,7 @@ defineProps<{
             class="sm:hidden flex flex-col items-center w-full"
             :aria-label="$t('event_details_label')"
         >
-            <h1 class="font-cursive text-4xl" :id="'event-title-' + event.uuid">
+            <h1 class="font-cursive text-4xl m-0" :id="'event-title-' + event.uuid">
                 {{ event.name }}
             </h1>
             <figure

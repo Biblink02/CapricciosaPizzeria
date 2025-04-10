@@ -11,6 +11,7 @@ class EventsController extends Controller
 {
     public function index(GetEvents $getEvents): Response
     {
+        //TODO add only()?
         return Inertia::render('Events/EventsPage', [
             'events' => $getEvents->get()->toArray()
         ]);

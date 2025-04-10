@@ -32,7 +32,7 @@ class PdfmenuController
 
         $pdfMenu = $getPdfmenus->getLastUpdated($lang);
 
-        if ($pdfMenu->isEmpty()) {
+        if (empty($pdfMenu)) {
             abort(404, 'PDF not found');
         }
 
