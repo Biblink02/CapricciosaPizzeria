@@ -16,7 +16,8 @@
         "email_label": "Email",
         "opening_hours": "Opening hours",
         "hours_range": "From 18:00 to 23:30",
-        "closed_thursday": "Closed on Thursday"
+        "monday_events": "Monday open for events only",
+        "closed_tuesday": "Closed on tuesday"
     },
 
     "navbar": {
@@ -84,7 +85,7 @@
     "main_header_label": "Main header",
     "opening_hours_label": "Opening hours",
     "opening_hours_dialog_label": "Opening hours dialog",
-    "opening_hours_text": "Every day, except Tuesday, from 6:00 PM to 11:30 PM",
+    "opening_hours_text": "Every day, except Tuesday, from 6:00 PM to 11:30 PM; monday open for events only",
     "close_button_label": "Close",
     "book_label": "Book",
     "booking_dialog_label": "Booking dialog",

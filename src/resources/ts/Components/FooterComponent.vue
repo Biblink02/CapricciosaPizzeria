@@ -74,7 +74,10 @@ import { images } from '@/Types/ImageHelper.js'
                 <time datetime="18:00-23:30">{{ $t('footer.hours_range') }}</time>
             </p>
             <p class="text-gray-500 w-full">
-                {{ $t('footer.closed_thursday') }}
+                {{ $t('footer.monday_events') }}
+            </p>
+            <p class="text-gray-500 w-full">
+                {{ $t('footer.closed_tuesday') }}
             </p>
         </nav>
     </footer>

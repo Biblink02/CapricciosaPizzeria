@@ -16,7 +16,7 @@ defineProps<{
     >
         <!-- Event image (desktop) -->
         <figure
-            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
             :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
             aria-hidden="true"
         ></figure>
@@ -35,7 +35,7 @@ defineProps<{
                         {{ event.name }}
                     </h1>
                     <figure
-                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
                         :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
                         aria-hidden="true"
                     ></figure>
@@ -76,7 +76,7 @@ defineProps<{
                 {{ event.name }}
             </h1>
             <figure
-                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
                 :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
                 aria-hidden="true"
             ></figure>

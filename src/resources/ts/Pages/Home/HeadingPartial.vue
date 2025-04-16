@@ -71,9 +71,6 @@ setInterval(() => {
                     {{ 'Mobile: +39 329 298 3245' }}
                 </a>
             </p>
-            <p class="py-4">
-                {{ $t('opening_hours_text') }}
-            </p>
             <div class="flex justify-end gap-2">
                 <Button
                     type="button"
