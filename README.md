@@ -1,7 +1,6 @@
 # CapricciosaPizzerie  
 _A restaurant website built with Laravel11, Inertia+Vue3 and Filament3_
 
----
 
 ## ✨ Why this project matters
 CapricciosaPizzerie is a full‑stack app with a customer‑facing site and back‑office—built for a pizzeria but adaptable to any SaaS or content‑heavy platform.
@@ -13,7 +12,6 @@ CapricciosaPizzerie is a full‑stack app with a customer‑facing site and back
 * **Clean DevEx** – Pint, ESLint, Prettier, TypeScript, and PHPUnit keep the codebase consistent and green.  
 * **Hard‑won extras** – JSON‑LD SEO, multilingual content, image optimisation, sitemap generation and real‑time Google Analytics hooks.
 
----
 
 ## 🏗️  Tech stack
 
@@ -26,7 +24,6 @@ CapricciosaPizzerie is a full‑stack app with a customer‑facing site and back
 | **Tooling**   | Composer, npm, TypeScript, ESLint, Pint, Prettier | Consistent style across PHP & TS                               |
 | **Ops**       | Artisan CLI, Docker‑ready, CI friendly            | Custom commands: `app:convert-to-webp`, `app:generate-sitemap` |
 
----
 
 ## 🌍  Internationalisation & Accessibility
 
@@ -34,7 +31,6 @@ CapricciosaPizzerie is a full‑stack app with a customer‑facing site and back
 * **Semantic HTML & ARIA** – navigation, dialogs and forms meet WCAG2.1 AAstandards(FE components reference the translations to build correct labels).  
 * **Structured data** – JSON‑LD Restaurant schema injected at runtime to improve rich‑search results.  
 
----
 
 ## ⚙️  Local setup
 
@@ -48,7 +44,6 @@ cp .env.example .env          # edit DB creds, mail, GA, etc.
 ./run.local.sh
 ```
 
----
 
 ## 🛠️ Useful artisan commands
 
@@ -58,7 +53,6 @@ cp .env.example .env          # edit DB creds, mail, GA, etc.
 | `app:generate-sitemap`    | Builds `public/sitemap.xml` for SEO‑ready deployment                                      |
 | `optimize`/`config:cache` | Zero‑downtime cache warm‑ups                                                              |
 
----
 
 ## 📁  High‑level folder map
 
@@ -70,7 +64,6 @@ routes/     Web, API & CLI entry points
 tests/      Feature & Unit test suites
 ```
 
----
 
 ## 📜  License
 
