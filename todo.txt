@@ -1,0 +1,9 @@
+SEO:
+* Aggiungere testo descrittivo o `aria-label` + `span.sr-only` nei link con solo icone (es. social) per migliorare accessibilità e SEO.
+* Inserire correttamente il tag `<link rel="canonical">` nella `<head>` per indicare l’URL preferito e prevenire contenuti duplicati.
+* Scrivere una meta description chiara e rilevante; ignorare il meta tag keywords, ormai obsoleto.
+* Specificare gli attributi `width` e `height` su tutte le immagini per evitare problemi di layout e migliorare la stabilità visiva.
+* Aggiungere `loading="lazy"` alle immagini non immediatamente visibili per ottimizzare i tempi di caricamento.
+* Inserire nel `<head>` un’icona Apple Touch (`<link rel="apple-touch-icon" href="path/to/icon.png">`) per migliorare l’esperienza su dispositivi iOS.
+* Aggiungere il meta tag `theme-color` per definire il colore della barra indirizzi sui browser mobile (es. `<meta name="theme-color" content="#HEXCOL">`).
+* Integrare il campo JSON-LD `servesCuisine` (anche se facoltativo) per specificare il tipo di cucina offerta e migliorare i dati strutturati per i motori di ricerca.
