@@ -16,7 +16,8 @@
         "email_label": "Email",
         "opening_hours": "Orari di apertura",
         "hours_range": "Dalle 18:00 alle 23:30",
-        "closed_thursday": "Chiuso il giovedì"
+        "monday_events": "Lunedì aperto solo per eventi",
+        "closed_tuesday": "Chiuso il martedì"
     },
 
     "navbar": {
@@ -84,7 +85,7 @@
     "main_header_label": "Intestazione principale",
     "opening_hours_label": "Orari di apertura",
     "opening_hours_dialog_label": "Dialogo orari di apertura",
-    "opening_hours_text": "Tutti i giorni, tranne il martedì, dalle 18:00 alle 23:30",
+    "opening_hours_text": "Tutti i giorni, tranne il martedì, dalle 18:00 alle 23:30; lunedì aperto solo per eventi",
     "close_button_label": "Chiudi",
     "book_label": "Prenota",
     "booking_dialog_label": "Dialogo prenotazioni",

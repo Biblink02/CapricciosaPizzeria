@@ -29,10 +29,12 @@ const responsiveOptions = ref([
 ])
 
 const locationImages = [
-    { image: 'carousel_1' },
-    { image: 'carousel_2' },
-    { image: 'carousel_3' },
-    { image: 'carousel_4' },
+    { image: 'location_1' },
+    { image: 'location_2' },
+    { image: 'location_3' },
+    { image: 'location_4' },
+    { image: 'location_5' },
+    { image: 'location_6' },
 ]
 
 const dishesImages = [
@@ -40,6 +42,11 @@ const dishesImages = [
     { image: 'dish_2' },
     { image: 'dish_3' },
     { image: 'dish_4' },
+    { image: 'dish_5' },
+    { image: 'dish_6' },
+    { image: 'dish_7' },
+    { image: 'dish_8' },
+    { image: 'dish_9' },
 ]
 
 const currentImage = ref(0)

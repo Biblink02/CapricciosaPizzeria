@@ -5,6 +5,8 @@ import { route } from 'ziggy-js'
 import NavbarComponent from '@/Components/NavbarComponent.vue'
 import { SlidingImage } from '@/Types/SlidingImage'
 import { ArrowRightIcon } from '@heroicons/vue/16/solid'
+import { Link } from '@inertiajs/vue3';
+
 
 const props = defineProps<{
     slidingImages: SlidingImage[]
@@ -69,9 +71,6 @@ setInterval(() => {
                     {{ 'Mobile: +39 329 298 3245' }}
                 </a>
             </p>
-            <p class="py-4">
-                {{ $t('opening_hours_text') }}
-            </p>
             <div class="flex justify-end gap-2">
                 <Button
                     type="button"
@@ -121,13 +120,13 @@ setInterval(() => {
                         class="flex-wrap mt-10 flex flex-row gap-5 justify-center"
                         :aria-label="$t('primary_actions_label')"
                     >
-                        <a :href="route('menus')">
+                        <Link :href="route('menus')">
                             <Chip
                                 class="whitespace-pre cursor-pointer"
                                 :label="$t('menu_label')"
                                 icon="pi pi-clipboard"
                             />
-                        </a>
+                        </Link>
                         <Chip
                             class="whitespace-pre cursor-pointer"
                             @click="showBookDialog()"
@@ -135,7 +134,7 @@ setInterval(() => {
                             icon="pi pi-phone"
                         />
                         <Chip
-                            class="whitespace-pre"
+                            class="whitespace-pre cursor-pointer"
                             @click="showOpeningHoursDialog()"
                             :label="$t('opening_hours_label')"
                             icon="pi pi-calendar-clock"

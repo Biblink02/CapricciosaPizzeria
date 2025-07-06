@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { getSidebar } from '@/actions/GetSidebar'
-import { computed, ref } from 'vue'
-import { images } from '@/Types/ImageHelper'
+import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
+import {getSidebar} from '@/actions/GetSidebar'
+import {computed, ref} from 'vue'
+import {images} from '@/Types/ImageHelper'
+import {Link} from '@inertiajs/vue3';
 
 defineProps<{
     currentPage: string
@@ -51,12 +52,10 @@ const open = ref(false)
             <!-- Desktop Navigation -->
             <ul class="max-sm:hidden flex space-x-10">
                 <li v-for="page in sidebar" :key="page.name">
-                    <a
-                        :class="
-                            page.name === currentPage
-                                ? 'border-capricciosa_green border-b-2'
-                                : 'text-gray-500'
-                        "
+                    <Link
+                        :class="page.name === currentPage
+                ? 'border-capricciosa_green border-b-2'
+                : 'text-gray-500'"
                         :href="page.href"
                         class="py-2 text-sm font-medium"
                         :aria-label="$t('navbar.go_to') + ' ' + $t(page.name)"
@@ -65,7 +64,7 @@ const open = ref(false)
                         "
                     >
                         {{ $t(page.name) }}
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>
@@ -78,7 +77,7 @@ const open = ref(false)
                 :aria-label="$t('navbar.mobile_navigation')"
             >
                 <li v-for="page in sidebar" :key="page.name" role="none">
-                    <a
+                    <Link
                         :href="page.href"
                         class="text-right block rounded-md px-3 py-2 text-base font-medium"
                         :class="{
@@ -92,7 +91,7 @@ const open = ref(false)
                         role="menuitem"
                     >
                         {{ $t(page.name) }}
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>

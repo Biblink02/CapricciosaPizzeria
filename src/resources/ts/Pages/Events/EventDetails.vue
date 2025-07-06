@@ -16,7 +16,7 @@ defineProps<{
     >
         <!-- Event image (desktop) -->
         <figure
-            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+            class="max-lg:hidden shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
             :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
             aria-hidden="true"
         ></figure>
@@ -29,13 +29,13 @@ defineProps<{
             <Card class="h-full">
                 <template #title>
                     <h1
-                        class="font-cursive text-4xl"
+                        class="font-cursive text-4xl m-0"
                         :id="'event-title-' + event.uuid"
                     >
                         {{ event.name }}
                     </h1>
                     <figure
-                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+                        class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
                         :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
                         aria-hidden="true"
                     ></figure>
@@ -72,11 +72,11 @@ defineProps<{
             class="sm:hidden flex flex-col items-center w-full"
             :aria-label="$t('event_details_label')"
         >
-            <h1 class="font-cursive text-4xl" :id="'event-title-' + event.uuid">
+            <h1 class="font-cursive text-4xl m-0" :id="'event-title-' + event.uuid">
                 {{ event.name }}
             </h1>
             <figure
-                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-cover"
+                class="lg:hidden my-5 shadow-lg flex-grow rounded-2xl max-w-sm w-full aspect-square bg-contain bg-center bg-no-repeat"
                 :style="{ 'background-image': 'url(images/' + event.img_url + ')' }"
                 aria-hidden="true"
             ></figure>
