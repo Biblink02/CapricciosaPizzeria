@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 /components.d.ts
 /public/sitemap.xml
+package-lock.json
