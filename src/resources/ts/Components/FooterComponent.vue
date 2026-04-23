@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { images } from '@/Types/ImageHelper.js'
+const vat_nr = '05567250286'
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import { images } from '@/Types/ImageHelper.js'
             />
             <p class="text-gray-500 w-full text-center">
                 <strong>{{ $t('footer.company_name') }}</strong><br />
-                {{ $t('footer.vat_number') }}
+                {{ $t('footer.vat_number') + ' ' + vat_nr }}
             </p>
         </section>
 
