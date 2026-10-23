@@ -30,16 +30,17 @@ class PdfmenuController
             abort(404, 'Invalid language specified');
         }
 
-        $pdfMenu = $getPdfmenus->getLastUpdated($lang);
+        $pdfMenu = $getPdfmenus->getLastUpdated($lang)
+            ?? $getPdfmenus->getLastUpdated(Lang::IT);
 
         if (empty($pdfMenu)) {
             abort(404, 'PDF not found');
         }
 
-        if (!Storage::disk('public')->exists($pdfMenu->first()->pdf_url)) {
+        if (!Storage::disk('public')->exists($pdfMenu->pdf_url)) {
             abort(404, 'File not found');
         }
 
-        return response()->file(Storage::disk('public')->path($pdfMenu->first()->pdf_url));
+        return response()->file(Storage::disk('public')->path($pdfMenu->pdf_url));
     }
 }

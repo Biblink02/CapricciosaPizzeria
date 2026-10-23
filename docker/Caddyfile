@@ -1,0 +1,17 @@
+{$CADDY_SITE} {
+    root * /var/www/app/public
+    encode zstd gzip
+
+    @private path_regexp private (?i)(^|/)\.(env|git)
+    # Check access before FastCGI rewrites the request path.
+    route {
+        respond @private 404
+        handle /storage/* {
+            @scripts path_regexp scripts (?i)\.(php[0-9]?|phtml|phar)(/|$)
+            respond @scripts 404
+            file_server
+        }
+        php_fastcgi app:9000
+        file_server
+    }
+}

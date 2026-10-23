@@ -28,6 +28,7 @@ export default ({ mode }: Params) => {
             }),
             laravel({
                 input: ['./resources/ts/app.ts', './resources/css/app.css'],
+                ssr: './resources/ts/ssr.ts',
                 refresh: true,
             }),
             vue({

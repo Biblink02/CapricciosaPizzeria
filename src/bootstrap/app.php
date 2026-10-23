@@ -18,11 +18,6 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
-        if(env('APP_ENV') === 'production') {
-            env('APP_TRUST_PROXY') ?? $middleware->trustProxies(at: [
-                env('APP_TRUST_PROXY')
-            ]);
-        }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
