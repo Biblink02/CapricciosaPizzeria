@@ -42,8 +42,8 @@ eventuali passaggi di major vanno provati prima, aggiornando e versionando i loc
 - JS e CSS compilati di Filament sono ignorati da Git. Il comando
   `php artisan filament:upgrade` della procedura li rigenera dopo Composer.
 - Impostare `NGINX_PHP_PM_MAX_CHILDREN=2`: il nome storico viene mantenuto, ma è
-  applicato direttamente al pool FPM. App, scheduler, DB e Caddy hanno limiti di
-  640/128/512/128 MiB; il buffer pool DB è 128 MiB. Sono valori iniziali per 2 GB.
+  applicato direttamente al pool FPM. I container non hanno limiti Docker di RAM;
+  la memoria viene gestita dal sistema operativo. Il buffer pool DB è 128 MiB.
   Non compilare il frontend mentre tutti i servizi occupano memoria sulla VPS.
 
 Nei comandi seguenti, dalla radice del progetto:
@@ -215,8 +215,8 @@ docker stats --no-stream
 
 Durante il collaudo iniziale, ricreare app e database e verificare nuovamente dati
 e upload: `dc up -d --force-recreate --wait database app`. Verificare che lo scheduler
-riparta dopo un arresto inatteso e che l'app rimanga attiva. I limiti non sono una
-garanzia di capacità: controllare OOM/restart e latenza con il traffico reale.
+riparta dopo un arresto inatteso e che l'app rimanga attiva. Controllare consumo
+di memoria, eventuali OOM/restart e latenza con il traffico reale.
 
 **Rollback prima della riapertura:** fermare il nuovo stack con `dc down` senza
 `-v`; ripristinare la release dall'archivio, compresi vecchi Compose, `.env`,

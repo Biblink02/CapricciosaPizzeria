@@ -23,6 +23,8 @@ export default ({ mode }: Params) => {
                     return new URLSearchParams({
                         format: 'webp',
                         quality: '40',
+                        // Preserve the pixel orientation used before the imagetools upgrade.
+                        noAutoOrient: 'true',
                     })
                 },
             }),
