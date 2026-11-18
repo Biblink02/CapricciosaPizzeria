@@ -137,8 +137,11 @@
         "pdf": {
             "loading": "Caricamento del menù…",
             "missing": "Al momento il menù PDF non è disponibile.",
-            "error": "Impossibile visualizzare il menù PDF.",
+            "error": "Impossibile caricare il menù PDF. Riprova tra poco.",
+            "viewer_error": "Non siamo riusciti a mostrare il PDF in questa pagina.",
+            "open_instead": "Apri direttamente il PDF",
             "ready": "Menù PDF",
+            "scroll_to_read": "Scorri verso il basso per leggere il menù.",
             "it": "Menù in italiano",
             "en": "Menù in inglese",
             "english_unavailable": "La versione inglese non è disponibile al momento.",

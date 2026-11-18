@@ -2,6 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { route } from 'ziggy-js'
 import TitleComponent from '@/Components/TitleComponent.vue'
+import { ArrowDownIcon } from '@heroicons/vue/16/solid'
 import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 
 const status = ref<'loading' | 'missing' | 'error' | 'ready'>('loading')
@@ -91,15 +92,27 @@ onBeforeUnmount(() => request.abort())
                             <p v-if="pdf.isItalianFallback" class="mt-1">
                                 {{ $t('menu.pdf.english_unavailable') }}
                             </p>
+                            <p class="mt-2 flex items-center justify-center gap-2">
+                                <ArrowDownIcon aria-hidden="true" class="size-4 shrink-0" />
+                                {{ $t('menu.pdf.scroll_to_read') }}
+                            </p>
                         </template>
+                        <p v-else-if="status === 'error' && availablePdfUrl">
+                            {{ $t('menu.pdf.viewer_error') }}
+                        </p>
                         <p v-else>{{ $t(`menu.pdf.${status}`) }}</p>
                     </div>
                     <a
                         v-if="availablePdfUrl"
                         :href="availablePdfUrl"
-                        class="mt-1 inline-flex min-h-11 items-center font-semibold text-capricciosa_darker_green underline underline-offset-2"
+                        class="inline-flex min-h-11 items-center font-semibold"
+                        :class="
+                            status === 'error'
+                                ? 'mt-3 rounded-md bg-capricciosa_darker_green px-4 text-white'
+                                : 'mt-1 text-capricciosa_darker_green underline underline-offset-2'
+                        "
                     >
-                        {{ $t('menu.pdf.open') }}
+                        {{ $t(status === 'error' ? 'menu.pdf.open_instead' : 'menu.pdf.open') }}
                     </a>
                 </div>
 

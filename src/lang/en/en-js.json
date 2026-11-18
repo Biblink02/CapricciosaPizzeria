@@ -137,8 +137,11 @@
         "pdf": {
             "loading": "Loading the menu…",
             "missing": "The PDF menu is currently unavailable.",
-            "error": "The PDF menu couldn’t be displayed.",
+            "error": "The PDF menu couldn’t be loaded. Please try again shortly.",
+            "viewer_error": "The PDF couldn’t be displayed on this page.",
+            "open_instead": "Open PDF instead",
             "ready": "PDF menu",
+            "scroll_to_read": "Scroll down to read the menu.",
             "it": "Menu in Italian",
             "en": "Menu in English",
             "english_unavailable": "The English version is currently unavailable.",
