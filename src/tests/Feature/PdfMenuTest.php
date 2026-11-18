@@ -30,7 +30,7 @@ class PdfMenuTest extends TestCase
         $create('en', 'en-new.pdf', 1);
         $create('en', 'en-hidden.pdf', 0, false);
 
-        $response = $this->get('/menus/pdf/en')->assertOk();
+        $response = $this->get('/menus/pdf/en')->assertOk()->assertHeader('Content-Language', 'en');
 
         $this->assertSame(
             Storage::disk('public')->path('en-new.pdf'),
@@ -53,7 +53,7 @@ class PdfMenuTest extends TestCase
             'pdf_url' => 'en-hidden.pdf', 'is_visible' => false,
         ]);
 
-        $response = $this->get('/menus/pdf/en')->assertOk();
+        $response = $this->get('/menus/pdf/en')->assertOk()->assertHeader('Content-Language', 'it');
         $this->assertSame(Storage::disk('public')->path('it.pdf'), $response->baseResponse->getFile()->getPathname());
 
         Pdfmenu::create([

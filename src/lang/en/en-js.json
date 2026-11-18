@@ -133,6 +133,16 @@
             "after": "to consult our allergen guide."
         },
         "pdf_viewer": "Menu PDF viewer",
-        "embedded_pdf": "Embedded PDF menu"
+        "embedded_pdf": "Embedded PDF menu",
+        "pdf": {
+            "loading": "Loading the menu…",
+            "missing": "The PDF menu is currently unavailable.",
+            "error": "The PDF menu couldn’t be displayed.",
+            "ready": "PDF menu",
+            "it": "Menu in Italian",
+            "en": "Menu in English",
+            "english_unavailable": "The English version is currently unavailable.",
+            "open": "Open PDF"
+        }
     }
 }

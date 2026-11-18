@@ -2,22 +2,50 @@
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { route } from 'ziggy-js'
 import TitleComponent from '@/Components/TitleComponent.vue'
-import { defineAsyncComponent } from 'vue';
+import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 
-const VuePdfEmbed = defineAsyncComponent(() => import('vue-pdf-embed'));
+const status = ref<'loading' | 'missing' | 'error' | 'ready'>('loading')
+const availablePdfUrl = ref<string>()
+const pdf = shallowRef<{
+    viewer: typeof import('vue-pdf-embed')['default']
+    source: Uint8Array
+    language: 'it' | 'en' | null
+    isItalianFallback: boolean
+}>()
+const request = new AbortController()
 
+onMounted(async () => {
+    const preferredLanguage = navigator.languages?.[0] ?? navigator.language
+    const requestedLanguage = preferredLanguage?.split('-')[0] === 'en' ? 'en' : 'it'
 
-function getCurrentLang(): string {
-    if (navigator.languages && navigator.languages.length) {
-        return navigator.languages[0].split('-')[0]
-    } else if (navigator.language) {
-        return navigator.language.split('-')[0]
-    } else {
-        return 'it'
+    try {
+        const url = route('pdf-menu', { lang: requestedLanguage }, false)
+        const response = await fetch(url, { signal: request.signal })
+        if (!response.ok) {
+            status.value = response.status === 404 ? 'missing' : 'error'
+            return
+        }
+
+        availablePdfUrl.value = url
+        const [data, { default: viewer }] = await Promise.all([
+            response.arrayBuffer(),
+            import('vue-pdf-embed'),
+        ])
+        if (request.signal.aborted) return
+
+        const language = response.headers.get('Content-Language')
+        pdf.value = {
+            viewer,
+            source: new Uint8Array(data),
+            language: language === 'it' || language === 'en' ? language : null,
+            isItalianFallback: requestedLanguage === 'en' && language === 'it',
+        }
+    } catch {
+        if (!request.signal.aborted) status.value = 'error'
     }
-}
+})
 
-const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
+onBeforeUnmount(() => request.abort())
 </script>
 
 <template>
@@ -38,21 +66,59 @@ const pdfSource = route('pdf-menu', { lang: getCurrentLang() })
                 </template>
             </TitleComponent>
 
-            <!-- Section for menu PDF -->
             <section
-                class="flex items-center"
+                class="mx-auto w-full max-w-7xl"
                 :aria-label="$t('menu.pdf_viewer')"
             >
-                <VuePdfEmbed
-                    class="w-full mx-auto max-w-7xl"
+                <div
+                    class="mb-5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-4 text-center text-sm text-gray-700"
+                >
+                    <div role="status">
+                        <p
+                            v-if="status === 'loading'"
+                            class="flex items-center justify-center gap-2"
+                        >
+                            <span
+                                class="size-4 rounded-full border-2 border-current border-r-transparent motion-safe:animate-spin"
+                                aria-hidden="true"
+                            />
+                            {{ $t('menu.pdf.loading') }}
+                        </p>
+                        <template v-else-if="status === 'ready' && pdf">
+                            <p class="font-semibold text-capricciosa_darker_green">
+                                {{ $t(`menu.pdf.${pdf.language ?? 'ready'}`) }}
+                            </p>
+                            <p v-if="pdf.isItalianFallback" class="mt-1">
+                                {{ $t('menu.pdf.english_unavailable') }}
+                            </p>
+                        </template>
+                        <p v-else>{{ $t(`menu.pdf.${status}`) }}</p>
+                    </div>
+                    <a
+                        v-if="availablePdfUrl"
+                        :href="availablePdfUrl"
+                        class="mt-1 inline-flex min-h-11 items-center font-semibold text-capricciosa_darker_green underline underline-offset-2"
+                    >
+                        {{ $t('menu.pdf.open') }}
+                    </a>
+                </div>
+
+                <component
+                    :is="pdf.viewer"
+                    v-if="pdf && status !== 'error'"
+                    class="w-full"
+                    :class="{ invisible: status === 'loading' }"
                     annotation-layer
                     text-layer
-                    :source="pdfSource"
+                    :source="pdf.source"
+                    :lang="pdf.language ?? undefined"
                     :aria-label="$t('menu.embedded_pdf')"
+                    @rendered="status = 'ready'"
+                    @loading-failed="status = 'error'"
+                    @rendering-failed="status = 'error'"
+                    @password-requested="status = 'error'"
                 />
             </section>
         </main>
     </AppLayout>
 </template>
-
-<style scoped></style>

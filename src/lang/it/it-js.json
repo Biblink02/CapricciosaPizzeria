@@ -133,6 +133,16 @@
             "after": "per consultare la nostra guida agli allergeni."
         },
         "pdf_viewer": "Visualizzatore PDF del menù",
-        "embedded_pdf": "Menù PDF incorporato"
+        "embedded_pdf": "Menù PDF incorporato",
+        "pdf": {
+            "loading": "Caricamento del menù…",
+            "missing": "Al momento il menù PDF non è disponibile.",
+            "error": "Impossibile visualizzare il menù PDF.",
+            "ready": "Menù PDF",
+            "it": "Menù in italiano",
+            "en": "Menù in inglese",
+            "english_unavailable": "La versione inglese non è disponibile al momento.",
+            "open": "Apri il PDF"
+        }
     }
 }

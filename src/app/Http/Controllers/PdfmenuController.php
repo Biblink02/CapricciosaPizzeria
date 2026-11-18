@@ -41,6 +41,8 @@ class PdfmenuController
             abort(404, 'File not found');
         }
 
-        return response()->file(Storage::disk('public')->path($pdfMenu->pdf_url));
+        return response()->file(Storage::disk('public')->path($pdfMenu->pdf_url), [
+            'Content-Language' => $pdfMenu->lang,
+        ]);
     }
 }
